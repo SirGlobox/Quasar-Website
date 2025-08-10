@@ -1,0 +1,317 @@
+/* Reset and base styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Open+Sans:wght@400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+
+:root {
+  /* Galactic Professional Brand Colors */
+  --primary-galaxy: #20123A;
+  --secondary-solar: #A259F7;
+  --accent-orbit: #FFD600;
+  
+  /* Neutral Colors */
+  --deep-charcoal: #23272F;
+  --cosmic-silver: #F5F7FA;
+  
+  /* Text Colors */
+  --snow-white: #F9FAFB;
+  --slate-gray: #6B7280;
+  
+  /* Legacy support (mapped to new colors) */
+  --primary-purple: var(--primary-galaxy);
+  --secondary-purple: var(--secondary-solar);
+  --accent-purple: var(--accent-orbit);
+  --dark-bg: var(--deep-charcoal);
+  --darker-bg: var(--primary-galaxy);
+  --card-bg: rgba(32, 18, 58, 0.1);
+  --text-primary: var(--snow-white);
+  --text-secondary: var(--cosmic-silver);
+  --text-muted: var(--slate-gray);
+  
+  /* Spacing */
+  --section-padding: 4rem 0;
+  --container-padding: 0 1rem;
+  
+  /* Typography - Galactic Professional Fonts */
+  --font-heading: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-body: 'Open Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-accent: 'Space Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-primary: var(--font-body);
+  
+  /* Transitions */
+  --transition: all 0.3s ease;
+  
+  /* Glow Effects */
+  --text-glow: 0 0 10px rgba(162, 89, 247, 0.5), 0 0 20px rgba(162, 89, 247, 0.3), 0 0 30px rgba(162, 89, 247, 0.1);
+  --text-glow-strong: 0 0 5px rgba(249, 250, 251, 0.8), 0 0 10px rgba(162, 89, 247, 0.6), 0 0 15px rgba(162, 89, 247, 0.4);
+}
+
+body {
+  font-family: var(--font-primary);
+  line-height: 1.6;
+  color: var(--text-primary);
+  background-color: #000000;
+  overflow-x: hidden;
+}
+
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 1rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  position: relative;
+  z-index: 10;
+}
+
+h1 { font-size: clamp(2.5rem, 5vw, 4rem); }
+h2 { font-size: clamp(2rem, 4vw, 3rem); }
+h3 { font-size: clamp(1.5rem, 3vw, 2rem); }
+h4 { font-size: clamp(1.25rem, 2.5vw, 1.5rem); }
+
+p {
+  margin-bottom: 1rem;
+  font-size: 1.1rem;
+  color: var(--text-secondary);
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+  position: relative;
+  z-index: 10;
+}
+
+/* Container */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: var(--container-padding);
+}
+
+/* Main App Structure */
+.App {
+  position: relative;
+  min-height: 100vh;
+}
+
+nav, main, footer {
+  position: relative;
+  z-index: 100;
+}
+
+/* Buttons */
+.btn {
+  display: inline-block;
+  padding: 0.75rem 2rem;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  text-decoration: none;
+  text-align: center;
+  cursor: pointer;
+  transition: var(--transition);
+  font-size: 1rem;
+  position: relative;
+  z-index: 10;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, var(--primary-purple), var(--secondary-purple));
+  color: white;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(107, 70, 193, 0.3);
+}
+
+.btn-secondary {
+  background: transparent;
+  color: var(--text-primary);
+  border: 2px solid var(--primary-purple);
+}
+
+.btn-secondary:hover {
+  background: var(--primary-purple);
+  transform: translateY(-2px);
+}
+
+/* Sections */
+.section {
+  padding: var(--section-padding);
+}
+
+.section-title {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.section-title h2 {
+  color: var(--text-primary);
+  margin-bottom: 1rem;
+}
+
+.section-title p {
+  color: var(--text-muted);
+  font-size: 1.2rem;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* Cards - Transparent for galaxy background */
+.card {
+  background: rgba(15, 52, 96, 0.1);
+  backdrop-filter: blur(10px);
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  transition: var(--transition);
+  border: 1px solid rgba(107, 70, 193, 0.2);
+  position: relative;
+  z-index: 10;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(107, 70, 193, 0.3);
+  background: rgba(15, 52, 96, 0.15);
+}
+
+/* Grid */
+.grid {
+  display: grid;
+  gap: 2rem;
+}
+
+.grid-2 { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
+.grid-3 { grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); }
+.grid-4 { grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); }
+
+/* Responsive */
+@media (max-width: 768px) {
+  :root {
+    --section-padding: 2rem 0;
+    --container-padding: 0 1rem;
+  }
+  
+  .grid-2,
+  .grid-3,
+  .grid-4 {
+    grid-template-columns: 1fr;
+  }
+  
+  .card {
+    padding: 1.5rem;
+  }
+}
+
+/* Animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in-up {
+  animation: fadeInUp 0.6s ease-out;
+}
+
+/* Utility classes */
+.text-center { text-align: center; }
+.text-left { text-align: left; }
+.text-right { text-align: right; }
+
+.mb-1 { margin-bottom: 0.5rem; }
+.mb-2 { margin-bottom: 1rem; }
+.mb-3 { margin-bottom: 1.5rem; }
+.mb-4 { margin-bottom: 2rem; }
+
+.mt-1 { margin-top: 0.5rem; }
+.mt-2 { margin-top: 1rem; }
+.mt-3 { margin-top: 1.5rem; }
+.mt-4 { margin-top: 2rem; }
+
+/* Focus styles for accessibility */
+*:focus {
+  outline: 2px solid var(--primary-purple);
+  outline-offset: 2px;
+}
+
+/* Skip link for accessibility */
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 6px;
+  background: var(--primary-purple);
+  color: white;
+  padding: 8px;
+  text-decoration: none;
+  border-radius: 4px;
+  z-index: 1000;
+}
+
+.skip-link:focus {
+  top: 6px;
+}
+
+/* Loading states */
+.loading {
+  opacity: 0.7;
+  pointer-events: none;
+}
+
+/* Form styles */
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+.form-input,
+.form-textarea {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid rgba(107, 70, 193, 0.2);
+  border-radius: 8px;
+  background: var(--card-bg);
+  color: var(--text-primary);
+  font-size: 1rem;
+  transition: var(--transition);
+}
+
+.form-input:focus,
+.form-textarea:focus {
+  outline: none;
+  border-color: var(--primary-purple);
+  box-shadow: 0 0 0 3px rgba(107, 70, 193, 0.1);
+}
+
+.form-textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+/* Error states */
+.error {
+  color: #EF4444;
+  font-size: 0.875rem;
+  margin-top: 0.25rem;
+}
+
+.success {
+  color: #10B981;
+  font-size: 0.875rem;
+  margin-top: 0.25rem;
+}

@@ -1,0 +1,145 @@
+:root {
+  /* Galaxy Theme Colors for Button Particles - Direct Hex Values */
+  --color-1: #A259F7; /* Purple - secondary-solar */
+  --color-2: #FFD600; /* Gold - accent-orbit */
+  --color-3: #20123A; /* Deep Purple - primary-galaxy */
+  --color-4: #A259F7; /* Purple - secondary-solar (duplicate for variety) */
+}
+
+.gooey-button-container {
+  position: relative;
+  display: inline-block;
+}
+
+.gooey-button {
+  position: relative;
+  z-index: 2;
+  border: none;
+  background: inherit;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border-radius: inherit;
+  padding: inherit;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.gooey-button:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.gooey-button-container:not(.mobile):not(.disabled) .gooey-button:hover {
+  transform: translateY(-1px);
+}
+
+/* Mobile fallback - enhanced hover effects */
+.gooey-button-container.mobile .gooey-button:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(162, 89, 247, 0.4);
+}
+
+.gooey-button-filter {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  z-index: 1;
+  border-radius: inherit;
+  overflow: hidden;
+}
+
+.particle,
+.point {
+  display: block;
+  opacity: 0;
+  width: 12px;
+  height: 12px;
+  border-radius: 100%;
+  transform-origin: center;
+  position: absolute;
+}
+
+.particle {
+  --time: 3s;
+  top: calc(50% - 6px);
+  left: calc(50% - 6px);
+  animation: buttonParticle calc(var(--time)) ease 1 -200ms;
+}
+
+.point {
+  background: var(--color);
+  opacity: 1;
+  animation: buttonPoint calc(var(--time)) ease 1 -200ms;
+  box-shadow: 0 0 8px var(--color), 0 0 16px var(--color);
+}
+
+@keyframes buttonParticle {
+  0% {
+    transform: rotate(0deg) translate(calc(var(--start-x)), calc(var(--start-y)));
+    opacity: 1;
+    animation-timing-function: cubic-bezier(0.55, 0, 1, 0.45);
+  }
+
+  60% {
+    transform: rotate(calc(var(--rotate) * 0.4)) translate(calc(var(--end-x) * 1.1), calc(var(--end-y) * 1.1));
+    opacity: 1;
+    animation-timing-function: ease;
+  }
+
+  80% {
+    transform: rotate(calc(var(--rotate) * 0.7)) translate(calc(var(--end-x)), calc(var(--end-y)));
+    opacity: 1;
+  }
+
+  100% {
+    transform: rotate(calc(var(--rotate))) translate(calc(var(--end-x) * 0.3), calc(var(--end-y) * 0.3));
+    opacity: 0;
+  }
+}
+
+@keyframes buttonPoint {
+  0% {
+    transform: scale(0);
+    opacity: 0;
+    animation-timing-function: cubic-bezier(0.55, 0, 1, 0.45);
+  }
+
+  20% {
+    transform: scale(calc(var(--scale) * 0.2));
+  }
+
+  35% {
+    opacity: 1;
+  }
+
+  55% {
+    transform: scale(var(--scale));
+    opacity: 1;
+    animation-timing-function: ease;
+  }
+
+  75% {
+    transform: scale(var(--scale));
+    opacity: 1;
+  }
+
+  100% {
+    transform: scale(0);
+    opacity: 0;
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .gooey-button {
+    font-size: 0.9rem;
+  }
+}

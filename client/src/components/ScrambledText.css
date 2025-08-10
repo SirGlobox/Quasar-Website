@@ -1,0 +1,48 @@
+.text-block {
+  margin: 0 0 1.5rem 0;
+  width: 100%;
+  max-width: 100%;
+  font-family: var(--font-heading, 'Montserrat', sans-serif);
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  color: var(--snow-white, #F9FAFB);
+  line-height: 1.2;
+  overflow: hidden;
+  word-break: normal;
+  overflow-wrap: break-word;
+  text-shadow: var(--text-glow-strong);
+  font-weight: 700;
+}
+
+.text-block p {
+  margin: 0;
+  color: var(--snow-white, #F9FAFB);
+  width: 100%;
+  max-width: 100%;
+  word-break: normal;
+  overflow-wrap: break-word;
+  white-space: normal;
+  text-shadow: var(--text-glow-strong);
+  font-weight: 700;
+}
+
+.char {
+  will-change: transform;
+  display: inline-block;
+  transition: all 0.1s ease;
+  max-width: 100%;
+  overflow: hidden;
+  box-sizing: border-box;
+  word-wrap: break-word;
+}
+
+.char:hover {
+  color: var(--secondary-solar, #A259F7);
+  text-shadow: 0 0 15px rgba(162, 89, 247, 0.6);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .text-block {
+    font-size: clamp(14px, 3vw, 16px);
+  }
+}

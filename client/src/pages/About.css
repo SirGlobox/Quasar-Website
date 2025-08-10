@@ -1,0 +1,259 @@
+/* Story Section */
+.story-section {
+  background: transparent;
+}
+
+.story-section .content h2 {
+  margin-bottom: 1.5rem;
+  color: var(--snow-white);
+  font-family: var(--font-heading);
+  text-shadow: var(--text-glow-strong);
+}
+
+.story-section .content p {
+  margin-bottom: 1.5rem;
+  font-size: 1.1rem;
+  color: var(--cosmic-silver);
+  line-height: 1.7;
+  font-family: var(--font-body);
+  text-shadow: var(--text-glow);
+}
+
+.story-section .image img {
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+}
+
+/* Mission & Values */
+.mission-section {
+  background: transparent;
+}
+
+.value-card {
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.value-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(135deg, var(--secondary-solar), var(--accent-orbit));
+}
+
+.value-icon {
+  width: 60px;
+  height: 60px;
+  background: linear-gradient(135deg, var(--secondary-solar), var(--accent-orbit));
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1.5rem;
+  color: var(--primary-galaxy);
+}
+
+.value-card h3 {
+  margin-bottom: 1rem;
+  color: var(--snow-white);
+  font-family: var(--font-heading);
+  text-shadow: var(--text-glow);
+}
+
+.value-card p {
+  color: var(--cosmic-silver);
+  font-family: var(--font-body);
+  text-shadow: var(--text-glow);
+}
+
+/* Team Section */
+.team-section {
+  background: transparent;
+}
+
+.team-card {
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.team-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(135deg, var(--secondary-solar), var(--accent-orbit));
+}
+
+.team-image {
+  width: 120px;
+  height: 120px;
+  margin: 0 auto 1.5rem;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 3px solid var(--secondary-solar);
+}
+
+.team-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.team-info h3 {
+  margin-bottom: 0.5rem;
+  color: var(--snow-white);
+  font-family: var(--font-heading);
+  text-shadow: var(--text-glow);
+}
+
+.team-info h4 {
+  color: var(--secondary-solar);
+  font-weight: 500;
+  margin-bottom: 1rem;
+  text-shadow: var(--text-glow);
+}
+
+.team-info p {
+  color: var(--cosmic-silver);
+  line-height: 1.6;
+  font-family: var(--font-body);
+  text-shadow: var(--text-glow);
+}
+
+/* Charlotte Section */
+.charlotte-section {
+  background: transparent;
+}
+
+.charlotte-section .content h2 {
+  margin-bottom: 1.5rem;
+  color: var(--snow-white);
+  font-family: var(--font-heading);
+  text-shadow: var(--text-glow-strong);
+}
+
+.charlotte-section .content p {
+  margin-bottom: 2rem;
+  font-size: 1.1rem;
+  color: var(--cosmic-silver);
+  line-height: 1.7;
+  font-family: var(--font-body);
+  text-shadow: var(--text-glow);
+}
+
+.charlotte-benefits {
+  list-style: none;
+  margin-bottom: 2rem;
+}
+
+.charlotte-benefits li {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  color: var(--cosmic-silver);
+  text-shadow: var(--text-glow);
+}
+
+.charlotte-benefits li svg {
+  color: var(--secondary-solar);
+  flex-shrink: 0;
+}
+
+.charlotte-section .image img {
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+}
+
+/* What Makes Us Different Section */
+.different-section {
+  background: transparent;
+}
+
+.different-section .grid-3 {
+  grid-template-columns: repeat(3, 1fr);
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.different-item {
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.different-item::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(135deg, var(--secondary-solar), var(--accent-orbit));
+}
+
+.different-item h3 {
+  margin-bottom: 1rem;
+  color: var(--snow-white);
+  font-family: var(--font-heading);
+  text-shadow: var(--text-glow);
+}
+
+.different-item p {
+  color: var(--cosmic-silver);
+  font-family: var(--font-body);
+  text-shadow: var(--text-glow);
+  line-height: 1.6;
+}
+
+/* Who We Serve Section */
+.serve-section {
+  background: transparent;
+}
+
+.serve-section .section-title h2 {
+  color: var(--snow-white);
+  font-family: var(--font-heading);
+  text-shadow: var(--text-glow-strong);
+}
+
+.serve-section .section-title p {
+  color: var(--cosmic-silver);
+  font-family: var(--font-body);
+  text-shadow: var(--text-glow);
+  font-size: 1.1rem;
+  line-height: 1.7;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .story-section .container,
+  .charlotte-section .container {
+    grid-template-columns: 1fr;
+  }
+  
+  .team-image {
+    width: 100px;
+    height: 100px;
+  }
+
+  .different-section .grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .different-section .grid.grid-3 {
+    grid-template-columns: 1fr;
+  }
+}
