@@ -10,6 +10,12 @@ import About from './pages/About';
 import Contact from './pages/Contact';
 import Blog from './pages/Blog';
 import BlogPost from './pages/BlogPost';
+import BusinessAssessment from './pages/BusinessAssessment';
+import MarketEntry from './pages/MarketEntry';
+import BrandDevelopment from './pages/BrandDevelopment';
+import LeadGeneration from './pages/LeadGeneration';
+import OperationsOptimization from './pages/OperationsOptimization';
+import CustomerExperience from './pages/CustomerExperience';
 import './styles/App.css';
 
 function App() {
@@ -72,6 +78,12 @@ function App() {
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/services" element={<Services />} />
+              <Route path="/services/business-assessment" element={<BusinessAssessment />} />
+              <Route path="/services/market-entry" element={<MarketEntry />} />
+              <Route path="/services/brand-development" element={<BrandDevelopment />} />
+              <Route path="/services/lead-generation" element={<LeadGeneration />} />
+              <Route path="/services/operations-optimization" element={<OperationsOptimization />} />
+              <Route path="/services/customer-experience" element={<CustomerExperience />} />
               <Route path="/about" element={<About />} />
               <Route path="/contact" element={<Contact />} />
               <Route path="/blog" element={<Blog />} />

@@ -1,4 +1,5 @@
 import { useRef, useEffect, useCallback, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { gsap } from "gsap";
 import "./MagicBento.css";
 
@@ -10,63 +11,69 @@ const MOBILE_BREAKPOINT = 768;
 const cardData = [
   {
     color: "#060010",
-    title: "Business Growth Consultant Charlotte NC",
+    title: "Business Assessment & Growth Roadmap",
     bulletPoints: [
-      "Small business growth Charlotte with proven revenue growth strategies",
-      "Business expansion consultant Charlotte for home service scaling",
-      "Business acceleration Charlotte NC with measurable success strategies"
+      "Comprehensive business health evaluation",
+      "Custom growth roadmap development", 
+      "Revenue optimization strategies"
     ],
-    label: "Growth Consulting",
+    label: "Business Assessment",
+    link: "/services/business-assessment",
   },
   {
     color: "#060010",
-    title: "Business Expansion Consultant Charlotte NC",
+    title: "Market Entry & Competitive Analysis",
     bulletPoints: [
-      "Expand home service business Charlotte with market expansion strategies",
-      "Multi-location business Charlotte and new market entry Charlotte NC",
-      "Geographic expansion Charlotte with proven franchise consulting"
+      "Comprehensive market research and analysis",
+      "Competitive landscape evaluation",
+      "Entry strategy development"
     ],
-    label: "Expansion Consulting",
+    label: "Market Analysis",
+    link: "/services/market-entry",
   },
   {
     color: "#060010",
-    title: "Marketing and Branding Consultant Charlotte NC",
+    title: "Brand Development & Marketing Strategy",
     bulletPoints: [
-      "Home service marketing Charlotte with digital marketing strategies",
-      "Small business branding Charlotte and brand development Charlotte NC",
-      "Local SEO consultant Charlotte with reputation management services"
+      "Professional brand identity development",
+      "Comprehensive marketing strategy creation",
+      "Digital marketing optimization"
     ],
-    label: "Marketing & Branding",
+    label: "Brand Development",
+    link: "/services/brand-development",
   },
   {
     color: "#060010",
-    title: "Operations Optimization Consultant Charlotte NC",
+    title: "Lead Generation & Sales Optimization",
     bulletPoints: [
-      "Business process improvement Charlotte with workflow optimization",
-      "Operations audit Charlotte NC and efficiency consultant services",
-      "Systems optimization Charlotte with operational excellence focus"
+      "Qualified lead generation systems",
+      "Sales process optimization",
+      "Conversion rate improvement"
+    ],
+    label: "Lead Generation",
+    link: "/services/lead-generation",
+  },
+  {
+    color: "#060010",
+    title: "Operations & Process Optimization",
+    bulletPoints: [
+      "Workflow improvement and automation",
+      "Process optimization and standardization",
+      "Cost reduction strategies"
     ],
     label: "Operations Optimization",
+    link: "/services/operations-optimization",
   },
   {
     color: "#060010",
-    title: "Small Business Financial Planning Charlotte NC",
+    title: "Customer Experience & Retention Systems",
     bulletPoints: [
-      "Home service financial consultant Charlotte with business budgeting",
-      "Cash flow management Charlotte and profit improvement strategies",
-      "Financial strategy Charlotte with business forecasting expertise"
-    ],
-    label: "Financial Planning",
-  },
-  {
-    color: "#060010",
-    title: "Customer Retention Consultant Charlotte NC",
-    bulletPoints: [
-      "Home service customer experience Charlotte with client retention strategies",
-      "Customer loyalty programs Charlotte and satisfaction improvement",
-      "CRM consultant Charlotte with repeat business strategies focus"
+      "Customer experience improvement strategies",
+      "Repeat business optimization",
+      "Customer loyalty program development"
     ],
     label: "Customer Experience",
+    link: "/services/customer-experience",
   },
 ];
 
@@ -551,6 +558,7 @@ const MagicBento = ({
   enableMagnetism = true,
 }) => {
   const gridRef = useRef(null);
+  const navigate = useNavigate();
   const isMobile = useMobileDetection();
   const shouldDisableAnimations = disableAnimations || isMobile;
 
@@ -667,6 +675,11 @@ const MagicBento = ({
                 };
 
                 const handleClick = (e) => {
+                  // Navigate to service page
+                  if (card.link) {
+                    navigate(card.link);
+                  }
+
                   if (!clickEffect || shouldDisableAnimations) return;
 
                   const rect = el.getBoundingClientRect();

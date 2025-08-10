@@ -22,7 +22,18 @@ const Navbar = () => {
 
   const navItems = [
     { path: '/', label: 'Home' },
-    { path: '/services', label: 'Services' },
+    { 
+      path: '/services', 
+      label: 'Services',
+      submenu: [
+        { path: '/services/business-assessment', label: 'Business Assessment & Growth Roadmap' },
+        { path: '/services/market-entry', label: 'Market Entry & Competitive Analysis' },
+        { path: '/services/brand-development', label: 'Brand Development & Marketing Strategy' },
+        { path: '/services/lead-generation', label: 'Lead Generation & Sales Optimization' },
+        { path: '/services/operations-optimization', label: 'Operations & Process Optimization' },
+        { path: '/services/customer-experience', label: 'Customer Experience & Retention Systems' }
+      ]
+    },
     { path: '/about', label: 'About' },
     { path: '/blog', label: 'Blog' },
     { path: '/contact', label: 'Contact' }
@@ -45,16 +56,34 @@ const Navbar = () => {
             <span className="brand-text">Quasar Consultants</span>
           </Link>
 
+          {/* Mobile menu overlay */}
+          {isOpen && <div className="mobile-menu-overlay active" onClick={closeMenu}></div>}
+          
           <div className={`navbar-menu ${isOpen ? 'active' : ''}`}>
             {navItems.map((item) => (
-              <Link
-                key={item.path}
-                to={item.path}
-                className={`nav-link ${location.pathname === item.path ? 'active' : ''}`}
-                onClick={closeMenu}
-              >
-                {item.label}
-              </Link>
+              <div key={item.path}>
+                <Link
+                  to={item.path}
+                  className={`nav-link ${location.pathname === item.path ? 'active' : ''}`}
+                  onClick={closeMenu}
+                >
+                  {item.label}
+                </Link>
+                {item.submenu && (
+                  <div className="service-submenu">
+                    {item.submenu.map((subItem) => (
+                      <Link
+                        key={subItem.path}
+                        to={subItem.path}
+                        className={`nav-link ${location.pathname === subItem.path ? 'active' : ''}`}
+                        onClick={closeMenu}
+                      >
+                        {subItem.label}
+                      </Link>
+                    ))}
+                  </div>
+                )}
+              </div>
             ))}
           </div>
 
