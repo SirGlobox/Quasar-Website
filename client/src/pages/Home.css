@@ -163,7 +163,7 @@
 }
 
 .service-link {
-  color: var(--primary-purple);
+  color: var(--accent-orbit, #FFD600); /* Orbit Gold for better visibility */
   text-decoration: none;
   font-weight: 600;
   display: flex;
@@ -171,10 +171,13 @@
   gap: 0.5rem;
   margin-top: 1rem;
   transition: var(--transition);
+  text-shadow: 0 0 10px rgba(255, 214, 0, 0.3);
 }
 
 .service-link:hover {
-  color: var(--secondary-purple);
+  color: var(--snow-white, #F9FAFB);
+  text-shadow: 0 0 15px rgba(255, 214, 0, 0.6);
+  transform: translateX(3px);
 }
 
 /* Why Choose Us */
@@ -350,6 +353,11 @@
 
 /* Responsive */
 @media (max-width: 768px) {
+  /* Mobile-specific hero adjustments - no navbar padding needed */
+  .hero {
+    padding: 4rem 0 4rem; /* Reduced top padding since no navbar on mobile */
+  }
+  
   .hero .container {
     grid-template-columns: 1fr;
     gap: 2rem;
