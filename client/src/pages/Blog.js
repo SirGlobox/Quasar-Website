@@ -75,15 +75,6 @@ const Blog = () => {
     }
   ];
 
-  const categories = [
-    'All',
-    'Business Growth',
-    'Marketing',
-    'Operations',
-    'Financial Planning',
-    'Market Analysis',
-    'Customer Service'
-  ];
 
   const formatDate = (dateString) => {
     const options = { year: 'numeric', month: 'long', day: 'numeric' };

@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
-import { Award, Users, Target, CheckCircle, ArrowRight } from 'lucide-react';
+import { Award, Users, Target, CheckCircle } from 'lucide-react';
 import './About.css';
 
 const About = () => {
@@ -27,26 +27,6 @@ const About = () => {
     }
   ];
 
-  const team = [
-    {
-      name: "Michael Chen",
-      title: "Founder & CEO",
-      bio: "15+ years in home service business consulting with expertise in scaling operations and market expansion.",
-      image: "/team/michael-chen.jpg"
-    },
-    {
-      name: "Sarah Williams",
-      title: "Senior Consultant",
-      bio: "Specializes in marketing strategy and lead generation for home service businesses in Charlotte.",
-      image: "/team/sarah-williams.jpg"
-    },
-    {
-      name: "David Rodriguez",
-      title: "Operations Specialist",
-      bio: "Expert in process optimization and team management for home service companies.",
-      image: "/team/david-rodriguez.jpg"
-    }
-  ];
 
   return (
     <>

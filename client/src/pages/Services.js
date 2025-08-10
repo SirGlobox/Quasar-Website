@@ -8,8 +8,6 @@ import {
   DollarSign, 
   Target, 
   BarChart3,
-  CheckCircle,
-  ArrowRight,
   ChevronDown,
   ChevronUp
 } from 'lucide-react';
@@ -25,86 +23,6 @@ const Services = () => {
     window.scrollTo(0, 0);
   }, []);
 
-  const services = [
-    {
-      icon: <TrendingUp />,
-      title: "Business Strategy & Growth",
-      description: "Develop comprehensive strategies to scale your home service business in Charlotte and surrounding areas.",
-      features: [
-        "Market analysis and competitive positioning",
-        "Revenue growth strategies",
-        "Business model optimization",
-        "Scalability planning",
-        "Performance metrics and KPIs"
-      ],
-      price: "Starting at $2,500/month"
-    },
-    {
-      icon: <Users />,
-      title: "Market Entry & Expansion",
-      description: "Enter new markets with confidence using our proven local market analysis and entry strategies.",
-      features: [
-        "Local market research and analysis",
-        "Competitive landscape assessment",
-        "Entry strategy development",
-        "Risk assessment and mitigation",
-        "Implementation roadmap"
-      ],
-      price: "Starting at $3,000/month"
-    },
-    {
-      icon: <Target />,
-      title: "Marketing & Lead Generation",
-      description: "Generate more qualified leads and increase your market share in Charlotte's competitive home service market.",
-      features: [
-        "Digital marketing strategy",
-        "Local SEO optimization",
-        "Lead generation systems",
-        "Customer acquisition campaigns",
-        "Brand positioning and messaging"
-      ],
-      price: "Starting at $2,000/month"
-    },
-    {
-      icon: <Shield />,
-      title: "Operations Optimization",
-      description: "Streamline your operations to improve efficiency, reduce costs, and enhance customer satisfaction.",
-      features: [
-        "Process optimization and automation",
-        "Team structure and management",
-        "Quality control systems",
-        "Customer service optimization",
-        "Technology integration"
-      ],
-      price: "Starting at $2,500/month"
-    },
-    {
-      icon: <DollarSign />,
-      title: "Financial Planning & Management",
-      description: "Optimize your financial performance with strategic planning, budgeting, and cash flow management.",
-      features: [
-        "Financial analysis and planning",
-        "Budget development and monitoring",
-        "Cash flow optimization",
-        "Pricing strategy",
-        "Profitability analysis"
-      ],
-      price: "Starting at $2,000/month"
-    },
-    {
-      icon: <BarChart3 />,
-      title: "Performance Analytics",
-      description: "Make data-driven decisions with comprehensive analytics and reporting systems.",
-      features: [
-        "KPI development and tracking",
-        "Performance dashboards",
-        "Data analysis and insights",
-        "Reporting systems",
-        "Continuous improvement strategies"
-      ],
-      price: "Starting at $1,500/month"
-    }
-  ];
 
   const faqs = [
     {
