@@ -367,6 +367,7 @@ const ParticleCard = ({
     enableMagnetism,
     clickEffect,
     glowColor,
+    onClick,
   ]);
 
   return (
