@@ -11,12 +11,54 @@ const LeadGeneration = () => {
   }, []);
 
   const benefits = [
-    "Qualified lead generation systems",
-    "Sales process optimization",
-    "Conversion rate improvement",
-    "Sales funnel development",
-    "CRM system implementation",
-    "Performance tracking and analytics"
+    {
+      title: "Qualified lead generation systems",
+      points: [
+        "Implement proven lead generation strategies to attract high-quality prospects in the Charlotte home services market",
+        "Utilize digital marketing, local outreach, and referral networks to build a steady pipeline of qualified leads",
+        "Leverage targeted campaigns and lead magnets to maximize conversion opportunities"
+      ]
+    },
+    {
+      title: "Sales process optimization",
+      points: [
+        "Analyze and streamline your sales process for greater efficiency and higher close rates",
+        "Identify and remove bottlenecks to shorten the sales cycle and improve customer experience",
+        "Standardize best practices that align with Charlotte's home service industry standards"
+      ]
+    },
+    {
+      title: "Conversion rate improvement",
+      points: [
+        "Optimize every stage of your sales funnel to increase the percentage of leads that become paying clients",
+        "Test and refine messaging, CTAs, and follow-up systems for maximum impact",
+        "Use data-driven insights to continuously enhance conversion strategies"
+      ]
+    },
+    {
+      title: "Sales funnel development",
+      points: [
+        "Design and implement a customized sales funnel tailored to your business goals and target audience in Charlotte",
+        "Integrate multiple touchpoints, from initial contact to final sale, for a seamless client journey",
+        "Track funnel performance to identify areas for improvement and growth"
+      ]
+    },
+    {
+      title: "CRM system implementation",
+      points: [
+        "Set up and customize a CRM solution to manage leads, clients, and sales activities efficiently",
+        "Automate follow-ups, scheduling, and client communications for better organization",
+        "Ensure data security and easy access for your Charlotte-based team"
+      ]
+    },
+    {
+      title: "Performance tracking and analytics",
+      points: [
+        "Establish key sales metrics and dashboards to monitor performance in real time",
+        "Analyze data to identify trends, forecast revenue, and inform decision-making",
+        "Use analytics to optimize sales strategies and achieve consistent growth"
+      ]
+    }
   ];
 
   const process = [
@@ -118,7 +160,7 @@ const LeadGeneration = () => {
               </div>
               <div className="image">
                 <img 
-                  src="https://res.cloudinary.com/dvsiayukf/image/upload/v1754845735/Sales_-_Blog_kcqhqj.png" 
+                  src="https://res.cloudinary.com/dvsiayukf/image/upload/v1754868317/image_huffau.png" 
                   alt="Lead generation and sales optimization for Charlotte home service businesses"
                   loading="lazy"
                 />
@@ -137,8 +179,15 @@ const LeadGeneration = () => {
             <div className="benefits-grid">
               {benefits.map((benefit, index) => (
                 <div key={index} className="benefit-item card">
-                  <CheckCircle size={24} />
-                  <span>{benefit}</span>
+                  <div className="benefit-header">
+                    <CheckCircle size={24} />
+                    <h3>{benefit.title}</h3>
+                  </div>
+                  <ul className="benefit-points">
+                    {benefit.points.map((point, pointIndex) => (
+                      <li key={pointIndex}>{point}</li>
+                    ))}
+                  </ul>
                 </div>
               ))}
             </div>
@@ -191,29 +240,6 @@ const LeadGeneration = () => {
           </div>
         </section>
 
-        {/* Results Section */}
-        <section className="section results-section">
-          <div className="container">
-            <div className="section-title">
-              <h2>Proven Results for Charlotte Businesses</h2>
-              <p>Our lead generation and sales optimization strategies deliver measurable improvements</p>
-            </div>
-            <div className="grid grid-3">
-              <div className="result-item card">
-                <div className="result-number">150%</div>
-                <div className="result-label">Average Lead Increase</div>
-              </div>
-              <div className="result-item card">
-                <div className="result-number">35%</div>
-                <div className="result-label">Conversion Rate Improvement</div>
-              </div>
-              <div className="result-item card">
-                <div className="result-number">60%</div>
-                <div className="result-label">Sales Cycle Reduction</div>
-              </div>
-            </div>
-          </div>
-        </section>
 
         {/* CTA Section */}
         <section className="section cta-section">

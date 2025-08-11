@@ -1,29 +1,32 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
 import { Calendar, Clock, ArrowRight } from 'lucide-react';
 import './Blog.css';
 
 const Blog = () => {
+  // Auto-scroll to top when component mounts
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   const blogPosts = [
     {
       id: 1,
       slug: 'how-to-grow-home-service-business-charlotte',
       title: 'How to Grow Your Home Service Business in Charlotte, NC',
       excerpt: 'Discover proven strategies to scale your home service business in Charlotte\'s competitive market. Learn from local experts who have helped hundreds of businesses succeed.',
-      author: 'Michael Chen',
+      author: 'Quasar Consultants',
       date: '2025-06-23',
       readTime: '8 min read',
       category: 'Business Growth',
-      image: 'https://res.cloudinary.com/dvsiayukf/image/upload/v1754846038/Blog_e31jxn.png',
-      featured: true
+      image: 'https://res.cloudinary.com/dvsiayukf/image/upload/v1754846038/Blog_e31jxn.png'
     },
     {
       id: 2,
       slug: 'marketing-strategies-local-service-providers',
       title: 'Top Marketing Strategies for Local Service Providers',
       excerpt: 'Effective marketing strategies that work specifically for home service businesses in Charlotte. From digital marketing to local SEO, learn what drives results.',
-      author: 'Sarah Williams',
+      author: 'Quasar Consultants',
       date: '2025-06-30',
       readTime: '6 min read',
       category: 'Marketing',
@@ -34,7 +37,7 @@ const Blog = () => {
       slug: 'operations-optimization-home-service',
       title: 'Operations Optimization: Streamline Your Home Service Business',
       excerpt: 'Learn how to optimize your operations for maximum efficiency and profitability. Practical tips for scheduling, team management, and customer service.',
-      author: 'David Rodriguez',
+      author: 'Quasar Consultants',
       date: '2025-07-07',
       readTime: '7 min read',
       category: 'Operations',
@@ -45,7 +48,7 @@ const Blog = () => {
       slug: 'financial-planning-home-service-business',
       title: 'Financial Planning for Home Service Business Success',
       excerpt: 'Essential financial planning strategies to ensure your home service business thrives. From pricing strategies to cash flow management.',
-      author: 'Michael Chen',
+      author: 'Quasar Consultants',
       date: '2025-07-14',
       readTime: '9 min read',
       category: 'Financial Planning',
@@ -56,7 +59,7 @@ const Blog = () => {
       slug: 'charlotte-market-analysis-2024',
       title: 'Charlotte Market Analysis 2024: Opportunities for Home Service Businesses',
       excerpt: 'Comprehensive analysis of the Charlotte market for home service businesses. Understand trends, opportunities, and challenges in the local market.',
-      author: 'Sarah Williams',
+      author: 'Quasar Consultants',
       date: '2025-07-21',
       readTime: '10 min read',
       category: 'Market Analysis',
@@ -67,7 +70,7 @@ const Blog = () => {
       slug: 'customer-retention-strategies',
       title: 'Customer Retention Strategies That Actually Work',
       excerpt: 'Proven customer retention strategies for home service businesses. Build long-term relationships and increase customer lifetime value.',
-      author: 'David Rodriguez',
+      author: 'Quasar Consultants',
       date: '2025-07-28',
       readTime: '5 min read',
       category: 'Customer Service',
@@ -130,45 +133,6 @@ const Blog = () => {
           </div>
         </section>
 
-        {/* Featured Post */}
-        <section className="section featured-post">
-          <div className="container">
-            {blogPosts.filter(post => post.featured).map(post => (
-              <div key={post.id} className="featured-post-card card">
-                <div className="featured-post-content">
-                  <div className="post-meta">
-                    <span className="category">{post.category}</span>
-                    <span className="date">
-                      <Calendar size={16} />
-                      {formatDate(post.date)}
-                    </span>
-                    <span className="read-time">
-                      <Clock size={16} />
-                      {post.readTime}
-                    </span>
-                  </div>
-                  <h2>{post.title}</h2>
-                  <p>{post.excerpt}</p>
-                  <div className="post-author">
-                    <span>By {post.author}</span>
-                  </div>
-                  <Link to={`/blog/${post.slug}`} className="btn btn-primary">
-                    Read Full Article
-                    <ArrowRight size={16} />
-                  </Link>
-                </div>
-                <div className="featured-post-image">
-                  <img 
-                    src={post.image} 
-                    alt={post.title}
-                    loading="lazy"
-                  />
-                </div>
-              </div>
-            ))}
-          </div>
-        </section>
-
         {/* Blog Posts Grid */}
         <section className="section blog-posts">
           <div className="container">
@@ -178,7 +142,7 @@ const Blog = () => {
             </div>
             
             <div className="blog-grid">
-              {blogPosts.filter(post => !post.featured).map(post => (
+              {blogPosts.map(post => (
                 <Link key={post.id} to={`/blog/${post.slug}`} className="blog-card-link">
                   <article className="blog-card card">
                     <div className="blog-image">

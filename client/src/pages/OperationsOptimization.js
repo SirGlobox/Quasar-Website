@@ -11,12 +11,54 @@ const OperationsOptimization = () => {
   }, []);
 
   const benefits = [
-    "Workflow improvement and automation",
-    "Process optimization and standardization",
-    "Cost reduction strategies",
-    "Efficiency consulting and analysis",
-    "Business software implementation",
-    "Operations management systems"
+    {
+      title: "Workflow improvement and automation",
+      points: [
+        "Streamline daily business operations with automated workflows tailored to Charlotte home service companies",
+        "Reduce manual tasks and errors by integrating smart automation tools",
+        "Boost productivity and free up time for higher-value activities"
+      ]
+    },
+    {
+      title: "Process optimization and standardization",
+      points: [
+        "Analyze and refine business processes for maximum efficiency and consistency",
+        "Standardize operating procedures to ensure quality and scalability as your business grows",
+        "Implement best practices that align with Charlotte's home service industry standards"
+      ]
+    },
+    {
+      title: "Cost reduction strategies",
+      points: [
+        "Identify and eliminate unnecessary expenses to improve your bottom line",
+        "Implement cost-saving measures without sacrificing service quality",
+        "Optimize resource allocation for greater profitability in the Charlotte market"
+      ]
+    },
+    {
+      title: "Efficiency consulting and analysis",
+      points: [
+        "Conduct a comprehensive efficiency audit to pinpoint operational bottlenecks",
+        "Provide actionable recommendations to streamline workflows and reduce waste",
+        "Deliver measurable improvements in speed, accuracy, and customer satisfaction"
+      ]
+    },
+    {
+      title: "Business software implementation",
+      points: [
+        "Recommend and deploy the best business software (like Jobber or Housecall Pro) for your operational needs",
+        "Integrate tools for scheduling, invoicing, CRM, and more to centralize your business management",
+        "Ensure smooth onboarding and training for your Charlotte-based team"
+      ]
+    },
+    {
+      title: "Operations management systems",
+      points: [
+        "Design and implement robust operations management systems for home service businesses",
+        "Monitor key performance indicators (KPIs) with real-time dashboards and reporting",
+        "Enable better decision-making and long-term growth through data-driven operations"
+      ]
+    }
   ];
 
   const process = [
@@ -117,7 +159,7 @@ const OperationsOptimization = () => {
               </div>
               <div className="image">
                 <img 
-                  src="https://res.cloudinary.com/dvsiayukf/image/upload/v1754845755/Operations_-_Blog_mxqhqj.png" 
+                  src="https://res.cloudinary.com/dvsiayukf/image/upload/v1754868559/image_lf3lix.png" 
                   alt="Operations and process optimization for Charlotte home service businesses"
                   loading="lazy"
                 />
@@ -136,8 +178,15 @@ const OperationsOptimization = () => {
             <div className="benefits-grid">
               {benefits.map((benefit, index) => (
                 <div key={index} className="benefit-item card">
-                  <CheckCircle size={24} />
-                  <span>{benefit}</span>
+                  <div className="benefit-header">
+                    <CheckCircle size={24} />
+                    <h3>{benefit.title}</h3>
+                  </div>
+                  <ul className="benefit-points">
+                    {benefit.points.map((point, pointIndex) => (
+                      <li key={pointIndex}>{point}</li>
+                    ))}
+                  </ul>
                 </div>
               ))}
             </div>
@@ -190,29 +239,6 @@ const OperationsOptimization = () => {
           </div>
         </section>
 
-        {/* Results Section */}
-        <section className="section results-section">
-          <div className="container">
-            <div className="section-title">
-              <h2>Proven Operational Improvements</h2>
-              <p>Our optimization strategies deliver measurable efficiency gains</p>
-            </div>
-            <div className="grid grid-3">
-              <div className="result-item card">
-                <div className="result-number">40%</div>
-                <div className="result-label">Average Cost Reduction</div>
-              </div>
-              <div className="result-item card">
-                <div className="result-number">60%</div>
-                <div className="result-label">Process Efficiency Gain</div>
-              </div>
-              <div className="result-item card">
-                <div className="result-number">25%</div>
-                <div className="result-label">Time Savings</div>
-              </div>
-            </div>
-          </div>
-        </section>
 
         {/* Optimization Areas Section */}
         <section className="section optimization-areas">

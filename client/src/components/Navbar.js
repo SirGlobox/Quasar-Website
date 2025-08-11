@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, Phone } from 'lucide-react';
+import { Menu, X, Phone, ChevronDown } from 'lucide-react';
 import GooeyButton from './GooeyButton';
 import './Navbar.css';
 
@@ -61,27 +61,44 @@ const Navbar = () => {
           
           <div className={`navbar-menu ${isOpen ? 'active' : ''}`}>
             {navItems.map((item) => (
-              <div key={item.path}>
+              <div key={item.path} className={item.submenu ? 'nav-item' : ''}>
                 <Link
                   to={item.path}
                   className={`nav-link ${location.pathname === item.path ? 'active' : ''}`}
                   onClick={closeMenu}
                 >
                   {item.label}
+                  {item.submenu && <ChevronDown size={16} className="dropdown-arrow" />}
                 </Link>
                 {item.submenu && (
-                  <div className="service-submenu">
-                    {item.submenu.map((subItem) => (
-                      <Link
-                        key={subItem.path}
-                        to={subItem.path}
-                        className={`nav-link ${location.pathname === subItem.path ? 'active' : ''}`}
-                        onClick={closeMenu}
-                      >
-                        {subItem.label}
-                      </Link>
-                    ))}
-                  </div>
+                  <>
+                    {/* Desktop Dropdown */}
+                    <div className="dropdown-menu">
+                      {item.submenu.map((subItem) => (
+                        <Link
+                          key={subItem.path}
+                          to={subItem.path}
+                          className="dropdown-item"
+                          onClick={closeMenu}
+                        >
+                          {subItem.label}
+                        </Link>
+                      ))}
+                    </div>
+                    {/* Mobile Submenu */}
+                    <div className="service-submenu">
+                      {item.submenu.map((subItem) => (
+                        <Link
+                          key={subItem.path}
+                          to={subItem.path}
+                          className={`nav-link ${location.pathname === subItem.path ? 'active' : ''}`}
+                          onClick={closeMenu}
+                        >
+                          {subItem.label}
+                        </Link>
+                      ))}
+                    </div>
+                  </>
                 )}
               </div>
             ))}

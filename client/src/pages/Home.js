@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { ArrowRight, Star, Users, TrendingUp, Shield } from 'lucide-react';
 import DecryptedText from '../components/DecryptedText';
 import ScrambledText from '../components/ScrambledText';
+import GradientText from '../components/GradientText';
 import './Home.css';
 
 const Home = () => {
@@ -148,6 +149,38 @@ const Home = () => {
                 className="hero-video"
                 aria-label="Quasar Consultants helping home service businesses grow in Charlotte NC"
               />
+            </div>
+          </div>
+        </section>
+
+        {/* What is a Quasar Section */}
+        <section className="section what-is-quasar">
+          <div className="container">
+            <div className="grid grid-2">
+              <div className="content">
+                <GradientText
+                  colors={["#A259F7", "#FFD600", "#A259F7", "#FFD600", "#A259F7"]}
+                  animationSpeed={3}
+                  showBorder={false}
+                  className="quasar-header"
+                >
+                  What is a Quasar?
+                </GradientText>
+                <p className="quasar-description">
+                  A Quasar is the brightest object in the universe, powered by a supermassive black hole at the center of a distant galaxy. Emitting extraordinary amounts of energy, quasars outshine entire galaxies and serve as cosmic beacons visible across billions of light-years. In the business world, the concept of a quasar symbolizes unmatched brilliance, energy, and transformative impact—qualities that Quasar Consultants brings to every client engagement. Just as a quasar illuminates the cosmos, our consulting services are designed to help Charlotte-area home service businesses shine brighter, stand out in competitive markets, and achieve stellar growth. By combining data-driven insights, strategic planning, and industry expertise, Quasar Consultants empowers your business to reach new heights and become a guiding light in your field.
+                </p>
+              </div>
+              <div className="video-container">
+                <video 
+                  src="https://res.cloudinary.com/dvsiayukf/video/upload/v1754885105/Quasar_z0qjx2.mp4"
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  className="quasar-video"
+                  aria-label="Quasar visualization showing cosmic energy and brilliance"
+                />
+              </div>
             </div>
           </div>
         </section>

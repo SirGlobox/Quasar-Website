@@ -11,12 +11,54 @@ const BusinessAssessment = () => {
   }, []);
 
   const benefits = [
-    "Comprehensive business health evaluation",
-    "Custom growth roadmap development",
-    "Revenue optimization strategies",
-    "Market positioning analysis",
-    "Competitive advantage identification",
-    "Performance metrics establishment"
+    {
+      title: "Comprehensive business health evaluation",
+      points: [
+        "Thoroughly assess your business operations, finances, and customer service for optimal performance",
+        "Identify hidden risks and untapped growth opportunities to strengthen your Charlotte business",
+        "Receive a detailed, actionable report to improve efficiency and drive sustainable business growth"
+      ]
+    },
+    {
+      title: "Custom growth roadmap development",
+      points: [
+        "Develop a personalized business growth strategy tailored to your unique goals and market in Charlotte, NC",
+        "Set clear milestones and timelines to accelerate your home service business expansion",
+        "Adapt your roadmap as market conditions change to stay ahead of competitors"
+      ]
+    },
+    {
+      title: "Revenue optimization strategies",
+      points: [
+        "Implement proven revenue growth tactics to increase profits for your small business in Charlotte",
+        "Analyze pricing, upselling, and cross-selling opportunities to boost your bottom line",
+        "Align your sales, marketing, and operations for maximum revenue optimization"
+      ]
+    },
+    {
+      title: "Market positioning analysis",
+      points: [
+        "Evaluate your current market position against local Charlotte competitors",
+        "Identify your unique selling proposition (USP) to stand out in the home service industry",
+        "Refine your brand messaging to attract and convert more ideal clients"
+      ]
+    },
+    {
+      title: "Competitive advantage identification",
+      points: [
+        "Benchmark your business against top-performing competitors in Charlotte",
+        "Pinpoint your key strengths and differentiators for a stronger market presence",
+        "Develop strategies to maintain and grow your competitive advantage"
+      ]
+    },
+    {
+      title: "Performance metrics establishment",
+      points: [
+        "Define essential KPIs for your Charlotte business to track growth and success",
+        "Set up user-friendly dashboards for real-time performance monitoring and analysis",
+        "Use data-driven insights to make informed decisions and continuously improve results"
+      ]
+    }
   ];
 
   const process = [
@@ -118,7 +160,7 @@ const BusinessAssessment = () => {
               </div>
               <div className="image">
                 <img 
-                  src="https://res.cloudinary.com/dvsiayukf/image/upload/v1754845675/Financial_Planning_-_Blog_ipsnjx.png" 
+                  src="https://res.cloudinary.com/dvsiayukf/image/upload/v1754868361/image_xur0j4.png" 
                   alt="Business assessment and growth planning for Charlotte home service companies"
                   loading="lazy"
                 />
@@ -137,8 +179,15 @@ const BusinessAssessment = () => {
             <div className="benefits-grid">
               {benefits.map((benefit, index) => (
                 <div key={index} className="benefit-item card">
-                  <CheckCircle size={24} />
-                  <span>{benefit}</span>
+                  <div className="benefit-header">
+                    <CheckCircle size={24} />
+                    <h3>{benefit.title}</h3>
+                  </div>
+                  <ul className="benefit-points">
+                    {benefit.points.map((point, pointIndex) => (
+                      <li key={pointIndex}>{point}</li>
+                    ))}
+                  </ul>
                 </div>
               ))}
             </div>

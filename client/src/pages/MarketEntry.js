@@ -11,12 +11,54 @@ const MarketEntry = () => {
   }, []);
 
   const benefits = [
-    "Comprehensive market research and analysis",
-    "Competitive landscape evaluation",
-    "Entry strategy development",
-    "Risk assessment and mitigation",
-    "Local market insights for Charlotte area",
-    "Customer behavior analysis"
+    {
+      title: "Comprehensive market research and analysis",
+      points: [
+        "Conduct in-depth market research to identify growth opportunities in the Charlotte home services sector",
+        "Analyze industry trends and customer demand to inform your business strategy",
+        "Deliver actionable insights to guide your market entry or expansion decisions"
+      ]
+    },
+    {
+      title: "Competitive landscape evaluation",
+      points: [
+        "Evaluate top competitors in the Charlotte area to benchmark your business",
+        "Identify strengths, weaknesses, and market gaps to capitalize on",
+        "Develop tailored strategies to outperform local rivals in the home service industry"
+      ]
+    },
+    {
+      title: "Entry strategy development",
+      points: [
+        "Create a step-by-step market entry strategy customized for your business goals in Charlotte, NC",
+        "Outline key actions for launching and scaling your home service business",
+        "Align your strategy with local market dynamics for maximum impact"
+      ]
+    },
+    {
+      title: "Risk assessment and mitigation",
+      points: [
+        "Identify potential risks and barriers to successful market entry in Charlotte",
+        "Develop risk mitigation plans to protect your investment and ensure smooth operations",
+        "Stay compliant with local regulations and industry standards"
+      ]
+    },
+    {
+      title: "Local market insights for Charlotte area",
+      points: [
+        "Leverage hyper-local data to understand the unique dynamics of the Charlotte market",
+        "Identify target neighborhoods, demographics, and service preferences",
+        "Tailor your offerings to meet the specific needs of Charlotte-area customers"
+      ]
+    },
+    {
+      title: "Customer behavior analysis",
+      points: [
+        "Analyze customer preferences, buying patterns, and decision drivers in the Charlotte home service market",
+        "Use data-driven insights to refine your marketing, pricing, and service delivery",
+        "Enhance customer acquisition and retention through a deeper understanding of local behavior"
+      ]
+    }
   ];
 
   const process = [
@@ -117,7 +159,7 @@ const MarketEntry = () => {
               </div>
               <div className="image">
                 <img 
-                  src="https://res.cloudinary.com/dvsiayukf/image/upload/v1754845695/Market_-_Blog_b9vnsu.png" 
+                  src="https://res.cloudinary.com/dvsiayukf/image/upload/v1754868299/image_xc3s2g.png" 
                   alt="Market entry and competitive analysis for Charlotte home service businesses"
                   loading="lazy"
                 />
@@ -136,8 +178,15 @@ const MarketEntry = () => {
             <div className="benefits-grid">
               {benefits.map((benefit, index) => (
                 <div key={index} className="benefit-item card">
-                  <CheckCircle size={24} />
-                  <span>{benefit}</span>
+                  <div className="benefit-header">
+                    <CheckCircle size={24} />
+                    <h3>{benefit.title}</h3>
+                  </div>
+                  <ul className="benefit-points">
+                    {benefit.points.map((point, pointIndex) => (
+                      <li key={pointIndex}>{point}</li>
+                    ))}
+                  </ul>
                 </div>
               ))}
             </div>

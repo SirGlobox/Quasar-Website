@@ -11,12 +11,54 @@ const BrandDevelopment = () => {
   }, []);
 
   const benefits = [
-    "Professional brand identity development",
-    "Comprehensive marketing strategy creation",
-    "Digital marketing optimization",
-    "Local Charlotte market positioning",
-    "Referral marketing system design",
-    "Brand awareness campaign development"
+    {
+      title: "Professional brand identity development",
+      points: [
+        "Craft a distinctive, professional brand identity that resonates with Charlotte's home service market",
+        "Develop logos, color palettes, and messaging that reflect your business values and vision",
+        "Build a cohesive brand presence across all digital and offline touchpoints"
+      ]
+    },
+    {
+      title: "Comprehensive marketing strategy creation",
+      points: [
+        "Design a full-spectrum marketing plan tailored to your business goals and target audience in Charlotte",
+        "Integrate digital, local, and referral marketing tactics for maximum reach and impact",
+        "Establish clear objectives, timelines, and performance metrics for effective execution"
+      ]
+    },
+    {
+      title: "Digital marketing optimization",
+      points: [
+        "Enhance your online presence through SEO, social media, and targeted advertising",
+        "Optimize your website and content for higher search rankings and lead generation",
+        "Leverage analytics to continuously improve digital marketing performance"
+      ]
+    },
+    {
+      title: "Local Charlotte market positioning",
+      points: [
+        "Position your brand as a trusted leader within the Charlotte home service industry",
+        "Highlight your unique value proposition to stand out from local competitors",
+        "Target high-potential neighborhoods and demographics for greater market share"
+      ]
+    },
+    {
+      title: "Referral marketing system design",
+      points: [
+        "Develop structured referral programs to encourage word-of-mouth growth in Charlotte",
+        "Incentivize loyal customers and partners to refer new business",
+        "Track and optimize referral performance for sustained client acquisition"
+      ]
+    },
+    {
+      title: "Brand awareness campaign development",
+      points: [
+        "Launch targeted campaigns to increase brand recognition across Charlotte and surrounding areas",
+        "Utilize digital, print, and community outreach for maximum exposure",
+        "Measure campaign success and adjust strategies to boost visibility and engagement"
+      ]
+    }
   ];
 
   const process = [
@@ -118,7 +160,7 @@ const BrandDevelopment = () => {
               </div>
               <div className="image">
                 <img 
-                  src="https://res.cloudinary.com/dvsiayukf/image/upload/v1754845715/Brand_-_Blog_ixqhqj.png" 
+                  src="https://res.cloudinary.com/dvsiayukf/image/upload/v1754868329/image_xramya.png" 
                   alt="Brand development and marketing strategy for Charlotte home service businesses"
                   loading="lazy"
                 />
@@ -137,8 +179,15 @@ const BrandDevelopment = () => {
             <div className="benefits-grid">
               {benefits.map((benefit, index) => (
                 <div key={index} className="benefit-item card">
-                  <CheckCircle size={24} />
-                  <span>{benefit}</span>
+                  <div className="benefit-header">
+                    <CheckCircle size={24} />
+                    <h3>{benefit.title}</h3>
+                  </div>
+                  <ul className="benefit-points">
+                    {benefit.points.map((point, pointIndex) => (
+                      <li key={pointIndex}>{point}</li>
+                    ))}
+                  </ul>
                 </div>
               ))}
             </div>

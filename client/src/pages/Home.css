@@ -129,6 +129,66 @@
   max-height: 400px;
 }
 
+/* What is a Quasar Section */
+.what-is-quasar {
+  background: transparent;
+  padding: 4rem 0;
+}
+
+.what-is-quasar .container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.what-is-quasar .grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+}
+
+.what-is-quasar .content {
+  padding-right: 2rem;
+}
+
+.quasar-header {
+  font-size: clamp(2rem, 4vw, 3rem);
+  margin-bottom: 2rem;
+  font-family: var(--font-heading);
+  font-weight: 700;
+}
+
+.quasar-description {
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: var(--cosmic-silver);
+  font-family: var(--font-body);
+  text-shadow: var(--text-glow);
+  margin: 0;
+}
+
+.what-is-quasar .video-container {
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+  background: linear-gradient(135deg, rgba(162, 89, 247, 0.1), rgba(255, 214, 0, 0.1));
+  padding: 8px;
+  width: 100%;
+  max-width: 500px;
+  margin-left: auto;
+}
+
+.quasar-video {
+  width: 100%;
+  height: auto;
+  max-height: 400px;
+  border-radius: 12px;
+  object-fit: cover;
+  display: block;
+}
+
 /* Services Preview */
 .services-preview {
   background: transparent;
@@ -390,6 +450,29 @@
   
   .why-choose .container {
     grid-template-columns: 1fr;
+  }
+  
+  /* What is a Quasar responsive */
+  .what-is-quasar .grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  
+  .what-is-quasar .content {
+    padding-right: 0;
+    order: 2;
+  }
+  
+  .what-is-quasar .video-container {
+    order: 1;
+    margin-bottom: 1rem;
+    margin-left: 0;
+    max-width: 100%;
+  }
+  
+  .quasar-header {
+    text-align: center;
+    margin-bottom: 1.5rem;
   }
 }
 

@@ -66,7 +66,7 @@ const BlogPost = () => {
         <h2>Conclusion</h2>
         <p>Growing a home service business in Charlotte requires understanding the local market, implementing effective strategies, and maintaining high service standards. With the right approach, the opportunities are significant.</p>
       `,
-      author: 'Michael Chen',
+      author: 'Quasar Consultants',
       date: '2025-06-23',
       readTime: '8 min read',
       category: 'Business Growth',
@@ -152,7 +152,7 @@ const BlogPost = () => {
         <h2>Conclusion</h2>
         <p>Successful marketing for home service businesses requires a multi-channel approach that combines digital marketing, content creation, and customer relationship management. By implementing these strategies consistently, you'll build a strong local presence and sustainable growth.</p>
       `,
-      author: 'Sarah Williams',
+      author: 'Quasar Consultants',
       date: '2025-06-30',
       readTime: '6 min read',
       category: 'Marketing',
@@ -262,7 +262,7 @@ const BlogPost = () => {
         <h2>Conclusion</h2>
         <p>Streamlining operations requires a systematic approach that addresses scheduling, quality control, technology integration, and team management. By implementing these optimization strategies, you'll create a more efficient, profitable, and scalable home service business.</p>
       `,
-      author: 'David Rodriguez',
+      author: 'Quasar Consultants',
       date: '2025-07-07',
       readTime: '7 min read',
       category: 'Operations',
@@ -393,7 +393,7 @@ const BlogPost = () => {
         <h2>Conclusion</h2>
         <p>Financial planning is an ongoing process that requires regular attention and adjustment. By implementing these strategies and working with qualified financial professionals, you'll build a financially stable and profitable home service business that can weather challenges and capitalize on opportunities.</p>
       `,
-      author: 'Michael Chen',
+      author: 'Quasar Consultants',
       date: '2025-07-14',
       readTime: '9 min read',
       category: 'Financial Planning',
@@ -539,7 +539,7 @@ const BlogPost = () => {
         <h2>Conclusion</h2>
         <p>Charlotte presents excellent opportunities for home service businesses, with strong economic fundamentals, growing population, and moderate competition. Success requires understanding local market dynamics, focusing on high-growth areas, and leveraging technology to meet customer expectations. The market outlook remains positive for well-positioned service providers.</p>
       `,
-      author: 'Sarah Williams',
+      author: 'Quasar Consultants',
       date: '2025-07-21',
       readTime: '10 min read',
       category: 'Market Analysis',
@@ -699,7 +699,7 @@ const BlogPost = () => {
         <h2>Conclusion</h2>
         <p>Effective customer retention requires a comprehensive approach that combines exceptional service, proactive communication, personalized experiences, and strong community connections. By implementing these strategies consistently and measuring results, home service businesses can build a loyal customer base that drives sustainable growth and profitability.</p>
       `,
-      author: 'David Rodriguez',
+      author: 'Quasar Consultants',
       date: '2025-07-28',
       readTime: '5 min read',
       category: 'Customer Service',

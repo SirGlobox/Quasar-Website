@@ -131,6 +131,7 @@ const ParticleCard = ({
   enableTilt = true,
   clickEffect = false,
   enableMagnetism = false,
+  onClick = null,
 }) => {
   const cardRef = useRef(null);
   const particlesRef = useRef([]);
@@ -296,6 +297,11 @@ const ParticleCard = ({
     };
 
     const handleClick = (e) => {
+      // Call the onClick callback if provided
+      if (onClick) {
+        onClick(e);
+      }
+
       if (!clickEffect) return;
 
       const rect = element.getBoundingClientRect();
@@ -596,6 +602,11 @@ const MagicBento = ({
                 enableTilt={enableTilt}
                 clickEffect={clickEffect}
                 enableMagnetism={enableMagnetism}
+                onClick={() => {
+                  if (card.link) {
+                    navigate(card.link);
+                  }
+                }}
               >
                 <div className="card__header">
                   <div className="card__label">{card.label}</div>

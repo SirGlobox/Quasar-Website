@@ -11,12 +11,54 @@ const CustomerExperience = () => {
   }, []);
 
   const benefits = [
-    "Customer experience improvement strategies",
-    "Repeat business optimization",
-    "Customer loyalty program development",
-    "Referral system implementation",
-    "Client satisfaction measurement",
-    "CRM and retention system setup"
+    {
+      title: "Customer experience improvement strategies",
+      points: [
+        "Assess and enhance every customer touchpoint to deliver exceptional service in the Charlotte home services market",
+        "Implement best practices for communication, responsiveness, and problem resolution",
+        "Increase positive reviews and referrals through memorable customer experiences"
+      ]
+    },
+    {
+      title: "Repeat business optimization",
+      points: [
+        "Develop targeted follow-up systems to encourage repeat bookings from satisfied clients",
+        "Use data-driven insights to identify and re-engage past customers in the Charlotte area",
+        "Maximize lifetime value with scheduled maintenance plans and loyalty incentives"
+      ]
+    },
+    {
+      title: "Customer loyalty program development",
+      points: [
+        "Design and launch effective loyalty programs tailored to Charlotte's home service clientele",
+        "Reward repeat customers with exclusive offers, discounts, or perks",
+        "Track and optimize loyalty program performance to increase retention rates"
+      ]
+    },
+    {
+      title: "Referral system implementation",
+      points: [
+        "Build structured referral systems to leverage word-of-mouth marketing in Charlotte",
+        "Encourage satisfied clients to refer friends and neighbors with compelling incentives",
+        "Monitor referral sources and reward top advocates for ongoing business growth"
+      ]
+    },
+    {
+      title: "Client satisfaction measurement",
+      points: [
+        "Set up feedback collection tools, including surveys and review platforms, to monitor client satisfaction",
+        "Analyze results to identify service strengths and areas for improvement",
+        "Use actionable insights to boost client retention and enhance your reputation in Charlotte"
+      ]
+    },
+    {
+      title: "CRM and retention system setup",
+      points: [
+        "Implement a CRM solution to manage client interactions, scheduling, and follow-ups efficiently",
+        "Automate retention campaigns to keep your business top-of-mind for Charlotte customers",
+        "Track retention metrics and client history for personalized service and long-term loyalty"
+      ]
+    }
   ];
 
   const process = [
@@ -117,7 +159,7 @@ const CustomerExperience = () => {
               </div>
               <div className="image">
                 <img 
-                  src="https://res.cloudinary.com/dvsiayukf/image/upload/v1754845775/Customer_-_Blog_nxqhqj.png" 
+                  src="https://res.cloudinary.com/dvsiayukf/image/upload/v1754867947/Services_-_customers_lzkwml.png" 
                   alt="Customer experience and retention systems for Charlotte home service businesses"
                   loading="lazy"
                 />
@@ -136,8 +178,15 @@ const CustomerExperience = () => {
             <div className="benefits-grid">
               {benefits.map((benefit, index) => (
                 <div key={index} className="benefit-item card">
-                  <CheckCircle size={24} />
-                  <span>{benefit}</span>
+                  <div className="benefit-header">
+                    <CheckCircle size={24} />
+                    <h3>{benefit.title}</h3>
+                  </div>
+                  <ul className="benefit-points">
+                    {benefit.points.map((point, pointIndex) => (
+                      <li key={pointIndex}>{point}</li>
+                    ))}
+                  </ul>
                 </div>
               ))}
             </div>
@@ -190,29 +239,6 @@ const CustomerExperience = () => {
           </div>
         </section>
 
-        {/* Results Section */}
-        <section className="section results-section">
-          <div className="container">
-            <div className="section-title">
-              <h2>Proven Customer Retention Results</h2>
-              <p>Our customer experience strategies deliver measurable improvements</p>
-            </div>
-            <div className="grid grid-3">
-              <div className="result-item card">
-                <div className="result-number">85%</div>
-                <div className="result-label">Customer Retention Rate</div>
-              </div>
-              <div className="result-item card">
-                <div className="result-number">45%</div>
-                <div className="result-label">Repeat Business Increase</div>
-              </div>
-              <div className="result-item card">
-                <div className="result-number">300%</div>
-                <div className="result-label">Referral Growth</div>
-              </div>
-            </div>
-          </div>
-        </section>
 
         {/* Customer Journey Section */}
         <section className="section customer-journey">
