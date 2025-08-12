@@ -82,9 +82,43 @@
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
     
     <title>Quasar Consultants - Home Service Business Consulting Charlotte NC</title>
+    
+    <!-- Additional crawler-friendly meta tags -->
+    <meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+    <meta name="bingbot" content="index, follow" />
+    <meta name="slurp" content="index, follow" />
+    <meta name="format-detection" content="telephone=no" />
+    
+    <!-- Structured data for better crawling -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "Quasar Consultants",
+      "url": "https://quasarconsultants.com",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://quasarconsultants.com/search?q={search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
+    }
+    </script>
   </head>
   <body>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <noscript>
+      <div style="padding: 20px; text-align: center; font-family: Arial, sans-serif;">
+        <h1>Quasar Consultants - Home Service Business Consulting Charlotte NC</h1>
+        <p>Expert business consulting to help home service companies scale, optimize operations, and dominate the Charlotte market.</p>
+        <p>This site requires JavaScript to run properly. Please enable JavaScript in your browser.</p>
+        <ul style="list-style: none; padding: 0;">
+          <li><a href="/">Home</a></li>
+          <li><a href="/services">Services</a></li>
+          <li><a href="/about">About</a></li>
+          <li><a href="/contact">Contact</a></li>
+          <li><a href="/blog">Blog</a></li>
+        </ul>
+      </div>
+    </noscript>
     <div id="root"></div>
   </body>
 </html>

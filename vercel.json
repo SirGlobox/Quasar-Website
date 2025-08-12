@@ -14,24 +14,8 @@
       "source": "/(.*)",
       "headers": [
         {
-          "key": "X-Content-Type-Options",
-          "value": "nosniff"
-        },
-        {
-          "key": "X-Frame-Options",
-          "value": "DENY"
-        },
-        {
-          "key": "X-XSS-Protection",
-          "value": "1; mode=block"
-        },
-        {
-          "key": "Referrer-Policy",
-          "value": "strict-origin-when-cross-origin"
-        },
-        {
           "key": "X-Robots-Tag",
-          "value": "index, follow"
+          "value": "index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1"
         },
         {
           "key": "Access-Control-Allow-Origin",
@@ -39,7 +23,15 @@
         },
         {
           "key": "Access-Control-Allow-Methods",
-          "value": "GET, HEAD, OPTIONS"
+          "value": "GET, HEAD, OPTIONS, POST"
+        },
+        {
+          "key": "Access-Control-Allow-Headers",
+          "value": "Origin, X-Requested-With, Content-Type, Accept, Authorization, User-Agent"
+        },
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=0, must-revalidate"
         }
       ]
     },
@@ -48,11 +40,15 @@
       "headers": [
         {
           "key": "Content-Type",
-          "value": "application/xml"
+          "value": "application/xml; charset=utf-8"
         },
         {
           "key": "Cache-Control",
-          "value": "public, max-age=86400"
+          "value": "public, max-age=3600"
+        },
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex"
         }
       ]
     },
@@ -61,11 +57,11 @@
       "headers": [
         {
           "key": "Content-Type",
-          "value": "text/plain"
+          "value": "text/plain; charset=utf-8"
         },
         {
           "key": "Cache-Control",
-          "value": "public, max-age=86400"
+          "value": "public, max-age=3600"
         }
       ]
     },
@@ -85,5 +81,10 @@
       "destination": "/",
       "permanent": true
     }
-  ]
+  ],
+  "functions": {
+    "app/api/crawler-check.js": {
+      "maxDuration": 10
+    }
+  }
 }

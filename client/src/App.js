@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
 import Navbar from './components/Navbar';
@@ -16,15 +16,23 @@ import BrandDevelopment from './pages/BrandDevelopment';
 import LeadGeneration from './pages/LeadGeneration';
 import OperationsOptimization from './pages/OperationsOptimization';
 import CustomerExperience from './pages/CustomerExperience';
+import { isCrawler, shouldDisableAnimations } from './utils/crawlerDetection';
 import './styles/App.css';
 
 function App() {
   const galaxyRef = useRef(null);
   const mousePos = useRef({ x: 0.5, y: 0.5 });
   const lastUpdate = useRef(0);
+  const [disableAnimations, setDisableAnimations] = useState(false);
 
   useEffect(() => {
+    // Check if we should disable animations for crawlers
+    setDisableAnimations(shouldDisableAnimations());
+    
     const handleMouseMove = (e) => {
+      // Skip mouse interactions for crawlers
+      if (disableAnimations) return;
+      
       const now = Date.now();
       // Throttle to ~60fps (16ms)
       if (now - lastUpdate.current < 16) return;
@@ -41,37 +49,41 @@ function App() {
       lastUpdate.current = now;
     };
 
-    document.addEventListener('mousemove', handleMouseMove, { passive: true });
+    if (!disableAnimations) {
+      document.addEventListener('mousemove', handleMouseMove, { passive: true });
+    }
     
     return () => {
       document.removeEventListener('mousemove', handleMouseMove);
     };
-  }, []);
+  }, [disableAnimations]);
   return (
     <HelmetProvider>
       <Router>
         <div className="App">
-          {/* Galaxy Background */}
-          <Galaxy 
-            ref={galaxyRef}
-            className="galaxy-background"
-            focal={[0.5, 0.5]}
-            rotation={[0.5, 0.0]}
-            starSpeed={0.2}
-            density={0.8}
-            hueShift={160}
-            disableAnimation={false}
-            speed={0.3}
-            mouseInteraction={true}
-            glowIntensity={0.2}
-            saturation={0.1}
-            mouseRepulsion={true}
-            repulsionStrength={0.5}
-            twinkleIntensity={0.1}
-            rotationSpeed={0.05}
-            autoCenterRepulsion={0}
-            transparent={true}
-          />
+          {/* Galaxy Background - Disabled for crawlers */}
+          {!disableAnimations && (
+            <Galaxy 
+              ref={galaxyRef}
+              className="galaxy-background"
+              focal={[0.5, 0.5]}
+              rotation={[0.5, 0.0]}
+              starSpeed={0.2}
+              density={0.8}
+              hueShift={160}
+              disableAnimation={disableAnimations}
+              speed={0.3}
+              mouseInteraction={!disableAnimations}
+              glowIntensity={0.2}
+              saturation={0.1}
+              mouseRepulsion={!disableAnimations}
+              repulsionStrength={0.5}
+              twinkleIntensity={0.1}
+              rotationSpeed={0.05}
+              autoCenterRepulsion={0}
+              transparent={true}
+            />
+          )}
           
           <Navbar />
           <main>
