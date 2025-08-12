@@ -65,7 +65,7 @@ const OptimizedVideo = ({
         clearTimeout(timeoutRef.current);
       }
     };
-  }, [lazy, src]);
+  }, [lazy, src, autoPlay]);
 
   // Generate optimized Cloudinary URL with better error handling
   const getOptimizedVideoUrl = (originalUrl) => {
