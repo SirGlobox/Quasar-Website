@@ -2,7 +2,23 @@ User-agent: *
 Allow: /
 
 # Sitemap
-Sitemap: https://quasarconsultants.com/sitemap.xml
+Sitemap: https://thequasarconsultants.com/sitemap.xml
 
 # Crawl-delay
-Crawl-delay: 1 
+Crawl-delay: 1
+
+# Allow common SEO audit tools
+User-agent: Screaming Frog SEO Spider
+Allow: /
+
+User-agent: AhrefsBot
+Allow: /
+
+User-agent: SemrushBot
+Allow: /
+
+User-agent: MJ12bot
+Allow: /
+
+User-agent: DotBot
+Allow: /

@@ -4,16 +4,46 @@ export const isCrawler = () => {
   
   const userAgent = navigator.userAgent.toLowerCase();
   const crawlerPatterns = [
+    // Search Engine Crawlers
     'googlebot',
     'bingbot',
     'slurp',
     'duckduckbot',
     'baiduspider',
     'yandexbot',
+    'applebot',
     'facebookexternalhit',
     'twitterbot',
-    'rogerbot',
     'linkedinbot',
+    
+    // SEO Audit Tools
+    'screaming frog',
+    'screamingfrogseospider',
+    'ahrefsbot',
+    'semrushbot',
+    'mj12bot',
+    'dotbot',
+    'seobility',
+    'sitebulb',
+    'deepcrawl',
+    'oncrawl',
+    'botify',
+    'ryte',
+    'searchmetrics',
+    'conductor',
+    'brightedge',
+    'seolyzer',
+    'seositecheckup',
+    'woorank',
+    'seoptimer',
+    'varvy',
+    'seomator',
+    'siteliner',
+    'copyscape',
+    'plagiarismchecker',
+    
+    // Social Media Crawlers
+    'rogerbot',
     'embedly',
     'quora link preview',
     'showyoubot',
@@ -22,9 +52,6 @@ export const isCrawler = () => {
     'developers.google.com/+/web/snippet',
     'slackbot',
     'vkshare',
-    'w3c_validator',
-    'redditbot',
-    'applebot',
     'whatsapp',
     'flipboard',
     'tumblr',
@@ -32,13 +59,34 @@ export const isCrawler = () => {
     'skypeuripreview',
     'nuzzel',
     'discordbot',
+    'telegrambot',
+    
+    // Performance & Validation Tools
+    'w3c_validator',
     'google page speed',
+    'chrome-lighthouse',
+    'pagespeed',
+    'gtmetrix',
+    'pingdom',
+    'webpagetest',
+    'dareboost',
+    'yellowlab',
+    
+    // Other Crawlers
+    'redditbot',
     'qwantify',
     'pinterestbot',
     'bitrix link preview',
     'xing-contenttabreceiver',
-    'chrome-lighthouse',
-    'telegrambot'
+    'archive.org_bot',
+    'ia_archiver',
+    'wayback',
+    'heritrix',
+    'nutch',
+    'crawler',
+    'spider',
+    'bot/',
+    'crawl'
   ];
   
   return crawlerPatterns.some(pattern => userAgent.includes(pattern));

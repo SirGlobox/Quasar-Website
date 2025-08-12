@@ -24,24 +24,35 @@ console.log('🔑 Resend API key configured:', !!process.env.RESEND_API_KEY);
 console.log('🌐 Client URL:', process.env.CLIENT_URL);
 console.log('🔧 Environment:', process.env.NODE_ENV);
 
-// Security middleware
+// Security middleware - More permissive for crawlers
 app.use(helmet({
-  contentSecurityPolicy: {
-    directives: {
-      defaultSrc: ["'self'"],
-      styleSrc: ["'self'", "'unsafe-inline'", "https://fonts.googleapis.com"],
-      fontSrc: ["'self'", "https://fonts.gstatic.com"],
-      imgSrc: ["'self'", "data:", "https:"],
-      scriptSrc: ["'self'", "https://maps.googleapis.com"],
-      frameSrc: ["'self'", "https://www.google.com"]
-    }
-  }
+  contentSecurityPolicy: false, // Disable CSP for better crawler compatibility
+  crossOriginEmbedderPolicy: false
 }));
 
-// CORS configuration
+// CORS configuration - More permissive for SEO tools
 app.use(cors({
-  origin: process.env.CLIENT_URL || 'http://localhost:3000',
-  credentials: true
+  origin: function (origin, callback) {
+    // Allow requests with no origin (like mobile apps, curl, Postman, SEO tools)
+    if (!origin) return callback(null, true);
+    
+    // Allow specific origins
+    const allowedOrigins = [
+      process.env.CLIENT_URL || 'http://localhost:3000',
+      'https://thequasarconsultants.com',
+      'https://quasarconsultants.com'
+    ];
+    
+    if (allowedOrigins.includes(origin)) {
+      return callback(null, true);
+    }
+    
+    // Allow SEO audit tools and crawlers
+    return callback(null, true);
+  },
+  credentials: true,
+  methods: ['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization', 'User-Agent', 'Accept', 'Origin', 'X-Requested-With']
 }));
 
 // Compression middleware
@@ -54,13 +65,24 @@ app.use(morgan('combined'));
 app.use(express.json({ limit: '10mb' }));
 app.use(express.urlencoded({ extended: true, limit: '10mb' }));
 
-// Rate limiting
+// Rate limiting - More permissive for crawlers
 const limiter = rateLimit({
   windowMs: 15 * 60 * 1000, // 15 minutes
-  max: 100, // limit each IP to 100 requests per windowMs
+  max: 500, // Increased limit for SEO tools
   message: 'Too many requests from this IP, please try again later.',
   standardHeaders: true,
   legacyHeaders: false,
+  skip: (req) => {
+    // Skip rate limiting for known crawlers and SEO tools
+    const userAgent = req.get('User-Agent')?.toLowerCase() || '';
+    const crawlerPatterns = [
+      'googlebot', 'bingbot', 'slurp', 'duckduckbot', 'baiduspider', 'yandexbot',
+      'screaming frog', 'ahrefsbot', 'semrushbot', 'mj12bot', 'dotbot',
+      'seobility', 'sitebulb', 'deepcrawl', 'oncrawl', 'botify', 'ryte',
+      'chrome-lighthouse', 'pagespeed', 'gtmetrix', 'pingdom', 'webpagetest'
+    ];
+    return crawlerPatterns.some(pattern => userAgent.includes(pattern));
+  }
 });
 
 app.use('/api/', limiter);
@@ -68,7 +90,7 @@ app.use('/api/', limiter);
 // Contact form rate limiting (more restrictive)
 const contactLimiter = rateLimit({
   windowMs: 60 * 60 * 1000, // 1 hour
-  max: 5, // limit each IP to 5 contact form submissions per hour
+  max: 10, // Slightly increased for legitimate use
   message: 'Too many contact form submissions, please try again later.',
   standardHeaders: true,
   legacyHeaders: false,
@@ -197,31 +219,31 @@ app.get('/sitemap.xml', (req, res) => {
   const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
     <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
       <url>
-        <loc>https://quasarconsultants.com/</loc>
+        <loc>https://thequasarconsultants.com/</loc>
         <lastmod>${new Date().toISOString()}</lastmod>
         <changefreq>weekly</changefreq>
         <priority>1.0</priority>
       </url>
       <url>
-        <loc>https://quasarconsultants.com/services</loc>
+        <loc>https://thequasarconsultants.com/services</loc>
         <lastmod>${new Date().toISOString()}</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
       </url>
       <url>
-        <loc>https://quasarconsultants.com/about</loc>
+        <loc>https://thequasarconsultants.com/about</loc>
         <lastmod>${new Date().toISOString()}</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
       </url>
       <url>
-        <loc>https://quasarconsultants.com/contact</loc>
+        <loc>https://thequasarconsultants.com/contact</loc>
         <lastmod>${new Date().toISOString()}</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.6</priority>
       </url>
       <url>
-        <loc>https://quasarconsultants.com/blog</loc>
+        <loc>https://thequasarconsultants.com/blog</loc>
         <lastmod>${new Date().toISOString()}</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
@@ -229,6 +251,7 @@ app.get('/sitemap.xml', (req, res) => {
     </urlset>`;
 
   res.header('Content-Type', 'application/xml');
+  res.header('Access-Control-Allow-Origin', '*');
   res.send(sitemap);
 });
 
@@ -238,12 +261,29 @@ app.get('/robots.txt', (req, res) => {
 Allow: /
 
 # Sitemap
-Sitemap: https://quasarconsultants.com/sitemap.xml
+Sitemap: https://thequasarconsultants.com/sitemap.xml
 
 # Crawl-delay
-Crawl-delay: 1`;
+Crawl-delay: 1
+
+# Allow common SEO audit tools
+User-agent: Screaming Frog SEO Spider
+Allow: /
+
+User-agent: AhrefsBot
+Allow: /
+
+User-agent: SemrushBot
+Allow: /
+
+User-agent: MJ12bot
+Allow: /
+
+User-agent: DotBot
+Allow: /`;
   
   res.header('Content-Type', 'text/plain');
+  res.header('Access-Control-Allow-Origin', '*');
   res.send(robots);
 });
 
