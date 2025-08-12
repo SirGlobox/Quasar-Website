@@ -1,0 +1,104 @@
+.lightweight-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  overflow: hidden;
+  background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 50%, #16213e 100%);
+}
+
+.stars-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: radial-gradient(2px 2px at 20px 30px, #eee, transparent),
+                    radial-gradient(2px 2px at 40px 70px, rgba(255,255,255,0.8), transparent),
+                    radial-gradient(1px 1px at 90px 40px, #fff, transparent),
+                    radial-gradient(1px 1px at 130px 80px, rgba(255,255,255,0.6), transparent),
+                    radial-gradient(2px 2px at 160px 30px, #fff, transparent);
+  background-repeat: repeat;
+  background-size: 200px 100px;
+}
+
+.stars-small {
+  background-image: radial-gradient(1px 1px at 20px 30px, rgba(255,255,255,0.9), transparent),
+                    radial-gradient(1px 1px at 40px 70px, rgba(255,255,255,0.7), transparent),
+                    radial-gradient(1px 1px at 90px 40px, rgba(255,255,255,0.8), transparent),
+                    radial-gradient(1px 1px at 130px 80px, rgba(255,255,255,0.6), transparent),
+                    radial-gradient(1px 1px at 160px 30px, rgba(255,255,255,0.9), transparent),
+                    radial-gradient(1px 1px at 180px 90px, rgba(255,255,255,0.5), transparent);
+  background-size: 200px 120px;
+  animation: twinkle 4s ease-in-out infinite alternate;
+}
+
+.stars-medium {
+  background-image: radial-gradient(2px 2px at 30px 40px, rgba(162, 89, 247, 0.8), transparent),
+                    radial-gradient(2px 2px at 80px 20px, rgba(255, 214, 0, 0.6), transparent),
+                    radial-gradient(1px 1px at 120px 60px, rgba(255,255,255,0.9), transparent),
+                    radial-gradient(2px 2px at 170px 90px, rgba(162, 89, 247, 0.7), transparent);
+  background-size: 250px 150px;
+  animation: twinkle 6s ease-in-out infinite alternate-reverse;
+}
+
+.stars-large {
+  background-image: radial-gradient(3px 3px at 50px 50px, rgba(162, 89, 247, 0.9), transparent),
+                    radial-gradient(2px 2px at 150px 100px, rgba(255, 214, 0, 0.8), transparent),
+                    radial-gradient(3px 3px at 100px 150px, rgba(255,255,255,0.7), transparent);
+  background-size: 300px 200px;
+  animation: twinkle 8s ease-in-out infinite;
+}
+
+.gradient-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(ellipse at center, transparent 0%, rgba(15, 15, 35, 0.3) 70%, rgba(15, 15, 35, 0.6) 100%);
+  pointer-events: none;
+}
+
+@keyframes twinkle {
+  0% {
+    opacity: 0.7;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.1);
+  }
+  100% {
+    opacity: 0.8;
+    transform: scale(1);
+  }
+}
+
+/* Reduce motion for users who prefer it */
+@media (prefers-reduced-motion: reduce) {
+  .stars-layer {
+    animation: none;
+  }
+}
+
+/* Performance optimization for mobile */
+@media (max-width: 768px) {
+  .stars-layer {
+    background-size: 150px 100px;
+  }
+  
+  .stars-small {
+    background-size: 150px 90px;
+  }
+  
+  .stars-medium {
+    background-size: 200px 120px;
+  }
+  
+  .stars-large {
+    background-size: 250px 150px;
+  }
+}
