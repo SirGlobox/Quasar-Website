@@ -1,5 +1,6 @@
 import { useEffect, useState, useRef } from 'react'
 import { motion } from 'framer-motion'
+import { shouldDisableAnimations } from '../utils/crawlerDetection'
 
 const styles = {
   wrapper: {
@@ -37,7 +38,13 @@ export default function DecryptedText({
   const [isScrambling, setIsScrambling] = useState(false);
   const [revealedIndices, setRevealedIndices] = useState(new Set());
   const [hasAnimated, setHasAnimated] = useState(false);
+  const [animationsDisabled, setAnimationsDisabled] = useState(false);
   const containerRef = useRef(null);
+
+  // Check if animations should be disabled for crawlers
+  useEffect(() => {
+    setAnimationsDisabled(shouldDisableAnimations());
+  }, []);
 
   useEffect(() => {
     let interval
@@ -114,6 +121,13 @@ export default function DecryptedText({
       }
     }
 
+    // Skip animations for crawlers
+    if (animationsDisabled) {
+      setDisplayText(text);
+      setIsScrambling(false);
+      return;
+    }
+
     if (isHovering) {
       setIsScrambling(true)
       interval = setInterval(() => {
@@ -160,6 +174,7 @@ export default function DecryptedText({
     revealDirection,
     characters,
     useOriginalCharsOnly,
+    animationsDisabled,
   ])
 
   useEffect(() => {

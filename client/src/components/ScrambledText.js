@@ -1,7 +1,8 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 import { SplitText } from "gsap/SplitText";
 import { ScrambleTextPlugin } from "gsap/ScrambleTextPlugin";
+import { shouldDisableAnimations } from '../utils/crawlerDetection';
 
 import "./ScrambledText.css";
 
@@ -18,9 +19,15 @@ const ScrambledText = ({
 }) => {
   const rootRef = useRef(null);
   const charsRef = useRef([]);
+  const [animationsDisabled, setAnimationsDisabled] = useState(false);
+
+  // Check if animations should be disabled for crawlers
+  useEffect(() => {
+    setAnimationsDisabled(shouldDisableAnimations());
+  }, []);
 
   useEffect(() => {
-    if (!rootRef.current) return;
+    if (!rootRef.current || animationsDisabled) return;
 
     const split = SplitText.create(rootRef.current.querySelector("p"), {
       type: "chars",
@@ -81,11 +88,24 @@ const ScrambledText = ({
       el.removeEventListener("pointermove", handleMove);
       split.revert();
     };
-  }, [radius, duration, speed, scrambleChars]);
+  }, [radius, duration, speed, scrambleChars, animationsDisabled]);
 
   return (
     <div ref={rootRef} className={`text-block ${className}`} style={style}>
       <p>{children}</p>
+      {/* Screen reader accessible version */}
+      <span style={{
+        position: 'absolute',
+        width: '1px',
+        height: '1px',
+        padding: 0,
+        margin: '-1px',
+        overflow: 'hidden',
+        clip: 'rect(0,0,0,0)',
+        border: 0,
+      }}>
+        {children}
+      </span>
     </div>
   );
 };

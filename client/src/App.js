@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
+import Galaxy from './components/Galaxy';
 import LightweightBackground from './components/LightweightBackground';
 import Home from './pages/Home';
 import Services from './pages/Services';
@@ -16,7 +17,7 @@ import BrandDevelopment from './pages/BrandDevelopment';
 import LeadGeneration from './pages/LeadGeneration';
 import OperationsOptimization from './pages/OperationsOptimization';
 import CustomerExperience from './pages/CustomerExperience';
-import { isCrawler, shouldDisableAnimations } from './utils/crawlerDetection';
+import { shouldDisableAnimations } from './utils/crawlerDetection';
 import './styles/App.css';
 
 function App() {
@@ -24,14 +25,17 @@ function App() {
   const mousePos = useRef({ x: 0.5, y: 0.5 });
   const lastUpdate = useRef(0);
   const [disableAnimations, setDisableAnimations] = useState(false);
+  const [galaxyError, setGalaxyError] = useState(false);
+
+  // Check if we should disable animations for crawlers
+  useEffect(() => {
+    setDisableAnimations(shouldDisableAnimations());
+  }, []);
 
   useEffect(() => {
-    // Check if we should disable animations for crawlers
-    setDisableAnimations(shouldDisableAnimations());
-    
     const handleMouseMove = (e) => {
-      // Skip mouse interactions for crawlers
-      if (disableAnimations) return;
+      // Skip mouse interactions for crawlers or if Galaxy failed
+      if (disableAnimations || galaxyError) return;
       
       const now = Date.now();
       // Throttle to ~60fps (16ms)
@@ -49,20 +53,26 @@ function App() {
       lastUpdate.current = now;
     };
 
-    if (!disableAnimations) {
+    if (!disableAnimations && !galaxyError) {
       document.addEventListener('mousemove', handleMouseMove, { passive: true });
     }
     
     return () => {
       document.removeEventListener('mousemove', handleMouseMove);
     };
-  }, [disableAnimations]);
+  }, [disableAnimations, galaxyError]);
+  // Error boundary for Galaxy component
+  const handleGalaxyError = () => {
+    console.warn('Galaxy component failed to load, falling back to LightweightBackground');
+    setGalaxyError(true);
+  };
+
   return (
     <HelmetProvider>
       <Router>
         <div className="App">
-          {/* Galaxy Background - Disabled for crawlers */}
-          {!disableAnimations && (
+          {/* Smart Background Switching */}
+          {!disableAnimations && !galaxyError ? (
             <Galaxy 
               ref={galaxyRef}
               className="galaxy-background"
@@ -82,7 +92,10 @@ function App() {
               rotationSpeed={0.05}
               autoCenterRepulsion={0}
               transparent={true}
+              onError={handleGalaxyError}
             />
+          ) : (
+            <LightweightBackground className="background-layer" />
           )}
           
           <Navbar />
