@@ -81,10 +81,5 @@
       "destination": "/",
       "permanent": true
     }
-  ],
-  "functions": {
-    "app/api/crawler-check.js": {
-      "maxDuration": 10
-    }
-  }
+  ]
 }
