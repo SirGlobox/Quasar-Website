@@ -5,6 +5,7 @@ import { ArrowRight, Star, Users, TrendingUp, Shield } from 'lucide-react';
 import DecryptedText from '../components/DecryptedText';
 import ScrambledText from '../components/ScrambledText';
 import GradientText from '../components/GradientText';
+import OptimizedVideo from '../components/OptimizedVideo';
 import './Home.css';
 
 const Home = () => {
@@ -140,12 +141,10 @@ const Home = () => {
               </div>
             </div>
             <div className="hero-image">
-              <video 
+              <OptimizedVideo
                 src="https://res.cloudinary.com/dvsiayukf/video/upload/v1754623401/Guy_on_Rocket_rucszc.mp4"
-                autoPlay
-                loop
-                muted
-                playsInline
+                autoPlay={true}
+                lazy={false}
                 className="hero-video"
                 aria-label="Quasar Consultants helping home service businesses grow in Charlotte NC"
               />
@@ -171,12 +170,10 @@ const Home = () => {
                 </p>
               </div>
               <div className="video-container">
-                <video 
+                <OptimizedVideo
                   src="https://res.cloudinary.com/dvsiayukf/video/upload/v1754885105/Quasar_z0qjx2.mp4"
-                  autoPlay
-                  loop
-                  muted
-                  playsInline
+                  autoPlay={true}
+                  lazy={true}
                   className="quasar-video"
                   aria-label="Quasar visualization showing cosmic energy and brilliance"
                 />
@@ -237,12 +234,10 @@ const Home = () => {
                 </Link>
               </div>
               <div className="image">
-                <video 
+                <OptimizedVideo
                   src="https://res.cloudinary.com/dvsiayukf/video/upload/v1754701260/Qbot_waving_2.0_knhhjj.mp4"
-                  autoPlay
-                  loop
-                  muted
-                  playsInline
+                  autoPlay={true}
+                  lazy={true}
                   className="why-choose-video"
                   aria-label="Quasar Consultants team helping home service businesses"
                 />
