@@ -3,8 +3,8 @@ export const isCrawler = () => {
   if (typeof window === 'undefined') return true; // Server-side rendering
   
   const userAgent = navigator.userAgent.toLowerCase();
-  const headers = typeof window !== 'undefined' && window.navigator ? window.navigator : {};
   
+  // Comprehensive crawler patterns including AI SEO tools
   const crawlerPatterns = [
     // Search Engine Crawlers
     'googlebot',
@@ -150,33 +150,8 @@ export const isCrawler = () => {
     'crawl'
   ];
   
-  // Check for AI tool specific headers or patterns
-  const isAITool = () => {
-    // Check for common AI tool headers
-    if (typeof window !== 'undefined' && window.navigator) {
-      const connection = window.navigator.connection;
-      if (connection && connection.effectiveType === 'slow-2g') {
-        // AI tools often simulate slow connections
-        return true;
-      }
-    }
-    
-    // Check for headless browser indicators
-    const headlessIndicators = [
-      'headless',
-      'automated',
-      'bot',
-      'crawler',
-      'scraper',
-      'audit',
-      'test',
-      'monitor'
-    ];
-    
-    return headlessIndicators.some(indicator => userAgent.includes(indicator));
-  };
-  
-  return crawlerPatterns.some(pattern => userAgent.includes(pattern)) || isAITool();
+  // Simple pattern matching - if any crawler pattern is found, it's a crawler
+  return crawlerPatterns.some(pattern => userAgent.includes(pattern));
 };
 
 // Disable animations for crawlers
