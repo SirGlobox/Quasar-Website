@@ -8,7 +8,7 @@ import GradientText from '../components/GradientText';
 import OptimizedVideo from '../components/OptimizedVideo';
 import './Home.css';
 
-const Home = () => {
+const Home = ({ disableAnimations = false }) => {
   // Auto-scroll to top when component mounts
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -112,6 +112,7 @@ const Home = () => {
                       revealDirection="start"
                       className="hero-title-revealed"
                       encryptedClassName="hero-title-encrypted"
+                      disableAnimations={disableAnimations}
                     />
                   </h1>
                 </div>
@@ -126,6 +127,7 @@ const Home = () => {
                       revealDirection="start"
                       className="hero-subtitle-revealed"
                       encryptedClassName="hero-subtitle-encrypted"
+                      disableAnimations={disableAnimations}
                     />
                   </p>
                 </div>

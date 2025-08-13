@@ -31,6 +31,7 @@ export default function DecryptedText({
   parentClassName = '',
   encryptedClassName = '',
   animateOn = 'hover',
+  disableAnimations = null, // Allow parent to override
   ...props
 }) {
   const [displayText, setDisplayText] = useState(text);
@@ -43,8 +44,18 @@ export default function DecryptedText({
 
   // Check if animations should be disabled for crawlers
   useEffect(() => {
-    setAnimationsDisabled(shouldDisableAnimations());
-  }, []);
+    // Use parent prop if provided, otherwise check crawler detection
+    const shouldDisable = disableAnimations !== null ? disableAnimations : shouldDisableAnimations();
+    setAnimationsDisabled(shouldDisable);
+    
+    // Debug logging
+    console.log('🎭 DecryptedText Animation Status:', {
+      parentDisableAnimations: disableAnimations,
+      crawlerDetection: shouldDisableAnimations(),
+      finalDecision: shouldDisable,
+      text: text.substring(0, 50) + '...'
+    });
+  }, [disableAnimations]);
 
   useEffect(() => {
     let interval

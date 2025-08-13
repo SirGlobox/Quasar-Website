@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useState } from 'react';
+import React, { useRef, useEffect, useState, useCallback } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
 import Navbar from './components/Navbar';
@@ -17,25 +17,88 @@ import BrandDevelopment from './pages/BrandDevelopment';
 import LeadGeneration from './pages/LeadGeneration';
 import OperationsOptimization from './pages/OperationsOptimization';
 import CustomerExperience from './pages/CustomerExperience';
-import { shouldDisableAnimations } from './utils/crawlerDetection';
+import { shouldDisableAnimations, isCrawler } from './utils/crawlerDetection';
 import './styles/App.css';
 
 function App() {
   const galaxyRef = useRef(null);
   const mousePos = useRef({ x: 0.5, y: 0.5 });
   const lastUpdate = useRef(0);
+  const retryTimeoutRef = useRef(null);
+  
+  // Enhanced state management
   const [disableAnimations, setDisableAnimations] = useState(false);
   const [galaxyError, setGalaxyError] = useState(false);
+  const [galaxyLoading, setGalaxyLoading] = useState(true);
+  const [galaxyRetryCount, setGalaxyRetryCount] = useState(0);
+  const [forceAnimations, setForceAnimations] = useState(false);
 
-  // Check if we should disable animations for crawlers
+  const MAX_RETRY_ATTEMPTS = 2;
+  const RETRY_DELAY = 2000; // 2 seconds
+
+  // Enhanced crawler detection with debugging
   useEffect(() => {
-    setDisableAnimations(shouldDisableAnimations());
+    const shouldDisable = shouldDisableAnimations();
+    const isCrawlerDetected = isCrawler();
+    
+    // Debug logging
+    console.log('🔍 Crawler Detection:', {
+      userAgent: navigator.userAgent,
+      isCrawler: isCrawlerDetected,
+      shouldDisableAnimations: shouldDisable,
+      reducedMotion: window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    });
+    
+    setDisableAnimations(shouldDisable);
+    
+    // Allow manual override for testing (developers can use browser console)
+    window.quasarDebug = {
+      forceAnimations: () => {
+        console.log('🚀 Force enabling animations');
+        setForceAnimations(true);
+        setDisableAnimations(false);
+        setGalaxyError(false);
+      },
+      resetGalaxy: () => {
+        console.log('🌌 Resetting Galaxy component');
+        setGalaxyError(false);
+        setGalaxyLoading(true);
+        setGalaxyRetryCount(0);
+      }
+    };
   }, []);
 
+  // Enhanced Galaxy error handling with retry mechanism
+  const handleGalaxyError = useCallback(() => {
+    console.warn(`Galaxy component failed (attempt ${galaxyRetryCount + 1}/${MAX_RETRY_ATTEMPTS + 1})`);
+    
+    if (galaxyRetryCount < MAX_RETRY_ATTEMPTS) {
+      console.log(`Retrying Galaxy initialization in ${RETRY_DELAY}ms...`);
+      
+      retryTimeoutRef.current = setTimeout(() => {
+        setGalaxyRetryCount(prev => prev + 1);
+        setGalaxyError(false);
+        setGalaxyLoading(true);
+      }, RETRY_DELAY);
+    } else {
+      console.warn('Galaxy component failed after all retry attempts, falling back to LightweightBackground');
+      setGalaxyError(true);
+      setGalaxyLoading(false);
+    }
+  }, [galaxyRetryCount]);
+
+  // Galaxy success handler
+  const handleGalaxySuccess = useCallback(() => {
+    console.log('✅ Galaxy component loaded successfully');
+    setGalaxyLoading(false);
+    setGalaxyError(false);
+  }, []);
+
+  // Enhanced mouse interaction
   useEffect(() => {
     const handleMouseMove = (e) => {
       // Skip mouse interactions for crawlers or if Galaxy failed
-      if (disableAnimations || galaxyError) return;
+      if ((disableAnimations && !forceAnimations) || galaxyError) return;
       
       const now = Date.now();
       // Throttle to ~60fps (16ms)
@@ -53,47 +116,88 @@ function App() {
       lastUpdate.current = now;
     };
 
-    if (!disableAnimations && !galaxyError) {
+    if ((!disableAnimations || forceAnimations) && !galaxyError) {
       document.addEventListener('mousemove', handleMouseMove, { passive: true });
     }
     
     return () => {
       document.removeEventListener('mousemove', handleMouseMove);
     };
-  }, [disableAnimations, galaxyError]);
-  // Error boundary for Galaxy component
-  const handleGalaxyError = () => {
-    console.warn('Galaxy component failed to load, falling back to LightweightBackground');
-    setGalaxyError(true);
-  };
+  }, [disableAnimations, galaxyError, forceAnimations]);
+
+  // Cleanup retry timeout
+  useEffect(() => {
+    return () => {
+      if (retryTimeoutRef.current) {
+        clearTimeout(retryTimeoutRef.current);
+      }
+    };
+  }, []);
+
+  // Determine which background component to show
+  const shouldShowGalaxy = (!disableAnimations || forceAnimations) && !galaxyError;
+  const shouldShowLoading = shouldShowGalaxy && galaxyLoading;
 
   return (
     <HelmetProvider>
       <Router>
         <div className="App">
-          {/* Smart Background Switching */}
-          {!disableAnimations && !galaxyError ? (
-            <Galaxy 
-              ref={galaxyRef}
-              className="galaxy-background"
-              focal={[0.5, 0.5]}
-              rotation={[0.5, 0.0]}
-              starSpeed={0.2}
-              density={0.8}
-              hueShift={160}
-              disableAnimation={disableAnimations}
-              speed={0.3}
-              mouseInteraction={!disableAnimations}
-              glowIntensity={0.2}
-              saturation={0.1}
-              mouseRepulsion={!disableAnimations}
-              repulsionStrength={0.5}
-              twinkleIntensity={0.1}
-              rotationSpeed={0.05}
-              autoCenterRepulsion={0}
-              transparent={true}
-              onError={handleGalaxyError}
-            />
+          {/* Enhanced Background Switching with Loading States */}
+          {shouldShowGalaxy ? (
+            <>
+              {shouldShowLoading && (
+                <div className="galaxy-loading" style={{
+                  position: 'fixed',
+                  top: 0,
+                  left: 0,
+                  width: '100%',
+                  height: '100%',
+                  background: 'linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%)',
+                  zIndex: -1,
+                  opacity: galaxyLoading ? 1 : 0,
+                  transition: 'opacity 1s ease-in-out'
+                }}>
+                  <div style={{
+                    position: 'absolute',
+                    top: '50%',
+                    left: '50%',
+                    transform: 'translate(-50%, -50%)',
+                    color: '#fff',
+                    fontSize: '14px',
+                    opacity: 0.7
+                  }}>
+                    Initializing Galaxy...
+                  </div>
+                </div>
+              )}
+              <Galaxy 
+                key={`galaxy-${galaxyRetryCount}`} // Force remount on retry
+                ref={galaxyRef}
+                className="galaxy-background"
+                focal={[0.5, 0.5]}
+                rotation={[0.5, 0.0]}
+                starSpeed={0.2}
+                density={0.8}
+                hueShift={160}
+                disableAnimation={disableAnimations && !forceAnimations}
+                speed={0.3}
+                mouseInteraction={!disableAnimations || forceAnimations}
+                glowIntensity={0.2}
+                saturation={0.1}
+                mouseRepulsion={!disableAnimations || forceAnimations}
+                repulsionStrength={0.5}
+                twinkleIntensity={0.1}
+                rotationSpeed={0.05}
+                autoCenterRepulsion={0}
+                transparent={true}
+                onError={handleGalaxyError}
+                onLoad={handleGalaxySuccess}
+                style={{
+                  opacity: galaxyLoading ? 0 : 1,
+                  transition: 'opacity 1s ease-in-out'
+                }}
+              />
+            </>
           ) : (
             <LightweightBackground className="background-layer" />
           )}
@@ -101,7 +205,7 @@ function App() {
           <Navbar />
           <main>
             <Routes>
-              <Route path="/" element={<Home />} />
+              <Route path="/" element={<Home disableAnimations={disableAnimations && !forceAnimations} />} />
               <Route path="/services" element={<Services />} />
               <Route path="/services/business-assessment" element={<BusinessAssessment />} />
               <Route path="/services/market-entry" element={<MarketEntry />} />
