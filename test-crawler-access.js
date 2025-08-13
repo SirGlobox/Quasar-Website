@@ -46,11 +46,13 @@ const testUserAgents = [
   }
 ];
 
-// Test paths
+// Test paths - including both direct API routes and redirected URLs
 const testPaths = [
   '/',
-  '/robots.txt',
-  '/sitemap.xml',
+  '/robots.txt',        // Should redirect to /api/robots.txt
+  '/sitemap.xml',       // Should redirect to /api/sitemap.xml
+  '/api/robots.txt',    // Direct API route
+  '/api/sitemap.xml',   // Direct API route
   '/services',
   '/about',
   '/contact',

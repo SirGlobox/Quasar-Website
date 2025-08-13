@@ -151,6 +151,16 @@
   ],
   "redirects": [
     {
+      "source": "/robots.txt",
+      "destination": "/api/robots.txt",
+      "permanent": false
+    },
+    {
+      "source": "/sitemap.xml",
+      "destination": "/api/sitemap.xml",
+      "permanent": false
+    },
+    {
       "source": "/home",
       "destination": "/",
       "permanent": true
