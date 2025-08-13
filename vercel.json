@@ -5,15 +5,7 @@
   "framework": "create-react-app",
   "rewrites": [
     {
-      "source": "/robots.txt",
-      "destination": "/robots.txt"
-    },
-    {
-      "source": "/sitemap.xml", 
-      "destination": "/sitemap.xml"
-    },
-    {
-      "source": "/((?!robots\\.txt|sitemap\\.xml|static|favicon\\.ico|manifest\\.json).*)",
+      "source": "/((?!robots\\.txt|sitemap\\.xml|static|favicon\\.ico|manifest\\.json|_headers).*)",
       "destination": "/index.html"
     }
   ],
@@ -42,8 +34,8 @@
           "value": "86400"
         },
         {
-          "key": "Cache-Control",
-          "value": "public, max-age=0, must-revalidate"
+          "key": "Vary",
+          "value": "User-Agent, Accept, Accept-Encoding"
         }
       ]
     },
@@ -56,7 +48,7 @@
         },
         {
           "key": "Cache-Control",
-          "value": "public, max-age=3600"
+          "value": "public, max-age=3600, s-maxage=3600"
         },
         {
           "key": "X-Robots-Tag",
@@ -73,6 +65,10 @@
         {
           "key": "Access-Control-Allow-Headers",
           "value": "*"
+        },
+        {
+          "key": "Vary",
+          "value": "User-Agent, Accept"
         }
       ]
     },
@@ -85,7 +81,7 @@
         },
         {
           "key": "Cache-Control",
-          "value": "public, max-age=3600"
+          "value": "public, max-age=3600, s-maxage=3600"
         },
         {
           "key": "Access-Control-Allow-Origin",
@@ -98,6 +94,10 @@
         {
           "key": "Access-Control-Allow-Headers",
           "value": "*"
+        },
+        {
+          "key": "Vary",
+          "value": "User-Agent, Accept"
         }
       ]
     },
@@ -115,6 +115,36 @@
         {
           "key": "Access-Control-Allow-Methods",
           "value": "GET, HEAD, OPTIONS"
+        }
+      ]
+    },
+    {
+      "source": "/manifest.json",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "application/json; charset=utf-8"
+        },
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=86400"
+        },
+        {
+          "key": "Access-Control-Allow-Origin",
+          "value": "*"
+        }
+      ]
+    },
+    {
+      "source": "/favicon.ico",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=86400"
+        },
+        {
+          "key": "Access-Control-Allow-Origin",
+          "value": "*"
         }
       ]
     }
