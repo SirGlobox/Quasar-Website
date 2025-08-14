@@ -245,6 +245,14 @@
   background: transparent;
 }
 
+.scrambled-header.text-block {
+  font-size: clamp(2rem, 4vw, 3rem) !important;
+}
+
+.scrambled-header.text-block p {
+  font-size: inherit !important;
+}
+
 .why-choose .content {
   width: 100%;
   max-width: 100%;

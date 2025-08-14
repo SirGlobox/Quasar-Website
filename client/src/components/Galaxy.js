@@ -1,5 +1,5 @@
 import { Renderer, Program, Mesh, Color, Triangle } from "ogl";
-import { useEffect, useRef, forwardRef, useImperativeHandle } from "react";
+import { useEffect, useRef, memo } from "react";
 import "./Galaxy.css";
 
 const vertexShader = `
@@ -170,26 +170,25 @@ void main() {
 }
 `;
 
-const Galaxy = forwardRef(({
+const Galaxy = memo(function Galaxy({
   focal = [0.5, 0.5],
-  rotation = [1.0, 0.0],
-  starSpeed = 0.5,
+  rotation = [0.05, 0.0],
+  starSpeed = 0.2,
   density = 1,
-  hueShift = 280, // Purple hue
+  hueShift = 0,
   disableAnimation = false,
   speed = 1.0,
   mouseInteraction = true,
-  glowIntensity = 0.4,
-  saturation = 0.8, // Increased saturation for more vibrant purple
+  glowIntensity = 0.2,
+  saturation = 0.0,
   mouseRepulsion = true,
-  repulsionStrength = 2,
+  repulsionStrength = 1,
   twinkleIntensity = 0.3,
-  rotationSpeed = 0.05, // Slower rotation for subtlety
+  rotationSpeed = 0.1,
   autoCenterRepulsion = 0,
   transparent = true,
-  externalMousePos = null, // Accept external mouse coordinates
   ...rest
-}, ref) => {
+}) {
   const ctnDom = useRef(null);
   const targetMousePos = useRef({ x: 0.5, y: 0.5 });
   const smoothMousePos = useRef({ x: 0.5, y: 0.5 });
@@ -276,7 +275,7 @@ const Galaxy = forwardRef(({
         program.uniforms.uStarSpeed.value = (t * 0.001 * starSpeed) / 10.0;
       }
 
-      const lerpFactor = 0.15; // Increased for more responsive tracking
+      const lerpFactor = 0.05;
       smoothMousePos.current.x +=
         (targetMousePos.current.x - smoothMousePos.current.x) * lerpFactor;
       smoothMousePos.current.y +=
@@ -294,9 +293,36 @@ const Galaxy = forwardRef(({
     animateId = requestAnimationFrame(update);
     ctn.appendChild(gl.canvas);
 
+    function handleDocumentMouseMove(e) {
+      const rect = ctn.getBoundingClientRect();
+      const x = (e.clientX - rect.left) / rect.width;
+      const y = 1.0 - (e.clientY - rect.top) / rect.height;
+      
+      // Only update if mouse is within reasonable bounds (allows for some overflow)
+      if (x >= -0.5 && x <= 1.5 && y >= -0.5 && y <= 1.5) {
+        targetMousePos.current = { x, y };
+        targetMouseActive.current = 1.0;
+      }
+    }
+
+    function handleDocumentMouseLeave() {
+      // Gradually fade out mouse activity instead of instant cutoff
+      targetMouseActive.current = 0.0;
+    }
+
+    if (mouseInteraction) {
+      // Use document-level event capture for full-page coverage
+      document.addEventListener("mousemove", handleDocumentMouseMove);
+      document.addEventListener("mouseleave", handleDocumentMouseLeave);
+    }
+
     return () => {
       cancelAnimationFrame(animateId);
       window.removeEventListener("resize", resize);
+      if (mouseInteraction) {
+        document.removeEventListener("mousemove", handleDocumentMouseMove);
+        document.removeEventListener("mouseleave", handleDocumentMouseLeave);
+      }
       ctn.removeChild(gl.canvas);
       gl.getExtension("WEBGL_lose_context")?.loseContext();
     };
@@ -318,25 +344,6 @@ const Galaxy = forwardRef(({
     autoCenterRepulsion,
     transparent,
   ]);
-
-  // Expose methods to parent component
-  useImperativeHandle(ref, () => ({
-    updateMousePos: (x, y) => {
-      targetMousePos.current = { x, y };
-      targetMouseActive.current = 1.0;
-    }
-  }));
-
-  // Effect to handle external mouse coordinates
-  useEffect(() => {
-    if (externalMousePos && mouseInteraction) {
-      targetMousePos.current = {
-        x: externalMousePos.x,
-        y: externalMousePos.y
-      };
-      targetMouseActive.current = 1.0;
-    }
-  }, [externalMousePos, mouseInteraction]);
 
   return <div ref={ctnDom} className="galaxy-container" {...rest} />;
 });

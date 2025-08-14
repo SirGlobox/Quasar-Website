@@ -104,7 +104,7 @@ const Home = ({ disableAnimations = false }) => {
                 <div className="hero-title-container">
                   <h1 className="hero-title">
                     <DecryptedText 
-                      text="Business Growth Consultant Charlotte NC - Transform Your Home Service Business"
+                      text="Home Service Business Consulting Charlotte NC"
                       animateOn="view"
                       sequential={true}
                       speed={50}

@@ -1,4 +1,4 @@
-import { useRef, useEffect, useCallback, useState } from "react";
+import { useRef, useEffect, useCallback, useState, memo } from "react";
 import { useNavigate } from "react-router-dom";
 import { gsap } from "gsap";
 import "./MagicBento.css";
@@ -551,7 +551,7 @@ const useMobileDetection = () => {
   return isMobile;
 };
 
-const MagicBento = ({
+const MagicBento = memo(({
   textAutoHide = true,
   enableStars = true,
   enableSpotlight = true,
@@ -754,6 +754,6 @@ const MagicBento = ({
       </BentoCardGrid>
     </>
   );
-};
+});
 
 export default MagicBento;

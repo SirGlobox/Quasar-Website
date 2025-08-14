@@ -10,5 +10,18 @@ root.render(
   </React.StrictMode>
 );
 
+// Register service worker for offline caching and performance
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('/sw.js')
+      .then((registration) => {
+        console.log('SW registered: ', registration);
+      })
+      .catch((registrationError) => {
+        console.log('SW registration failed: ', registrationError);
+      });
+  });
+}
+
 // Measure and report web vitals for performance monitoring
-reportWebVitals(console.log); 
+reportWebVitals(console.log);

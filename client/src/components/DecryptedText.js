@@ -217,7 +217,7 @@ export default function DecryptedText({
         observer.unobserve(currentRef)
       }
     }
-  }, [animateOn, hasAnimated])
+  }, [animateOn, hasAnimated, text])
 
   const hoverProps =
     animateOn === 'hover'

@@ -54,7 +54,6 @@ export const isCrawler = () => {
     'ahrefsbot',
     'majestic',
     'majesticbot',
-    'moz',
     'mozbot',
     'spyfu',
     'spyfubot',
