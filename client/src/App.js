@@ -4,6 +4,7 @@ import { HelmetProvider } from 'react-helmet-async';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import LoadingSpinner from './components/LoadingSpinner';
+import { shouldDisableAnimations } from './utils/crawlerDetection';
 import './styles/App.css';
 
 // Lazy load Galaxy component for better performance
@@ -25,14 +26,21 @@ const CustomerExperience = React.lazy(() => import('./pages/CustomerExperience')
 
 function App() {
   const [showGalaxy, setShowGalaxy] = useState(false);
+  const [disableAnimations, setDisableAnimations] = useState(false);
 
   useEffect(() => {
-    // Load Galaxy after initial render to improve first paint
-    const timer = setTimeout(() => {
-      setShowGalaxy(true);
-    }, 100);
-
-    return () => clearTimeout(timer);
+    // Check if animations should be disabled for crawlers
+    const shouldDisable = shouldDisableAnimations();
+    setDisableAnimations(shouldDisable);
+    
+    // Only load Galaxy for non-crawlers to prevent SEO audit issues
+    if (!shouldDisable) {
+      const timer = setTimeout(() => {
+        setShowGalaxy(true);
+      }, 100);
+      return () => clearTimeout(timer);
+    }
+    // For crawlers, Galaxy remains false (disabled)
   }, []);
 
   return (
@@ -75,7 +83,7 @@ function App() {
           <main>
             <Suspense fallback={<LoadingSpinner />}>
               <Routes>
-                <Route path="/" element={<Home />} />
+                <Route path="/" element={<Home disableAnimations={disableAnimations} />} />
                 <Route path="/services" element={<Services />} />
                 <Route path="/services/business-assessment" element={<BusinessAssessment />} />
                 <Route path="/services/market-entry" element={<MarketEntry />} />
