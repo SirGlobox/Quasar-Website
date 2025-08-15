@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { Phone, Mail, MapPin, Clock } from 'lucide-react';
+import GoogleMap from '../components/GoogleMap';
 import './Contact.css';
 
 const Contact = () => {
@@ -129,24 +130,10 @@ const Contact = () => {
                   </div>
                 </div>
 
-                <div className="service-areas-card card">
-                  <h3>Service Areas</h3>
-                  <p>We serve home service businesses throughout the greater Charlotte area within a 30-mile radius:</p>
-                  <ul>
-                    <li>Charlotte, NC</li>
-                    <li>Concord, NC</li>
-                    <li>Gastonia, NC</li>
-                    <li>Huntersville, NC</li>
-                    <li>Matthews, NC</li>
-                    <li>Mint Hill, NC</li>
-                    <li>Pineville, NC</li>
-                    <li>Cornelius, NC</li>
-                    <li>Davidson, NC</li>
-                    <li>Mooresville, NC</li>
-                    <li>Rock Hill, SC</li>
-                    <li>Fort Mill, SC</li>
-                    <li>Indian Trail, NC</li>
-                  </ul>
+                <div className="map-card card">
+                  <h3>Our Location</h3>
+                  <p>Find us on the map and get directions to our office:</p>
+                  <GoogleMap />
                 </div>
               </div>
             </div>

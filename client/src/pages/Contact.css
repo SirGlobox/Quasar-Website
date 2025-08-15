@@ -218,7 +218,7 @@
 }
 
 .contact-details-card,
-.service-areas-card {
+.map-card {
   background: rgba(6, 0, 16, 0.8);
   border: 1px solid rgba(162, 89, 247, 0.2);
   backdrop-filter: blur(10px);
@@ -226,7 +226,7 @@
 }
 
 .contact-details-card h3,
-.service-areas-card h3 {
+.map-card h3 {
   color: var(--snow-white);
   font-family: var(--font-heading);
   text-shadow: var(--text-glow-strong);
@@ -234,24 +234,16 @@
 }
 
 .contact-details-card p,
-.service-areas-card p {
+.map-card p {
   color: var(--cosmic-silver);
   font-family: var(--font-body);
   text-shadow: var(--text-glow);
   margin-bottom: 1.5rem;
 }
 
-.service-areas-card ul {
-  list-style: none;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-  gap: 0.5rem;
-}
-
-.service-areas-card li {
-  color: var(--cosmic-silver);
-  font-size: 0.9rem;
-  text-shadow: var(--text-glow);
+.map-card .google-map-container {
+  margin-top: 1rem;
+  border: 1px solid rgba(162, 89, 247, 0.3);
 }
 
 /* Responsive */

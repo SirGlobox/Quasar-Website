@@ -188,7 +188,17 @@ const Home = ({ disableAnimations = false }) => {
         <section className="section services-preview">
           <div className="container">
             <div className="section-title">
-              <h2>Expert Consulting Services</h2>
+              <h2>
+                <ScrambledText
+                  className="services-preview-title"
+                  radius={120}
+                  duration={1.5}
+                  speed={0.6}
+                  scrambleChars=".:"
+                >
+                  Expert Consulting Services
+                </ScrambledText>
+              </h2>
               <p>Comprehensive solutions designed specifically for home service businesses in Charlotte and surrounding areas</p>
             </div>
             <div className="grid grid-3">

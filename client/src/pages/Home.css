@@ -253,6 +253,14 @@
   font-size: inherit !important;
 }
 
+.services-preview-title.text-block {
+  font-size: clamp(2rem, 4vw, 3rem) !important;
+}
+
+.services-preview-title.text-block p {
+  font-size: inherit !important;
+}
+
 .why-choose .content {
   width: 100%;
   max-width: 100%;
