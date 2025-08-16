@@ -619,6 +619,17 @@ const MagicBento = memo(({
                       <li key={pointIndex} className="card__bullet-item">{point}</li>
                     ))}
                   </ul>
+                  <button 
+                    className="card__learn-more-btn"
+                    onClick={(e) => {
+                      e.stopPropagation(); // Prevent card click
+                      if (card.link) {
+                        navigate(card.link);
+                      }
+                    }}
+                  >
+                    Learn More →
+                  </button>
                 </div>
               </ParticleCard>
             );

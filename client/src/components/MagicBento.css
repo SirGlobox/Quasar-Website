@@ -131,6 +131,37 @@
   margin-bottom: 0;
 }
 
+.card__learn-more-btn {
+  margin-top: auto;
+  padding: 0.75rem 1.5rem;
+  background: linear-gradient(135deg, #A259F7, #FFD600);
+  color: #060010;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  font-family: var(--font-body, 'Inter', sans-serif);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  align-self: flex-start;
+  min-width: 120px;
+  text-align: center;
+  box-shadow: 0 2px 8px rgba(162, 89, 247, 0.3);
+}
+
+.card__learn-more-btn:hover {
+  background: linear-gradient(135deg, #FFD600, #A259F7);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(162, 89, 247, 0.5);
+}
+
+.card__learn-more-btn:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 8px rgba(162, 89, 247, 0.3);
+}
+
 .card--text-autohide .card__title,
 .card--text-autohide .card__description {
   /* Remove text truncation - allow full text display */
