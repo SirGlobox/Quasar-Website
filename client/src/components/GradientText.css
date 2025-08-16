@@ -63,7 +63,17 @@
   background-size: 300% 100%;
   background-clip: text;
   -webkit-background-clip: text;
+  /* CRITICAL: Add fallback colors before transparent to ensure visibility */
+  color: var(--snow-white, #F9FAFB) !important;
+  color: #F9FAFB !important;
+  color: white !important;
   color: transparent;
+  /* Add text-shadow as additional fallback */
+  text-shadow: 
+    0 0 5px rgba(249, 250, 251, 0.8),
+    0 0 10px rgba(162, 89, 247, 0.6),
+    0 0 15px rgba(162, 89, 247, 0.4),
+    2px 2px 4px rgba(0, 0, 0, 0.5);
   animation: gradient linear infinite;
 }
 
@@ -72,6 +82,10 @@
 .animated-gradient-text.no-animation .text-content {
   animation: none;
   background-position: 0% 50%;
+  /* Ensure text is visible when animations are disabled */
+  color: var(--snow-white, #F9FAFB) !important;
+  color: #F9FAFB !important;
+  color: white !important;
 }
 
 /* Respect user's reduced motion preference */

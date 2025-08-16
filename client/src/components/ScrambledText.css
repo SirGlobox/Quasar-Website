@@ -4,24 +4,40 @@
   max-width: 100%;
   font-family: var(--font-heading, 'Montserrat', sans-serif);
   font-size: clamp(1.5rem, 3vw, 2rem);
-  color: var(--snow-white, #F9FAFB);
+  /* CRITICAL: Always visible white text as base with multiple fallbacks */
+  color: var(--snow-white, #F9FAFB) !important;
+  color: #F9FAFB !important;
+  color: white !important;
   line-height: 1.2;
   overflow: hidden;
   word-break: normal;
   overflow-wrap: break-word;
-  text-shadow: var(--text-glow-strong);
+  text-shadow: 
+    0 0 5px rgba(249, 250, 251, 0.8),
+    0 0 10px rgba(162, 89, 247, 0.6),
+    0 0 15px rgba(162, 89, 247, 0.4),
+    0 0 20px rgba(162, 89, 247, 0.2),
+    2px 2px 4px rgba(0, 0, 0, 0.5);
   font-weight: 700;
 }
 
 .text-block p {
   margin: 0;
-  color: var(--snow-white, #F9FAFB);
+  /* CRITICAL: Always visible white text as base with multiple fallbacks */
+  color: var(--snow-white, #F9FAFB) !important;
+  color: #F9FAFB !important;
+  color: white !important;
   width: 100%;
   max-width: 100%;
   word-break: normal;
   overflow-wrap: break-word;
   white-space: normal;
-  text-shadow: var(--text-glow-strong);
+  text-shadow: 
+    0 0 5px rgba(249, 250, 251, 0.8),
+    0 0 10px rgba(162, 89, 247, 0.6),
+    0 0 15px rgba(162, 89, 247, 0.4),
+    0 0 20px rgba(162, 89, 247, 0.2),
+    2px 2px 4px rgba(0, 0, 0, 0.5);
   font-weight: 700;
 }
 
@@ -33,11 +49,21 @@
   overflow: hidden;
   box-sizing: border-box;
   word-wrap: break-word;
+  /* CRITICAL: Ensure characters are always visible */
+  color: var(--snow-white, #F9FAFB) !important;
+  color: #F9FAFB !important;
+  color: white !important;
 }
 
 .char:hover {
-  color: var(--secondary-solar, #A259F7);
-  text-shadow: 0 0 15px rgba(162, 89, 247, 0.6);
+  color: var(--secondary-solar, #A259F7) !important;
+  color: #A259F7 !important;
+  color: #A259F7 !important;
+  text-shadow: 
+    0 0 8px rgba(162, 89, 247, 0.8),
+    0 0 15px rgba(162, 89, 247, 0.6),
+    0 0 25px rgba(162, 89, 247, 0.4),
+    2px 2px 4px rgba(0, 0, 0, 0.6);
 }
 
 /* Responsive adjustments */

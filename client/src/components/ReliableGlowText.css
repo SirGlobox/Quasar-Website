@@ -1,0 +1,231 @@
+/* ReliableGlowText - Bulletproof text component with guaranteed visibility */
+
+.reliable-glow-text {
+  position: relative;
+  display: inline-block;
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-heading, 'Montserrat', sans-serif);
+  font-weight: 700;
+  line-height: 1.2;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  hyphens: auto;
+}
+
+.reliable-glow-text .text-content {
+  position: relative;
+  display: inline-block;
+  z-index: 2;
+  /* CRITICAL: Always visible white text as base */
+  color: var(--snow-white, #F9FAFB) !important;
+  /* Fallback colors in case CSS variables fail */
+  color: #F9FAFB !important;
+  color: white !important;
+  /* Multiple fallback layers for maximum compatibility */
+  background-color: transparent;
+  -webkit-text-fill-color: var(--snow-white, #F9FAFB);
+  -webkit-text-fill-color: #F9FAFB;
+  -webkit-text-fill-color: white;
+}
+
+/* Screen reader only content */
+.reliable-glow-text .sr-only {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+/* Size Variants */
+.reliable-glow-text.size-small .text-content {
+  font-size: clamp(0.875rem, 2vw, 1rem);
+}
+
+.reliable-glow-text.size-medium .text-content {
+  font-size: clamp(1rem, 2.5vw, 1.25rem);
+}
+
+.reliable-glow-text.size-large .text-content {
+  font-size: clamp(1.5rem, 4vw, 2.5rem);
+}
+
+.reliable-glow-text.size-xlarge .text-content {
+  font-size: clamp(2rem, 5vw, 4rem);
+}
+
+/* Color Variants with Glow Effects */
+.reliable-glow-text.variant-primary.with-glow .text-content {
+  /* Primary white with purple glow */
+  text-shadow: 
+    0 0 5px rgba(249, 250, 251, 0.8),
+    0 0 10px rgba(162, 89, 247, 0.6),
+    0 0 15px rgba(162, 89, 247, 0.4),
+    0 0 20px rgba(162, 89, 247, 0.2),
+    2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.reliable-glow-text.variant-secondary.with-glow .text-content {
+  /* Secondary with cosmic silver glow */
+  color: var(--cosmic-silver, #F5F7FA) !important;
+  color: #F5F7FA !important;
+  color: white !important;
+  text-shadow: 
+    0 0 5px rgba(245, 247, 250, 0.8),
+    0 0 10px rgba(245, 247, 250, 0.6),
+    0 0 15px rgba(162, 89, 247, 0.3),
+    2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.reliable-glow-text.variant-accent.with-glow .text-content {
+  /* Accent with golden glow */
+  color: var(--accent-orbit, #FFD600) !important;
+  color: #FFD600 !important;
+  color: gold !important;
+  text-shadow: 
+    0 0 5px rgba(255, 214, 0, 0.8),
+    0 0 10px rgba(255, 214, 0, 0.6),
+    0 0 15px rgba(255, 214, 0, 0.4),
+    0 0 20px rgba(255, 214, 0, 0.2),
+    2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+/* No glow variants - still guaranteed visible */
+.reliable-glow-text.variant-primary.no-glow .text-content {
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+}
+
+.reliable-glow-text.variant-secondary.no-glow .text-content {
+  color: var(--cosmic-silver, #F5F7FA) !important;
+  color: #F5F7FA !important;
+  color: white !important;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+}
+
+.reliable-glow-text.variant-accent.no-glow .text-content {
+  color: var(--accent-orbit, #FFD600) !important;
+  color: #FFD600 !important;
+  color: gold !important;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+}
+
+/* Animated variants */
+.reliable-glow-text.animated.with-glow .text-content {
+  transition: all 0.3s ease;
+}
+
+.reliable-glow-text.animated.with-glow:hover .text-content {
+  transform: translateY(-1px);
+}
+
+.reliable-glow-text.variant-primary.animated.with-glow:hover .text-content {
+  text-shadow: 
+    0 0 8px rgba(249, 250, 251, 1),
+    0 0 15px rgba(162, 89, 247, 0.8),
+    0 0 25px rgba(162, 89, 247, 0.6),
+    0 0 35px rgba(162, 89, 247, 0.4),
+    2px 2px 6px rgba(0, 0, 0, 0.6);
+}
+
+.reliable-glow-text.variant-secondary.animated.with-glow:hover .text-content {
+  text-shadow: 
+    0 0 8px rgba(245, 247, 250, 1),
+    0 0 15px rgba(245, 247, 250, 0.8),
+    0 0 25px rgba(162, 89, 247, 0.5),
+    2px 2px 6px rgba(0, 0, 0, 0.6);
+}
+
+.reliable-glow-text.variant-accent.animated.with-glow:hover .text-content {
+  text-shadow: 
+    0 0 8px rgba(255, 214, 0, 1),
+    0 0 15px rgba(255, 214, 0, 0.8),
+    0 0 25px rgba(255, 214, 0, 0.6),
+    0 0 35px rgba(255, 214, 0, 0.4),
+    2px 2px 6px rgba(0, 0, 0, 0.6);
+}
+
+/* Disable animations for crawlers and reduced motion */
+.reliable-glow-text.no-animation .text-content {
+  transition: none !important;
+  animation: none !important;
+}
+
+.reliable-glow-text.no-animation:hover .text-content {
+  transform: none !important;
+}
+
+/* Respect user's reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  .reliable-glow-text .text-content {
+    transition: none !important;
+    animation: none !important;
+  }
+  
+  .reliable-glow-text:hover .text-content {
+    transform: none !important;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .reliable-glow-text .text-content {
+    text-shadow: none !important;
+    color: white !important;
+    background-color: black;
+    padding: 2px 4px;
+    border-radius: 2px;
+  }
+}
+
+/* Forced colors mode (Windows High Contrast) */
+@media (forced-colors: active) {
+  .reliable-glow-text .text-content {
+    color: ButtonText !important;
+    text-shadow: none !important;
+    background-color: transparent !important;
+  }
+}
+
+/* Mobile optimizations */
+@media (max-width: 768px) {
+  .reliable-glow-text.size-xlarge .text-content {
+    font-size: clamp(1.75rem, 6vw, 3rem);
+  }
+  
+  .reliable-glow-text.size-large .text-content {
+    font-size: clamp(1.25rem, 5vw, 2rem);
+  }
+}
+
+@media (max-width: 480px) {
+  .reliable-glow-text.size-xlarge .text-content {
+    font-size: clamp(1.5rem, 7vw, 2.5rem);
+  }
+  
+  .reliable-glow-text.size-large .text-content {
+    font-size: clamp(1.1rem, 6vw, 1.75rem);
+  }
+  
+  /* Reduce glow intensity on small screens for better readability */
+  .reliable-glow-text.with-glow .text-content {
+    text-shadow: 
+      0 0 3px rgba(249, 250, 251, 0.6),
+      0 0 6px rgba(162, 89, 247, 0.4),
+      0 0 10px rgba(162, 89, 247, 0.2),
+      1px 1px 2px rgba(0, 0, 0, 0.5);
+  }
+}
+
+/* Print styles */
+@media print {
+  .reliable-glow-text .text-content {
+    color: black !important;
+    text-shadow: none !important;
+    background-color: transparent !important;
+  }
+}
