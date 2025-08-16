@@ -12,7 +12,7 @@
 
 .card-grid {
   display: grid;
-  gap: 0.5em;
+  gap: 1em;
   padding: 0.75em;
   max-width: 54em;
   font-size: clamp(1rem, 0.9rem + 0.5vw, 1.5rem);
@@ -24,11 +24,10 @@
   flex-direction: column;
   justify-content: flex-start;
   position: relative;
-  aspect-ratio: 1.1/1;
-  min-height: 300px;
+  min-height: 380px;
   width: 100%;
   max-width: 100%;
-  padding: 1.5em;
+  padding: 2em;
   border-radius: 20px;
   border: 1px solid var(--border-color);
   background: var(--background-dark);
@@ -36,7 +35,7 @@
   overflow: visible;
   transition: all 0.3s ease;
   cursor: pointer;
-  gap: 1rem;
+  gap: 1.5rem;
 
   --glow-x: 50%;
   --glow-y: 50%;
@@ -114,7 +113,7 @@
 .card__bullet-item {
   position: relative;
   padding-left: 1.2em;
-  margin-bottom: 0.5em;
+  margin-bottom: 0.75em;
   text-shadow: 0 0 10px rgba(209, 213, 219, 0.2);
 }
 
@@ -190,7 +189,9 @@
 
   .card {
     width: 100%;
-    min-height: 180px;
+    min-height: 220px;
+    padding: 1.5em;
+    gap: 1.2rem;
   }
 }
 
