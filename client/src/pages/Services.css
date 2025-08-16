@@ -14,10 +14,12 @@
 
 .services-header-typing {
   margin-bottom: 1rem;
-  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-size: clamp(1.75rem, 5vw, 4rem);
   font-family: var(--font-heading);
   font-weight: 700;
-  line-height: 1.1;
+  line-height: 1.2;
+  word-wrap: break-word;
+  hyphens: auto;
 }
 
 .services-header-typing .text-type__content {
@@ -494,8 +496,75 @@
   text-shadow: 0 0 10px rgba(255, 214, 0, 0.5);
 }
 
-/* Responsive */
+/* Enhanced Mobile Responsiveness */
+@media (max-width: 480px) {
+  .page-hero {
+    padding: 4rem 0 2rem;
+  }
+  
+  .services-header-typing {
+    font-size: clamp(1.4rem, 8vw, 2.2rem) !important;
+    line-height: 1.2;
+    word-wrap: break-word;
+    hyphens: auto;
+    text-align: center;
+  }
+  
+  .page-hero h1 {
+    font-size: clamp(1.5rem, 8vw, 2.5rem) !important;
+    line-height: 1.2;
+    word-wrap: break-word;
+    hyphens: auto;
+  }
+  
+  .page-hero p {
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+  
+  .process-step h3 {
+    font-size: clamp(1rem, 5vw, 1.2rem) !important;
+    line-height: 1.3;
+    word-wrap: break-word;
+    hyphens: auto;
+  }
+  
+  .service-info h3 {
+    font-size: clamp(1.1rem, 5vw, 1.4rem) !important;
+    line-height: 1.3;
+    word-wrap: break-word;
+    hyphens: auto;
+  }
+  
+  .journey-stages {
+    grid-template-columns: 1fr;
+  }
+  
+  .service-overview .image img {
+    max-height: 250px;
+  }
+}
+
 @media (max-width: 768px) {
+  .page-hero {
+    padding: 6rem 0 3rem;
+  }
+  
+  .services-header-typing {
+    font-size: clamp(1.6rem, 6vw, 3rem) !important;
+    line-height: 1.2;
+    word-wrap: break-word;
+    hyphens: auto;
+    text-align: center;
+  }
+  
+  .page-hero h1 {
+    font-size: clamp(1.6rem, 6vw, 3rem) !important;
+    line-height: 1.2;
+    word-wrap: break-word;
+    hyphens: auto;
+  }
+  
   .service-header {
     flex-direction: column;
     text-align: center;
@@ -527,9 +596,38 @@
   }
 }
 
-@media (max-width: 480px) {
-  .journey-stages {
-    grid-template-columns: 1fr;
+@media (max-width: 375px) {
+  .page-hero {
+    padding: 3rem 0 2rem;
+  }
+  
+  .services-header-typing {
+    font-size: clamp(1.3rem, 9vw, 2rem) !important;
+    line-height: 1.1;
+    word-wrap: break-word;
+    hyphens: auto;
+    text-align: center;
+  }
+  
+  .page-hero h1 {
+    font-size: clamp(1.4rem, 9vw, 2.2rem) !important;
+    line-height: 1.1;
+    word-wrap: break-word;
+    hyphens: auto;
+  }
+  
+  .process-step h3 {
+    font-size: clamp(0.95rem, 6vw, 1.1rem) !important;
+    line-height: 1.2;
+    word-wrap: break-word;
+    hyphens: auto;
+  }
+  
+  .service-info h3 {
+    font-size: clamp(1.05rem, 6vw, 1.3rem) !important;
+    line-height: 1.2;
+    word-wrap: break-word;
+    hyphens: auto;
   }
 }
 

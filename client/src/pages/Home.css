@@ -43,40 +43,42 @@
 }
 
 .hero-title-revealed {
-  color: var(--snow-white);
-  text-shadow: var(--text-glow-strong);
-  font-family: var(--font-heading);
+  color: var(--snow-white, #F9FAFB);
+  text-shadow: var(--text-glow-strong, 0 0 20px rgba(255, 255, 255, 0.5));
+  font-family: var(--font-heading, 'Orbitron', sans-serif);
 }
 
 .hero-title-encrypted {
-  color: var(--secondary-solar);
-  text-shadow: var(--text-glow);
-  font-family: var(--font-heading);
+  color: var(--secondary-solar, #FFD600);
+  text-shadow: var(--text-glow, 0 0 10px rgba(255, 214, 0, 0.3));
+  font-family: var(--font-heading, 'Orbitron', sans-serif);
 }
 
 .highlight {
-  background: linear-gradient(135deg, var(--primary-purple), var(--secondary-purple));
+  background: linear-gradient(135deg, var(--primary-purple, #A259F7), var(--secondary-purple, #8B5CF6));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
 .hero-subtitle {
-  font-size: 1.3rem;
+  font-size: clamp(1rem, 2.5vw, 1.3rem);
   margin-bottom: 2rem;
-  color: var(--text-secondary);
+  color: var(--text-secondary, #9CA3AF);
+  word-wrap: break-word;
+  hyphens: auto;
 }
 
 .hero-subtitle-revealed {
-  color: var(--cosmic-silver);
-  text-shadow: var(--text-glow);
-  font-family: var(--font-body);
+  color: var(--cosmic-silver, #F5F7FA);
+  text-shadow: var(--text-glow, 0 0 10px rgba(255, 255, 255, 0.3));
+  font-family: var(--font-body, 'Open Sans', sans-serif);
 }
 
 .hero-subtitle-encrypted {
-  color: var(--secondary-solar);
-  text-shadow: var(--text-glow);
-  font-family: var(--font-body);
+  color: var(--secondary-solar, #FFD600);
+  text-shadow: var(--text-glow, 0 0 10px rgba(255, 214, 0, 0.3));
+  font-family: var(--font-body, 'Open Sans', sans-serif);
   opacity: 0.7;
 }
 
@@ -106,14 +108,16 @@
 
 .stat-number {
   display: block;
-  font-size: 2rem;
+  font-size: clamp(1.5rem, 4vw, 2rem);
   font-weight: 700;
-  color: var(--primary-purple);
+  color: var(--primary-purple, #A259F7);
+  word-wrap: break-word;
 }
 
 .stat-label {
-  font-size: 0.9rem;
-  color: var(--text-muted);
+  font-size: clamp(0.8rem, 2vw, 0.9rem);
+  color: var(--text-muted, #6B7280);
+  word-wrap: break-word;
 }
 
 .hero-image img,
@@ -153,19 +157,23 @@
 }
 
 .quasar-header {
-  font-size: clamp(2rem, 4vw, 3rem);
+  font-size: clamp(1.75rem, 4vw, 3rem);
   margin-bottom: 2rem;
-  font-family: var(--font-heading);
+  font-family: var(--font-heading, 'Orbitron', sans-serif);
   font-weight: 700;
+  word-wrap: break-word;
+  hyphens: auto;
 }
 
 .quasar-description {
-  font-size: 1.1rem;
+  font-size: clamp(1rem, 2.5vw, 1.1rem);
   line-height: 1.7;
-  color: var(--cosmic-silver);
-  font-family: var(--font-body);
-  text-shadow: var(--text-glow);
+  color: var(--cosmic-silver, #F5F7FA);
+  font-family: var(--font-body, 'Open Sans', sans-serif);
+  text-shadow: var(--text-glow, 0 0 10px rgba(255, 255, 255, 0.3));
   margin: 0;
+  word-wrap: break-word;
+  hyphens: auto;
 }
 
 .what-is-quasar .video-container {
@@ -223,15 +231,17 @@
 }
 
 .service-link {
-  color: var(--accent-orbit, #FFD600); /* Orbit Gold for better visibility */
+  color: var(--accent-orbit, #FFD600);
   text-decoration: none;
   font-weight: 600;
   display: flex;
   align-items: center;
   gap: 0.5rem;
   margin-top: 1rem;
-  transition: var(--transition);
+  transition: var(--transition, all 0.3s ease);
   text-shadow: 0 0 10px rgba(255, 214, 0, 0.3);
+  font-size: clamp(0.9rem, 2vw, 1rem);
+  word-wrap: break-word;
 }
 
 .service-link:hover {
@@ -246,19 +256,27 @@
 }
 
 .scrambled-header.text-block {
-  font-size: clamp(2rem, 4vw, 3rem) !important;
+  font-size: clamp(1.75rem, 4vw, 3rem) !important;
+  word-wrap: break-word !important;
+  hyphens: auto !important;
 }
 
 .scrambled-header.text-block p {
   font-size: inherit !important;
+  word-wrap: break-word !important;
+  hyphens: auto !important;
 }
 
 .services-preview-title.text-block {
-  font-size: clamp(2rem, 4vw, 3rem) !important;
+  font-size: clamp(1.75rem, 4vw, 3rem) !important;
+  word-wrap: break-word !important;
+  hyphens: auto !important;
 }
 
 .services-preview-title.text-block p {
   font-size: inherit !important;
+  word-wrap: break-word !important;
+  hyphens: auto !important;
 }
 
 .why-choose .content {
@@ -274,11 +292,13 @@
 
 .why-choose-description {
   margin-bottom: 2rem;
-  font-size: 1.1rem;
+  font-size: clamp(1rem, 2.5vw, 1.1rem);
   color: var(--cosmic-silver, #F5F7FA);
   line-height: 1.6;
-  text-shadow: var(--text-glow);
+  text-shadow: var(--text-glow, 0 0 10px rgba(255, 255, 255, 0.3));
   font-family: var(--font-body, 'Open Sans', sans-serif);
+  word-wrap: break-word;
+  hyphens: auto;
 }
 
 .why-choose-benefits {
@@ -292,9 +312,11 @@
   padding-left: 1.5rem;
   margin-bottom: 0.75rem;
   color: var(--cosmic-silver, #F5F7FA);
-  font-size: 1rem;
+  font-size: clamp(0.9rem, 2vw, 1rem);
   line-height: 1.5;
-  text-shadow: var(--text-glow);
+  text-shadow: var(--text-glow, 0 0 10px rgba(255, 255, 255, 0.3));
+  word-wrap: break-word;
+  hyphens: auto;
 }
 
 .why-choose-benefits li::before {
@@ -316,11 +338,14 @@
   align-items: center;
   gap: 1rem;
   margin-bottom: 1rem;
-  color: var(--text-secondary);
+  color: var(--text-secondary, #9CA3AF);
+  font-size: clamp(0.9rem, 2vw, 1rem);
+  word-wrap: break-word;
+  hyphens: auto;
 }
 
 .benefits-list li svg {
-  color: var(--primary-purple);
+  color: var(--primary-purple, #A259F7);
   flex-shrink: 0;
 }
 
@@ -351,9 +376,11 @@
 
 .testimonial-text {
   font-style: italic;
-  font-size: 1.1rem;
+  font-size: clamp(1rem, 2.5vw, 1.1rem);
   margin-bottom: 1.5rem;
-  color: var(--text-secondary);
+  color: var(--text-secondary, #9CA3AF);
+  word-wrap: break-word;
+  hyphens: auto;
 }
 
 .testimonial-author {
@@ -363,12 +390,15 @@
 }
 
 .testimonial-author strong {
-  color: var(--text-primary);
+  color: var(--text-primary, #F9FAFB);
+  font-size: clamp(0.9rem, 2vw, 1rem);
+  word-wrap: break-word;
 }
 
 .testimonial-author span {
-  color: var(--text-muted);
-  font-size: 0.9rem;
+  color: var(--text-muted, #6B7280);
+  font-size: clamp(0.8rem, 1.8vw, 0.9rem);
+  word-wrap: break-word;
 }
 
 /* CTA Section */
@@ -390,23 +420,27 @@
 }
 
 .cta-content h2 {
-  color: var(--snow-white);
+  color: var(--snow-white, #F9FAFB);
   margin-bottom: 1rem;
-  font-family: var(--font-heading);
-  text-shadow: var(--text-glow-strong);
+  font-family: var(--font-heading, 'Orbitron', sans-serif);
+  text-shadow: var(--text-glow-strong, 0 0 20px rgba(255, 255, 255, 0.5));
   text-align: center;
+  word-wrap: break-word;
+  hyphens: auto;
 }
 
 .cta-content p {
-  color: var(--cosmic-silver);
-  font-size: 1.2rem;
+  color: var(--cosmic-silver, #F5F7FA);
+  font-size: clamp(1rem, 2.5vw, 1.2rem);
   margin-bottom: 2rem;
   max-width: 600px;
   margin-left: auto;
   margin-right: auto;
-  font-family: var(--font-body);
-  text-shadow: var(--text-glow);
+  font-family: var(--font-body, 'Open Sans', sans-serif);
+  text-shadow: var(--text-glow, 0 0 10px rgba(255, 255, 255, 0.3));
   text-align: center;
+  word-wrap: break-word;
+  hyphens: auto;
 }
 
 .cta-buttons {
@@ -418,27 +452,29 @@
 }
 
 .cta-section .btn-primary {
-  background: linear-gradient(135deg, var(--secondary-solar), var(--accent-orbit));
-  color: var(--primary-galaxy);
+  background: linear-gradient(135deg, var(--secondary-solar, #FFD600), var(--accent-orbit, #FFD600));
+  color: var(--primary-galaxy, #0B1426);
   font-weight: 600;
   text-shadow: none;
+  font-size: clamp(0.9rem, 2vw, 1rem);
 }
 
 .cta-section .btn-primary:hover {
-  background: linear-gradient(135deg, var(--accent-orbit), var(--secondary-solar));
+  background: linear-gradient(135deg, var(--accent-orbit, #FFD600), var(--secondary-solar, #FFD600));
   transform: translateY(-2px);
   box-shadow: 0 10px 25px rgba(162, 89, 247, 0.4);
 }
 
 .cta-section .btn-secondary {
-  border-color: var(--secondary-solar);
-  color: var(--snow-white);
-  text-shadow: var(--text-glow);
+  border-color: var(--secondary-solar, #FFD600);
+  color: var(--snow-white, #F9FAFB);
+  text-shadow: var(--text-glow, 0 0 10px rgba(255, 255, 255, 0.3));
+  font-size: clamp(0.9rem, 2vw, 1rem);
 }
 
 .cta-section .btn-secondary:hover {
-  background: var(--secondary-solar);
-  color: var(--primary-galaxy);
+  background: var(--secondary-solar, #FFD600);
+  color: var(--primary-galaxy, #0B1426);
   text-shadow: none;
 }
 

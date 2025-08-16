@@ -13,11 +13,13 @@
 }
 
 .footer-section h4 {
-  color: var(--snow-white);
+  color: var(--snow-white, #F9FAFB);
   margin-bottom: 1.5rem;
-  font-size: 1.2rem;
-  font-family: var(--font-heading);
-  text-shadow: var(--text-glow);
+  font-size: clamp(1.1rem, 2.5vw, 1.2rem);
+  font-family: var(--font-heading, 'Orbitron', sans-serif);
+  text-shadow: var(--text-glow, 0 0 10px rgba(255, 255, 255, 0.3));
+  word-wrap: break-word;
+  hyphens: auto;
 }
 
 .footer-brand {
@@ -33,21 +35,26 @@
 }
 
 .footer-brand h3 {
-  background: linear-gradient(135deg, var(--secondary-solar), var(--accent-orbit));
+  background: linear-gradient(135deg, var(--secondary-solar, #FFD600), var(--accent-orbit, #FFD600));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
   margin: 0;
-  font-family: var(--font-heading);
-  text-shadow: var(--text-glow);
+  font-family: var(--font-heading, 'Orbitron', sans-serif);
+  text-shadow: var(--text-glow, 0 0 10px rgba(255, 214, 0, 0.3));
+  font-size: clamp(1.2rem, 3vw, 1.5rem);
+  word-wrap: break-word;
 }
 
 .footer-description {
-  color: var(--cosmic-silver);
+  color: var(--cosmic-silver, #F5F7FA);
   margin-bottom: 2rem;
   line-height: 1.6;
-  font-family: var(--font-body);
-  text-shadow: var(--text-glow);
+  font-family: var(--font-body, 'Open Sans', sans-serif);
+  text-shadow: var(--text-glow, 0 0 10px rgba(255, 255, 255, 0.3));
+  font-size: clamp(0.9rem, 2vw, 1rem);
+  word-wrap: break-word;
+  hyphens: auto;
 }
 
 .footer-contact {
@@ -59,22 +66,25 @@
   align-items: center;
   gap: 0.75rem;
   margin-bottom: 1rem;
-  color: var(--text-secondary);
+  color: var(--text-secondary, #9CA3AF);
+  font-size: clamp(0.9rem, 2vw, 1rem);
+  word-wrap: break-word;
 }
 
 .contact-item svg {
-  color: var(--primary-purple);
+  color: var(--primary-purple, #A259F7);
   flex-shrink: 0;
 }
 
 .contact-item a {
-  color: var(--text-secondary);
+  color: var(--text-secondary, #9CA3AF);
   text-decoration: none;
-  transition: var(--transition);
+  transition: var(--transition, all 0.3s ease);
+  word-wrap: break-word;
 }
 
 .contact-item a:hover {
-  color: var(--primary-purple);
+  color: var(--primary-purple, #A259F7);
 }
 
 .social-links {
@@ -88,16 +98,16 @@
   justify-content: center;
   width: 40px;
   height: 40px;
-  background: var(--card-bg);
+  background: var(--card-bg, rgba(6, 0, 16, 0.8));
   border-radius: 50%;
-  color: var(--text-secondary);
+  color: var(--text-secondary, #9CA3AF);
   text-decoration: none;
-  transition: var(--transition);
+  transition: var(--transition, all 0.3s ease);
   border: 1px solid rgba(107, 70, 193, 0.1);
 }
 
 .social-link:hover {
-  background: var(--primary-purple);
+  background: var(--primary-purple, #A259F7);
   color: white;
   transform: translateY(-2px);
 }
@@ -108,21 +118,23 @@
 
 .footer-links li {
   margin-bottom: 0.75rem;
-  transition: var(--transition);
+  transition: var(--transition, all 0.3s ease);
+  font-size: clamp(0.9rem, 2vw, 1rem);
 }
 
 .footer-links li:hover {
-  color: var(--accent-orbit);
+  color: var(--accent-orbit, #FFD600);
 }
 
 .footer-links a {
-  color: var(--text-secondary);
+  color: var(--text-secondary, #9CA3AF);
   text-decoration: none;
-  transition: var(--transition);
+  transition: var(--transition, all 0.3s ease);
+  word-wrap: break-word;
 }
 
 .footer-links a:hover {
-  color: var(--accent-orbit);
+  color: var(--accent-orbit, #FFD600);
 }
 
 .footer-bottom {
@@ -139,8 +151,10 @@
 }
 
 .copyright {
-  color: var(--text-muted);
+  color: var(--text-muted, #6B7280);
   margin: 0;
+  font-size: clamp(0.85rem, 2vw, 0.9rem);
+  word-wrap: break-word;
 }
 
 .footer-legal {
@@ -149,26 +163,30 @@
 }
 
 .footer-legal a {
-  color: var(--text-muted);
+  color: var(--text-muted, #6B7280);
   text-decoration: none;
-  transition: var(--transition);
+  transition: var(--transition, all 0.3s ease);
+  font-size: clamp(0.85rem, 2vw, 0.9rem);
+  word-wrap: break-word;
 }
 
 .footer-legal a:hover {
-  color: var(--primary-purple);
+  color: var(--primary-purple, #A259F7);
 }
 
 /* Design Credit Link */
 .design-credit-link {
-  color: var(--secondary-solar);
+  color: var(--secondary-solar, #FFD600);
   text-decoration: none;
-  transition: var(--transition);
-  text-shadow: var(--text-glow);
+  transition: var(--transition, all 0.3s ease);
+  text-shadow: var(--text-glow, 0 0 10px rgba(255, 214, 0, 0.3));
+  font-size: clamp(0.85rem, 2vw, 0.9rem);
+  word-wrap: break-word;
 }
 
 .design-credit-link:hover {
-  color: var(--accent-orbit);
-  text-shadow: var(--text-glow-strong);
+  color: var(--accent-orbit, #FFD600);
+  text-shadow: var(--text-glow-strong, 0 0 20px rgba(255, 214, 0, 0.5));
 }
 
 /* Service Areas Grid */

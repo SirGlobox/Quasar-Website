@@ -7,7 +7,7 @@
   background: transparent;
   backdrop-filter: blur(5px);
   border-bottom: 1px solid rgba(162, 89, 247, 0.2);
-  transition: var(--transition);
+  transition: var(--transition, all 0.3s ease);
 }
 
 .navbar.scrolled {
@@ -27,10 +27,11 @@
   display: flex;
   align-items: center;
   text-decoration: none;
-  color: var(--text-primary);
+  color: var(--text-primary, #F9FAFB);
   font-weight: 700;
-  font-size: 1.5rem;
-  font-family: var(--font-heading);
+  font-size: clamp(1.2rem, 3vw, 1.5rem);
+  font-family: var(--font-heading, 'Orbitron', sans-serif);
+  word-wrap: break-word;
 }
 
 .logo {
@@ -40,11 +41,11 @@
 }
 
 .brand-text {
-  background: linear-gradient(135deg, var(--secondary-solar), var(--accent-orbit));
+  background: linear-gradient(135deg, var(--secondary-solar, #FFD600), var(--accent-orbit, #FFD600));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  text-shadow: var(--text-glow);
+  text-shadow: var(--text-glow, 0 0 10px rgba(255, 214, 0, 0.3));
 }
 
 .navbar-menu {
@@ -54,19 +55,21 @@
 }
 
 .nav-link {
-  color: var(--text-secondary);
+  color: var(--text-secondary, #9CA3AF);
   text-decoration: none;
   font-weight: 500;
-  transition: var(--transition);
+  transition: var(--transition, all 0.3s ease);
   position: relative;
-  font-family: var(--font-heading);
-  text-shadow: var(--text-glow);
+  font-family: var(--font-heading, 'Orbitron', sans-serif);
+  text-shadow: var(--text-glow, 0 0 10px rgba(255, 255, 255, 0.3));
+  font-size: clamp(0.9rem, 2vw, 1rem);
+  word-wrap: break-word;
 }
 
 .nav-link:hover,
 .nav-link.active {
-  color: var(--snow-white);
-  text-shadow: var(--text-glow-strong);
+  color: var(--snow-white, #F9FAFB);
+  text-shadow: var(--text-glow-strong, 0 0 20px rgba(255, 255, 255, 0.5));
 }
 
 .nav-link::after {
@@ -76,8 +79,8 @@
   left: 0;
   width: 0;
   height: 2px;
-  background: linear-gradient(135deg, var(--primary-purple), var(--secondary-purple));
-  transition: var(--transition);
+  background: linear-gradient(135deg, var(--primary-purple, #A259F7), var(--secondary-purple, #8B5CF6));
+  transition: var(--transition, all 0.3s ease);
 }
 
 .nav-link:hover::after,
@@ -117,11 +120,12 @@
 .dropdown-item {
   display: block;
   padding: 0.75rem 1.5rem;
-  color: var(--text-secondary);
+  color: var(--text-secondary, #9CA3AF);
   text-decoration: none;
-  font-size: 0.9rem;
-  transition: var(--transition);
+  font-size: clamp(0.85rem, 2vw, 0.9rem);
+  transition: var(--transition, all 0.3s ease);
   border-bottom: 1px solid rgba(162, 89, 247, 0.1);
+  word-wrap: break-word;
 }
 
 .dropdown-item:last-child {
@@ -130,7 +134,7 @@
 
 .dropdown-item:hover {
   background: rgba(162, 89, 247, 0.1);
-  color: var(--snow-white);
+  color: var(--snow-white, #F9FAFB);
   padding-left: 2rem;
 }
 
@@ -153,14 +157,16 @@
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  color: var(--text-secondary);
+  color: var(--text-secondary, #9CA3AF);
   text-decoration: none;
   font-weight: 500;
-  transition: var(--transition);
+  transition: var(--transition, all 0.3s ease);
+  font-size: clamp(0.9rem, 2vw, 1rem);
+  word-wrap: break-word;
 }
 
 .phone-link:hover {
-  color: var(--primary-purple);
+  color: var(--primary-purple, #A259F7);
 }
 
 .phone-text {
@@ -171,9 +177,10 @@
   display: none;
   background: none;
   border: none;
-  color: var(--text-primary);
+  color: var(--text-primary, #F9FAFB);
   cursor: pointer;
   padding: 0.5rem;
+  font-size: clamp(1.2rem, 3vw, 1.5rem);
 }
 
 /* Hide desktop dropdown on mobile, show mobile submenu */
@@ -198,7 +205,7 @@
   }
   
   .navbar-brand {
-    font-size: 1.2rem;
+    font-size: clamp(1.1rem, 2.5vw, 1.2rem);
   }
   
   .brand-text {
@@ -246,7 +253,7 @@
   
   .nav-link {
     padding: 0.75rem 0;
-    font-size: 1.1rem;
+    font-size: clamp(1rem, 2.5vw, 1.1rem);
     border-bottom: 1px solid rgba(162, 89, 247, 0.2);
   }
   
@@ -259,8 +266,8 @@
   }
   
   .service-submenu .nav-link {
-    font-size: 0.95rem;
-    color: var(--text-secondary);
+    font-size: clamp(0.9rem, 2vw, 0.95rem);
+    color: var(--text-secondary, #9CA3AF);
     border-bottom: none;
     padding: 0.5rem 0;
   }
