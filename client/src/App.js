@@ -4,6 +4,7 @@ import { HelmetProvider } from 'react-helmet-async';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import LoadingSpinner from './components/LoadingSpinner';
+import ScrollToTop from './components/ScrollToTop';
 import { shouldDisableAnimations } from './utils/crawlerDetection';
 import './styles/App.css';
 
@@ -47,6 +48,7 @@ function App() {
   return (
     <HelmetProvider>
       <Router>
+        <ScrollToTop />
         <div className="App">
           {/* Galaxy Background - Lazy loaded for better performance */}
           {showGalaxy && (
