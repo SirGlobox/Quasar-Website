@@ -1,12 +1,14 @@
 .text-type {
   display: inline-block;
   white-space: pre-wrap;
+  color: var(--text-primary);
 }
 
 .text-type__cursor {
   margin-left: 0.25rem;
   display: inline-block;
   opacity: 1;
+  color: var(--accent-orbit);
 }
 
 .text-type__cursor--hidden {

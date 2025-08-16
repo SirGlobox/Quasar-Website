@@ -11,48 +11,26 @@ const Blog = () => {
   }, []);
   const blogPosts = [
     {
-      id: 1,
-      slug: 'how-to-grow-home-service-business-charlotte',
-      title: 'How to Grow Your Home Service Business in Charlotte, NC',
-      excerpt: 'Discover proven strategies to scale your home service business in Charlotte\'s competitive market. Learn from local experts who have helped hundreds of businesses succeed.',
+      id: 7,
+      slug: 'luxury-consulting-charlotte-premium-business',
+      title: 'Luxury Consulting Charlotte | Premium Business Consulting | Quasar Consultants',
+      excerpt: 'Discover how Quasar Consultants sets the standard for luxury consulting in Charlotte. Explore the features that define premium business consulting and request your exclusive strategy session today.',
       author: 'Quasar Consultants',
-      date: '2025-06-23',
-      readTime: '8 min read',
-      category: 'Business Growth',
-      image: 'https://res.cloudinary.com/dvsiayukf/image/upload/v1754846038/Blog_e31jxn.png'
+      date: '2025-08-04',
+      readTime: '12 min read',
+      category: 'Luxury Consulting',
+      image: 'https://res.cloudinary.com/dvsiayukf/image/upload/v1755310731/Blog_2_v2tqpl.png'
     },
     {
-      id: 2,
-      slug: 'marketing-strategies-local-service-providers',
-      title: 'Top Marketing Strategies for Local Service Providers',
-      excerpt: 'Effective marketing strategies that work specifically for home service businesses in Charlotte. From digital marketing to local SEO, learn what drives results.',
+      id: 6,
+      slug: 'customer-retention-strategies',
+      title: 'Customer Retention Strategies That Actually Work',
+      excerpt: 'Proven customer retention strategies for home service businesses. Build long-term relationships and increase customer lifetime value.',
       author: 'Quasar Consultants',
-      date: '2025-06-30',
-      readTime: '6 min read',
-      category: 'Marketing',
-      image: 'https://res.cloudinary.com/dvsiayukf/image/upload/v1754845695/Top_Marketing_-_Blog_b7oym3.png'
-    },
-    {
-      id: 3,
-      slug: 'operations-optimization-home-service',
-      title: 'Operations Optimization: Streamline Your Home Service Business',
-      excerpt: 'Learn how to optimize your operations for maximum efficiency and profitability. Practical tips for scheduling, team management, and customer service.',
-      author: 'Quasar Consultants',
-      date: '2025-07-07',
-      readTime: '7 min read',
-      category: 'Operations',
-      image: 'https://res.cloudinary.com/dvsiayukf/image/upload/v1754845696/Operations_Opt_-_Blog_uku5op.png'
-    },
-    {
-      id: 4,
-      slug: 'financial-planning-home-service-business',
-      title: 'Financial Planning for Home Service Business Success',
-      excerpt: 'Essential financial planning strategies to ensure your home service business thrives. From pricing strategies to cash flow management.',
-      author: 'Quasar Consultants',
-      date: '2025-07-14',
-      readTime: '9 min read',
-      category: 'Financial Planning',
-      image: 'https://res.cloudinary.com/dvsiayukf/image/upload/v1754845675/Financial_Planning_-_Blog_ipsnjx.png'
+      date: '2025-07-28',
+      readTime: '5 min read',
+      category: 'Customer Service',
+      image: 'https://res.cloudinary.com/dvsiayukf/image/upload/v1754845675/Customer_-_Blog_qhutz0.png'
     },
     {
       id: 5,
@@ -66,15 +44,48 @@ const Blog = () => {
       image: 'https://res.cloudinary.com/dvsiayukf/image/upload/v1754845695/Market_-_Blog_b9vnsu.png'
     },
     {
-      id: 6,
-      slug: 'customer-retention-strategies',
-      title: 'Customer Retention Strategies That Actually Work',
-      excerpt: 'Proven customer retention strategies for home service businesses. Build long-term relationships and increase customer lifetime value.',
+      id: 4,
+      slug: 'financial-planning-home-service-business',
+      title: 'Financial Planning for Home Service Business Success',
+      excerpt: 'Essential financial planning strategies to ensure your home service business thrives. From pricing strategies to cash flow management.',
       author: 'Quasar Consultants',
-      date: '2025-07-28',
-      readTime: '5 min read',
-      category: 'Customer Service',
-      image: 'https://res.cloudinary.com/dvsiayukf/image/upload/v1754845675/Customer_-_Blog_qhutz0.png'
+      date: '2025-07-14',
+      readTime: '9 min read',
+      category: 'Financial Planning',
+      image: 'https://res.cloudinary.com/dvsiayukf/image/upload/v1754845675/Financial_Planning_-_Blog_ipsnjx.png'
+    },
+    {
+      id: 3,
+      slug: 'operations-optimization-home-service',
+      title: 'Operations Optimization: Streamline Your Home Service Business',
+      excerpt: 'Learn how to optimize your operations for maximum efficiency and profitability. Practical tips for scheduling, team management, and customer service.',
+      author: 'Quasar Consultants',
+      date: '2025-07-07',
+      readTime: '7 min read',
+      category: 'Operations',
+      image: 'https://res.cloudinary.com/dvsiayukf/image/upload/v1754845696/Operations_Opt_-_Blog_uku5op.png'
+    },
+    {
+      id: 2,
+      slug: 'marketing-strategies-local-service-providers',
+      title: 'Top Marketing Strategies for Local Service Providers',
+      excerpt: 'Effective marketing strategies that work specifically for home service businesses in Charlotte. From digital marketing to local SEO, learn what drives results.',
+      author: 'Quasar Consultants',
+      date: '2025-06-30',
+      readTime: '6 min read',
+      category: 'Marketing',
+      image: 'https://res.cloudinary.com/dvsiayukf/image/upload/v1754845695/Top_Marketing_-_Blog_b7oym3.png'
+    },
+    {
+      id: 1,
+      slug: 'how-to-grow-home-service-business-charlotte',
+      title: 'How to Grow Your Home Service Business in Charlotte, NC',
+      excerpt: 'Discover proven strategies to scale your home service business in Charlotte\'s competitive market. Learn from local experts who have helped hundreds of businesses succeed.',
+      author: 'Quasar Consultants',
+      date: '2025-06-23',
+      readTime: '8 min read',
+      category: 'Business Growth',
+      image: 'https://res.cloudinary.com/dvsiayukf/image/upload/v1754846038/Blog_e31jxn.png'
     }
   ];
 

@@ -13,6 +13,7 @@ const Galaxy = React.lazy(() => import('./components/Galaxy'));
 // Lazy load all page components for code splitting
 const Home = React.lazy(() => import('./pages/Home'));
 const Services = React.lazy(() => import('./pages/Services'));
+const Pricing = React.lazy(() => import('./pages/Pricing'));
 const About = React.lazy(() => import('./pages/About'));
 const Contact = React.lazy(() => import('./pages/Contact'));
 const Blog = React.lazy(() => import('./pages/Blog'));
@@ -91,6 +92,7 @@ function App() {
                 <Route path="/services/lead-generation" element={<LeadGeneration />} />
                 <Route path="/services/operations-optimization" element={<OperationsOptimization />} />
                 <Route path="/services/customer-experience" element={<CustomerExperience />} />
+                <Route path="/pricing" element={<Pricing />} />
                 <Route path="/about" element={<About />} />
                 <Route path="/contact" element={<Contact />} />
                 <Route path="/blog" element={<Blog />} />

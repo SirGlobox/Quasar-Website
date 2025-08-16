@@ -34,6 +34,7 @@ const Navbar = () => {
         { path: '/services/customer-experience', label: 'Customer Experience & Retention Systems' }
       ]
     },
+    { path: '/pricing', label: 'Pricing' },
     { path: '/about', label: 'About' },
     { path: '/blog', label: 'Blog' },
     { path: '/contact', label: 'Contact' }
