@@ -5,6 +5,7 @@ import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import LoadingSpinner from './components/LoadingSpinner';
 import ScrollToTop from './components/ScrollToTop';
+import TabVisibilityHandler from './components/TabVisibilityHandler';
 import { shouldDisableAnimations } from './utils/crawlerDetection';
 import './styles/App.css';
 
@@ -49,6 +50,7 @@ function App() {
     <HelmetProvider>
       <Router>
         <ScrollToTop />
+        <TabVisibilityHandler />
         <div className="App">
           {/* Galaxy Background - Lazy loaded for better performance */}
           {showGalaxy && (
