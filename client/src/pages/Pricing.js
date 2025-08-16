@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { ChevronDown, ChevronUp } from 'lucide-react';
+import { ChevronDown, ChevronUp } from '../components/Icons';
 import Galaxy from '../components/Galaxy';
 import GradientText from '../components/GradientText';
 import './Pricing.css';

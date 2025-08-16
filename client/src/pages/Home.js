@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
-import { ArrowRight, Star, Users, TrendingUp, Shield } from 'lucide-react';
+import { ArrowRight, Star, Users, TrendingUp, Shield } from '../components/Icons';
 import DecryptedText from '../components/DecryptedText';
 import ScrambledText from '../components/ScrambledText';
 import ReliableGlowText from '../components/ReliableGlowText';

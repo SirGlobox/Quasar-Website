@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
-import { ArrowRight, CheckCircle, TrendingUp, Target, BarChart3 } from 'lucide-react';
+import { ArrowRight, CheckCircle, TrendingUp, Target, BarChart3 } from '../components/Icons';
 import './Services.css';
 
 const BusinessAssessment = () => {

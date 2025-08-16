@@ -412,12 +412,13 @@
 }
 
 .cta-content h2 {
-  font-size: clamp(1.5rem, 4vw, 2.5rem);
+  font-size: clamp(1.75rem, 4vw, 2.75rem);
   font-weight: 600;
-  /* CRITICAL: Clean, crisp text with purple gradient - no transparency issues */
+  line-height: 1.3;
+  /* CRITICAL: Clean, crisp text with purple-gold gradient - no transparency issues */
   color: #a259f7;
-  margin-bottom: 1rem;
-  background: linear-gradient(135deg, #a259f7, #ec4899);
+  margin-bottom: 1.5rem;
+  background: linear-gradient(135deg, #a259f7, #FFD600);
   -webkit-background-clip: text;
   background-clip: text;
   /* Only use transparent when gradient is supported, with solid fallback */
@@ -436,6 +437,10 @@
   text-rendering: optimizeLegibility;
   word-wrap: break-word;
   hyphens: auto;
+  /* Better text spacing to prevent truncation */
+  padding: 0.5rem 0;
+  max-width: 100%;
+  overflow-wrap: break-word;
 }
 
 /* Fallback for browsers that don't support background-clip */

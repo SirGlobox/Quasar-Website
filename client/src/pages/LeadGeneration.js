@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
-import { ArrowRight, CheckCircle, Target, TrendingUp, Users, Zap } from 'lucide-react';
+import { ArrowRight, CheckCircle, Target, TrendingUp, Users, Zap } from '../components/Icons';
 import './Services.css';
 
 const LeadGeneration = () => {

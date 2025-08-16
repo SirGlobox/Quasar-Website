@@ -1,5 +1,4 @@
 const path = require('path');
-const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 
 module.exports = {
   webpack: {
@@ -60,13 +59,18 @@ module.exports = {
 
         // Add bundle analyzer in analyze mode
         if (process.env.ANALYZE) {
-          webpackConfig.plugins.push(
-            new BundleAnalyzerPlugin({
-              analyzerMode: 'static',
-              openAnalyzer: true,
-              reportFilename: 'bundle-report.html'
-            })
-          );
+          try {
+            const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
+            webpackConfig.plugins.push(
+              new BundleAnalyzerPlugin({
+                analyzerMode: 'static',
+                openAnalyzer: true,
+                reportFilename: 'bundle-report.html'
+              })
+            );
+          } catch (error) {
+            console.warn('webpack-bundle-analyzer not available:', error.message);
+          }
         }
       }
 
