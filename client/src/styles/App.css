@@ -32,6 +32,10 @@
   --text-secondary: var(--cosmic-silver, #F5F7FA);
   --text-muted: var(--slate-gray, #6B7280);
   
+  /* Header Heights - for fixed navbar compensation */
+  --navbar-height-desktop: 90px;
+  --navbar-height-mobile: 60px;
+  
   /* Spacing */
   --section-padding: 4rem 0;
   --container-padding: 0 1rem;
@@ -100,6 +104,17 @@ p {
 nav, main, footer {
   position: relative;
   z-index: 100;
+}
+
+/* Fixed Header Compensation */
+main {
+  padding-top: var(--navbar-height-desktop);
+}
+
+@media (max-width: 768px) {
+  main {
+    padding-top: var(--navbar-height-mobile);
+  }
 }
 
 /* Buttons */

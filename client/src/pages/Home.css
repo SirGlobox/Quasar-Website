@@ -1,6 +1,6 @@
 /* Hero Section */
 .hero {
-  padding: 8rem 0 4rem;
+  padding: 4rem 0 4rem;
   background: transparent;
   position: relative;
   overflow: hidden;
@@ -480,9 +480,9 @@
 
 /* Responsive */
 @media (max-width: 768px) {
-  /* Mobile-specific hero adjustments - no navbar padding needed */
+  /* Mobile-specific hero adjustments - global header compensation already applied */
   .hero {
-    padding: 4rem 0 4rem; /* Reduced top padding since no navbar on mobile */
+    padding: 2rem 0 4rem;
   }
   
   .hero .container {

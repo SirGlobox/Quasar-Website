@@ -1,6 +1,6 @@
 /* Page Hero */
 .page-hero {
-  padding: 8rem 0 4rem;
+  padding: 4rem 0 4rem;
   background: transparent;
   text-align: center;
 }
@@ -499,7 +499,7 @@
 /* Enhanced Mobile Responsiveness */
 @media (max-width: 480px) {
   .page-hero {
-    padding: 4rem 0 2rem;
+    padding: 2rem 0 2rem;
   }
   
   .services-header-typing {
@@ -547,7 +547,7 @@
 
 @media (max-width: 768px) {
   .page-hero {
-    padding: 6rem 0 3rem;
+    padding: 3rem 0 3rem;
   }
   
   .services-header-typing {
@@ -598,7 +598,7 @@
 
 @media (max-width: 375px) {
   .page-hero {
-    padding: 3rem 0 2rem;
+    padding: 1.5rem 0 2rem;
   }
   
   .services-header-typing {
