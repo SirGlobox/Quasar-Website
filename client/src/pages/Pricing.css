@@ -25,10 +25,24 @@
   font-weight: 700;
   margin-bottom: 1.5rem;
   line-height: 1.4;
-  background: linear-gradient(135deg, #A259F7, #FFD600);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  /* WHITE TEXT WITH PURPLE GLOW - No gradients */
+  color: #FFFFFF !important;
+  /* Subtle purple glow background effect */
+  background: radial-gradient(ellipse at center, rgba(162, 89, 247, 0.2) 0%, transparent 70%);
+  /* Purple text shadow for glow effect */
+  text-shadow: 
+    0 0 10px rgba(162, 89, 247, 0.6),
+    0 0 20px rgba(162, 89, 247, 0.4),
+    0 0 30px rgba(162, 89, 247, 0.2);
+  /* Ensure crisp text rendering */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  /* Performance optimization */
+  will-change: transform;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  contain: layout style paint;
   padding: 0.25rem 0;
   min-height: 1.4em;
   word-wrap: break-word;
@@ -68,15 +82,37 @@
 .section-title {
   font-size: clamp(1.5rem, 4vw, 2.5rem);
   font-weight: 600;
-  color: var(--cosmic-white, #ffffff);
+  /* CRITICAL: Clean, crisp text with purple gradient - no transparency issues */
+  color: #a259f7;
   margin-bottom: 1rem;
   background: linear-gradient(135deg, #a259f7, #7c3aed, #ec4899);
   -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
   background-clip: text;
-  text-shadow: none;
+  /* Only use transparent when gradient is supported, with solid fallback */
+  -webkit-text-fill-color: transparent;
+  /* Single, subtle glow for clean appearance */
+  text-shadow: 0 0 8px rgba(162, 89, 247, 0.4);
+  /* GPU acceleration for smooth rendering */
+  will-change: transform;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  /* Performance optimization */
+  contain: layout style paint;
+  /* Ensure crisp text rendering */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
   word-wrap: break-word;
   hyphens: auto;
+}
+
+/* Fallback for browsers that don't support background-clip */
+@supports not (-webkit-background-clip: text) {
+  .section-title {
+    color: #a259f7 !important;
+    -webkit-text-fill-color: #a259f7 !important;
+    text-shadow: 0 0 8px rgba(162, 89, 247, 0.4);
+  }
 }
 
 .section-description {
@@ -378,14 +414,37 @@
 .cta-content h2 {
   font-size: clamp(1.5rem, 4vw, 2.5rem);
   font-weight: 600;
-  color: var(--cosmic-white, #ffffff);
+  /* CRITICAL: Clean, crisp text with purple gradient - no transparency issues */
+  color: #a259f7;
   margin-bottom: 1rem;
   background: linear-gradient(135deg, #a259f7, #ec4899);
   -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
   background-clip: text;
+  /* Only use transparent when gradient is supported, with solid fallback */
+  -webkit-text-fill-color: transparent;
+  /* Single, subtle glow for clean appearance */
+  text-shadow: 0 0 8px rgba(162, 89, 247, 0.4);
+  /* GPU acceleration for smooth rendering */
+  will-change: transform;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  /* Performance optimization */
+  contain: layout style paint;
+  /* Ensure crisp text rendering */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
   word-wrap: break-word;
   hyphens: auto;
+}
+
+/* Fallback for browsers that don't support background-clip */
+@supports not (-webkit-background-clip: text) {
+  .cta-content h2 {
+    color: #a259f7 !important;
+    -webkit-text-fill-color: #a259f7 !important;
+    text-shadow: 0 0 8px rgba(162, 89, 247, 0.4);
+  }
 }
 
 .cta-content p {

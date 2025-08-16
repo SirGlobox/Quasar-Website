@@ -11,6 +11,11 @@
   word-wrap: break-word;
   overflow-wrap: break-word;
   hyphens: auto;
+  /* GPU acceleration for smooth performance */
+  will-change: transform, opacity;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  contain: layout style paint;
 }
 
 .reliable-glow-text .text-content {
@@ -114,13 +119,18 @@
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
 }
 
-/* Animated variants */
+/* Animated variants with GPU acceleration */
 .reliable-glow-text.animated.with-glow .text-content {
-  transition: all 0.3s ease;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), 
+              opacity 0.3s ease,
+              filter 0.3s ease;
+  will-change: transform, filter;
+  transform: translateZ(0);
 }
 
 .reliable-glow-text.animated.with-glow:hover .text-content {
-  transform: translateY(-1px);
+  transform: translateY(-1px) translateZ(0);
+  filter: brightness(1.1);
 }
 
 .reliable-glow-text.variant-primary.animated.with-glow:hover .text-content {

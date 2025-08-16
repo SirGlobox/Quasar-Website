@@ -149,15 +149,10 @@
   color: var(--text-primary, #F9FAFB);
   line-height: 1.4;
   font-size: clamp(1.1rem, 2.5vw, 1.2rem);
-  min-height: 6.5rem;
   padding: 0.5rem 0;
-  display: -webkit-box;
-  -webkit-line-clamp: 4;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-  text-overflow: ellipsis;
   word-wrap: break-word;
   hyphens: auto;
+  overflow-wrap: break-word;
 }
 
 .blog-content p {
@@ -217,9 +212,10 @@
   
   .blog-content h3 {
     font-size: clamp(1rem, 2.5vw, 1.1rem);
-    min-height: 5.5rem;
-    -webkit-line-clamp: 4;
     line-height: 1.4;
+    word-wrap: break-word;
+    hyphens: auto;
+    overflow-wrap: break-word;
   }
   
   .post-meta {

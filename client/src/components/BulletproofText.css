@@ -1,0 +1,271 @@
+/* BulletproofText - Absolutely guaranteed text visibility */
+
+.bulletproof-text {
+  position: relative;
+  display: inline-block;
+  margin: 0;
+  padding: 0;
+  font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-weight: 700;
+  line-height: 1.2;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  /* GPU acceleration for smooth performance */
+  will-change: transform;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  contain: layout style paint;
+}
+
+.bulletproof-text .text-content {
+  position: relative;
+  display: inline-block;
+  z-index: 2;
+  
+  /* CRITICAL: Multiple fallback layers for absolute text visibility */
+  /* Layer 1: Hard-coded white color that NEVER fails */
+  color: white !important;
+  
+  /* Layer 2: RGB white as backup */
+  color: rgb(255, 255, 255) !important;
+  
+  /* Layer 3: Hex white as backup */
+  color: #FFFFFF !important;
+  
+  /* Layer 4: CSS variable with fallback */
+  color: var(--snow-white, #FFFFFF) !important;
+  
+  /* Ensure background is transparent */
+  background-color: transparent !important;
+  
+  /* Override any webkit text fill that might make text invisible */
+  -webkit-text-fill-color: white !important;
+  -webkit-text-fill-color: #FFFFFF !important;
+  -webkit-text-fill-color: rgb(255, 255, 255) !important;
+  
+  /* Disable any background clipping that could cause issues */
+  -webkit-background-clip: initial !important;
+  background-clip: initial !important;
+  
+  /* Ensure crisp text rendering */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  
+  /* Prevent any opacity issues */
+  opacity: 1 !important;
+}
+
+/* Size Variants */
+.bulletproof-text.size-small .text-content {
+  font-size: clamp(0.875rem, 2vw, 1rem);
+}
+
+.bulletproof-text.size-medium .text-content {
+  font-size: clamp(1rem, 2.5vw, 1.25rem);
+}
+
+.bulletproof-text.size-large .text-content {
+  font-size: clamp(1.5rem, 4vw, 2.5rem);
+}
+
+.bulletproof-text.size-xlarge .text-content {
+  font-size: clamp(2rem, 5vw, 4rem);
+}
+
+.bulletproof-text.size-hero .text-content {
+  font-size: clamp(2.5rem, 6vw, 5rem);
+}
+
+/* Variant Styles with Glow Effects */
+.bulletproof-text.variant-primary.with-glow .text-content {
+  /* White text with purple glow - ALWAYS visible */
+  text-shadow: 
+    0 0 5px rgba(255, 255, 255, 0.8),
+    0 0 10px rgba(162, 89, 247, 0.6),
+    0 0 15px rgba(162, 89, 247, 0.4),
+    0 0 20px rgba(162, 89, 247, 0.2),
+    2px 2px 4px rgba(0, 0, 0, 0.8);
+  /* Subtle purple background glow */
+  background: radial-gradient(ellipse at center, rgba(162, 89, 247, 0.15) 0%, transparent 70%) !important;
+  padding: 0.1em 0.2em;
+  border-radius: 0.2em;
+}
+
+.bulletproof-text.variant-secondary.with-glow .text-content {
+  /* Cosmic silver with subtle glow */
+  text-shadow: 
+    0 0 5px rgba(245, 247, 250, 0.8),
+    0 0 10px rgba(245, 247, 250, 0.6),
+    0 0 15px rgba(162, 89, 247, 0.3),
+    2px 2px 4px rgba(0, 0, 0, 0.8);
+  background: radial-gradient(ellipse at center, rgba(245, 247, 250, 0.1) 0%, transparent 70%) !important;
+  padding: 0.1em 0.2em;
+  border-radius: 0.2em;
+}
+
+.bulletproof-text.variant-accent.with-glow .text-content {
+  /* Golden accent with glow - but still white base for visibility */
+  text-shadow: 
+    0 0 5px rgba(255, 214, 0, 0.9),
+    0 0 10px rgba(255, 214, 0, 0.7),
+    0 0 15px rgba(255, 214, 0, 0.5),
+    0 0 20px rgba(255, 214, 0, 0.3),
+    2px 2px 4px rgba(0, 0, 0, 0.8);
+  background: radial-gradient(ellipse at center, rgba(255, 214, 0, 0.15) 0%, transparent 70%) !important;
+  padding: 0.1em 0.2em;
+  border-radius: 0.2em;
+}
+
+.bulletproof-text.variant-button.with-glow .text-content {
+  /* Button text - keep gradients as requested */
+  background: linear-gradient(135deg, #A259F7, #FFD600) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  background-clip: text !important;
+  /* Fallback for when gradient fails */
+  color: white !important;
+  text-shadow: 0 0 10px rgba(162, 89, 247, 0.5);
+}
+
+/* No glow variants - still guaranteed visible */
+.bulletproof-text.variant-primary.no-glow .text-content,
+.bulletproof-text.variant-secondary.no-glow .text-content,
+.bulletproof-text.variant-accent.no-glow .text-content {
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+  background: rgba(0, 0, 0, 0.2) !important;
+  padding: 0.1em 0.2em;
+  border-radius: 0.2em;
+}
+
+/* Emergency fallback for extreme cases */
+.bulletproof-text .text-content::before {
+  content: "";
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: rgba(0, 0, 0, 0.1);
+  border-radius: 0.2em;
+  z-index: -1;
+  pointer-events: none;
+}
+
+/* Mobile optimizations */
+@media (max-width: 768px) {
+  .bulletproof-text.size-hero .text-content {
+    font-size: clamp(2rem, 8vw, 4rem);
+  }
+  
+  .bulletproof-text.size-xlarge .text-content {
+    font-size: clamp(1.75rem, 6vw, 3rem);
+  }
+  
+  .bulletproof-text.size-large .text-content {
+    font-size: clamp(1.25rem, 5vw, 2rem);
+  }
+  
+  /* Reduce glow intensity on small screens for better readability */
+  .bulletproof-text.with-glow .text-content {
+    text-shadow: 
+      0 0 3px rgba(255, 255, 255, 0.6),
+      0 0 6px rgba(162, 89, 247, 0.4),
+      0 0 10px rgba(162, 89, 247, 0.2),
+      1px 1px 2px rgba(0, 0, 0, 0.8);
+  }
+}
+
+@media (max-width: 480px) {
+  .bulletproof-text.size-hero .text-content {
+    font-size: clamp(1.75rem, 9vw, 3.5rem);
+  }
+  
+  .bulletproof-text.size-xlarge .text-content {
+    font-size: clamp(1.5rem, 7vw, 2.5rem);
+  }
+  
+  .bulletproof-text.size-large .text-content {
+    font-size: clamp(1.1rem, 6vw, 1.75rem);
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .bulletproof-text .text-content {
+    text-shadow: none !important;
+    color: white !important;
+    background-color: black !important;
+    padding: 4px 8px !important;
+    border-radius: 4px !important;
+    border: 2px solid white !important;
+  }
+}
+
+/* Forced colors mode (Windows High Contrast) */
+@media (forced-colors: active) {
+  .bulletproof-text .text-content {
+    color: ButtonText !important;
+    text-shadow: none !important;
+    background-color: ButtonFace !important;
+    border: 1px solid ButtonText !important;
+  }
+}
+
+/* Print styles */
+@media print {
+  .bulletproof-text .text-content {
+    color: black !important;
+    text-shadow: none !important;
+    background-color: transparent !important;
+  }
+}
+
+/* Animation support with fallbacks */
+.bulletproof-text.animated .text-content {
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.bulletproof-text.animated:hover .text-content {
+  transform: translateY(-1px);
+  filter: brightness(1.1);
+}
+
+/* Disable animations for reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .bulletproof-text .text-content {
+    transition: none !important;
+    animation: none !important;
+  }
+  
+  .bulletproof-text:hover .text-content {
+    transform: none !important;
+  }
+}
+
+/* Critical: Override any conflicting styles that might be applied globally */
+.bulletproof-text .text-content {
+  /* Force override any global styles that might interfere */
+  background-image: none !important;
+  -webkit-text-stroke: none !important;
+  filter: none !important;
+  mix-blend-mode: normal !important;
+  isolation: auto !important;
+}
+
+/* Ensure visibility even if parent has problematic styles */
+.bulletproof-text {
+  isolation: isolate;
+  z-index: 1;
+}
+
+/* Emergency visibility class for critical text */
+.bulletproof-text.emergency-visible .text-content {
+  color: white !important;
+  background-color: rgba(0, 0, 0, 0.8) !important;
+  padding: 0.2em 0.4em !important;
+  border-radius: 0.3em !important;
+  text-shadow: none !important;
+  border: 1px solid rgba(255, 255, 255, 0.3) !important;
+}

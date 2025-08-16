@@ -1,3 +1,5 @@
+/* GradientText - Bulletproof text component with guaranteed visibility */
+
 .animated-gradient-text {
   position: relative;
   margin: 0 auto;
@@ -60,21 +62,75 @@
   display: inline-block;
   position: relative;
   z-index: 2;
-  background-size: 300% 100%;
-  background-clip: text;
-  -webkit-background-clip: text;
-  /* CRITICAL: Add fallback colors before transparent to ensure visibility */
-  color: var(--snow-white, #F9FAFB) !important;
-  color: #F9FAFB !important;
+  
+  /* CRITICAL: Multiple fallback layers for absolute text visibility */
+  /* Layer 1: Hard-coded white color that NEVER fails */
   color: white !important;
-  color: transparent;
-  /* Add text-shadow as additional fallback */
+  
+  /* Layer 2: RGB white as backup */
+  color: rgb(255, 255, 255) !important;
+  
+  /* Layer 3: Hex white as backup */
+  color: #FFFFFF !important;
+  
+  /* Layer 4: CSS variable with fallback */
+  color: var(--snow-white, #FFFFFF) !important;
+  
+  /* Ensure background is transparent */
+  background-color: transparent !important;
+  
+  /* Override any webkit text fill that might make text invisible */
+  -webkit-text-fill-color: white !important;
+  -webkit-text-fill-color: #FFFFFF !important;
+  -webkit-text-fill-color: rgb(255, 255, 255) !important;
+  
+  /* Disable any background clipping that could cause issues */
+  -webkit-background-clip: initial !important;
+  background-clip: initial !important;
+  
+  /* White text with purple glow - ALWAYS visible */
   text-shadow: 
-    0 0 5px rgba(249, 250, 251, 0.8),
+    0 0 5px rgba(255, 255, 255, 0.8),
     0 0 10px rgba(162, 89, 247, 0.6),
     0 0 15px rgba(162, 89, 247, 0.4),
-    2px 2px 4px rgba(0, 0, 0, 0.5);
-  animation: gradient linear infinite;
+    0 0 20px rgba(162, 89, 247, 0.2),
+    2px 2px 4px rgba(0, 0, 0, 0.8);
+  
+  /* Subtle purple background glow */
+  background: radial-gradient(ellipse at center, rgba(162, 89, 247, 0.15) 0%, transparent 70%) !important;
+  padding: 0.1em 0.2em;
+  border-radius: 0.2em;
+  
+  /* Ensure crisp text rendering */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  
+  /* Prevent any opacity issues */
+  opacity: 1 !important;
+  
+  /* Remove gradient animation */
+  animation: none;
+  
+  /* Performance optimization */
+  will-change: transform;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  contain: layout style paint;
+}
+
+/* Emergency fallback for extreme cases */
+.text-content::before {
+  content: "";
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: rgba(0, 0, 0, 0.1);
+  border-radius: 0.2em;
+  z-index: -1;
+  pointer-events: none;
 }
 
 /* Disable animations for crawlers and reduced motion preference */
@@ -83,9 +139,10 @@
   animation: none;
   background-position: 0% 50%;
   /* Ensure text is visible when animations are disabled */
-  color: var(--snow-white, #F9FAFB) !important;
-  color: #F9FAFB !important;
   color: white !important;
+  color: rgb(255, 255, 255) !important;
+  color: #FFFFFF !important;
+  color: var(--snow-white, #F9FAFB) !important;
 }
 
 /* Respect user's reduced motion preference */
@@ -95,4 +152,79 @@
     animation: none;
     background-position: 0% 50%;
   }
+  
+  .text-content {
+    color: white !important;
+    color: rgb(255, 255, 255) !important;
+    color: #FFFFFF !important;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .text-content {
+    text-shadow: none !important;
+    color: white !important;
+    background-color: black !important;
+    padding: 4px 8px !important;
+    border-radius: 4px !important;
+    border: 2px solid white !important;
+  }
+}
+
+/* Forced colors mode (Windows High Contrast) */
+@media (forced-colors: active) {
+  .text-content {
+    color: ButtonText !important;
+    text-shadow: none !important;
+    background-color: ButtonFace !important;
+    border: 1px solid ButtonText !important;
+  }
+}
+
+/* Mobile optimizations */
+@media (max-width: 768px) {
+  /* Reduce glow intensity on small screens for better readability */
+  .text-content {
+    text-shadow: 
+      0 0 3px rgba(255, 255, 255, 0.6),
+      0 0 6px rgba(162, 89, 247, 0.4),
+      0 0 10px rgba(162, 89, 247, 0.2),
+      1px 1px 2px rgba(0, 0, 0, 0.8);
+  }
+}
+
+/* Print styles */
+@media print {
+  .text-content {
+    color: black !important;
+    text-shadow: none !important;
+    background-color: transparent !important;
+  }
+}
+
+/* Critical: Override any conflicting styles that might be applied globally */
+.text-content {
+  /* Force override any global styles that might interfere */
+  background-image: none !important;
+  -webkit-text-stroke: none !important;
+  filter: none !important;
+  mix-blend-mode: normal !important;
+  isolation: auto !important;
+}
+
+/* Ensure visibility even if parent has problematic styles */
+.animated-gradient-text {
+  isolation: isolate;
+  z-index: 1;
+}
+
+/* Emergency visibility class for critical text */
+.animated-gradient-text.emergency-visible .text-content {
+  color: white !important;
+  background-color: rgba(0, 0, 0, 0.8) !important;
+  padding: 0.2em 0.4em !important;
+  border-radius: 0.3em !important;
+  text-shadow: none !important;
+  border: 1px solid rgba(255, 255, 255, 0.3) !important;
 }

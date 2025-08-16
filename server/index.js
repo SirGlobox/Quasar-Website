@@ -6,6 +6,7 @@ const compression = require('compression');
 const morgan = require('morgan');
 const { body, validationResult } = require('express-validator');
 const { Resend } = require('resend');
+const path = require('path');
 require('dotenv').config();
 
 const app = express();
@@ -86,6 +87,9 @@ const limiter = rateLimit({
 });
 
 app.use('/api/', limiter);
+
+// Serve static files from React build
+app.use(express.static(path.join(__dirname, '../client/build')));
 
 // Contact form rate limiting (more restrictive)
 const contactLimiter = rateLimit({
@@ -287,20 +291,17 @@ Allow: /`;
   res.send(robots);
 });
 
+// Catch-all handler: send back React's index.html file for client-side routing
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '../client/build', 'index.html'));
+});
+
 // Error handling middleware
 app.use((err, req, res, next) => {
   console.error(err.stack);
   res.status(500).json({ 
     success: false, 
     message: 'Something went wrong!' 
-  });
-});
-
-// 404 handler
-app.use('*', (req, res) => {
-  res.status(404).json({ 
-    success: false, 
-    message: 'Route not found' 
   });
 });
 

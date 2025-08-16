@@ -178,7 +178,6 @@ export default function DecryptedText({
     }
   }, [
     isHovering,
-    text,
     speed,
     maxIterations,
     sequential,
@@ -186,6 +185,7 @@ export default function DecryptedText({
     characters,
     useOriginalCharsOnly,
     animationsDisabled,
+    text,
   ])
 
   useEffect(() => {
@@ -217,7 +217,7 @@ export default function DecryptedText({
         observer.unobserve(currentRef)
       }
     }
-  }, [animateOn, hasAnimated, text])
+  }, [animateOn, hasAnimated])
 
   const hoverProps =
     animateOn === 'hover'

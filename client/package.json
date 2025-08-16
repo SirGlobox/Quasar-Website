@@ -4,10 +4,13 @@
   "private": true,
   "proxy": "http://localhost:5001",
   "dependencies": {
+    "@craco/craco": "^7.1.0",
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^14.5.2",
+    "autoprefixer": "^10.4.21",
     "axios": "^1.6.2",
+    "cssnano": "^7.1.0",
     "framer-motion": "^10.18.0",
     "gsap": "^3.13.0",
     "lucide-react": "^0.294.0",
@@ -22,14 +25,15 @@
     "web-vitals": "^3.5.0"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
+    "start": "craco start",
+    "build": "craco build",
+    "test": "craco test",
     "eject": "react-scripts eject",
     "lint": "eslint src --ext .js,.jsx,.ts,.tsx",
     "lint:fix": "eslint src --ext .js,.jsx,.ts,.tsx --fix",
     "analyze": "npm run build && npx serve -s build",
-    "bundle-analyzer": "node scripts/analyze-bundle.js"
+    "bundle-analyzer": "node scripts/analyze-bundle.js",
+    "build:analyze": "npm run build && npm run bundle-analyzer"
   },
   "eslintConfig": {
     "extends": [
@@ -54,6 +58,7 @@
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-prettier": "^5.0.1",
     "prettier": "^3.1.1",
-    "webpack-bundle-analyzer": "^4.10.2"
+    "webpack-bundle-analyzer": "^4.10.2",
+    "webpack-cli": "^6.0.1"
   }
 }

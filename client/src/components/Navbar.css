@@ -41,11 +41,44 @@
 }
 
 .brand-text {
-  background: linear-gradient(135deg, var(--secondary-solar, #FFD600), var(--accent-orbit, #FFD600));
+  /* CRITICAL: Clean, crisp text with purple gradient - no transparency issues */
+  color: #A259F7;
+  background: linear-gradient(135deg, #A259F7, #FFD600);
   -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
   background-clip: text;
-  text-shadow: var(--text-glow, 0 0 10px rgba(255, 214, 0, 0.3));
+  /* Only use transparent when gradient is supported, with solid fallback */
+  -webkit-text-fill-color: transparent;
+  /* Single, subtle glow for clean appearance */
+  text-shadow: 0 0 8px rgba(162, 89, 247, 0.4);
+  /* GPU acceleration for smooth rendering */
+  will-change: transform;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  /* Performance optimization */
+  contain: layout style paint;
+  /* Ensure crisp text rendering */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+/* Fallback for browsers that don't support background-clip */
+@supports not (-webkit-background-clip: text) {
+  .brand-text {
+    color: #A259F7 !important;
+    -webkit-text-fill-color: #A259F7 !important;
+    text-shadow: 0 0 8px rgba(162, 89, 247, 0.4);
+  }
+}
+
+/* Additional fallback for older browsers */
+.brand-text::before {
+  content: attr(data-text);
+  position: absolute;
+  color: #A259F7;
+  z-index: -1;
+  left: 0;
+  top: 0;
 }
 
 .navbar-menu {

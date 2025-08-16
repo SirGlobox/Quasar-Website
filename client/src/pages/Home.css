@@ -20,19 +20,19 @@
 }
 
 .hero-title-container {
-  height: 350px;
+  min-height: 350px;
   display: flex;
   align-items: center;
   margin-bottom: 1.5rem;
-  overflow: hidden;
+  overflow: visible;
 }
 
 .hero-subtitle-container {
-  height: 160px;
+  min-height: 160px;
   display: flex;
   align-items: center;
   margin-bottom: 1.5rem;
-  overflow: hidden;
+  overflow: visible;
 }
 
 .hero-title {
@@ -55,10 +55,24 @@
 }
 
 .highlight {
-  background: linear-gradient(135deg, var(--primary-purple, #A259F7), var(--secondary-purple, #8B5CF6));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  /* WHITE TEXT WITH PURPLE GLOW - No gradients */
+  color: #FFFFFF !important;
+  /* Subtle purple glow background effect */
+  background: radial-gradient(ellipse at center, rgba(162, 89, 247, 0.2) 0%, transparent 70%);
+  /* Purple text shadow for glow effect */
+  text-shadow: 
+    0 0 10px rgba(162, 89, 247, 0.6),
+    0 0 20px rgba(162, 89, 247, 0.4),
+    0 0 30px rgba(162, 89, 247, 0.2);
+  /* Ensure crisp text rendering */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  /* Performance optimization */
+  will-change: transform;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  contain: layout style paint;
 }
 
 .hero-subtitle {
@@ -491,15 +505,15 @@
   }
   
   .hero-title-container {
-    height: 340px; /* Generous height for mobile text wrapping */
+    min-height: 340px; /* Generous minimum height for mobile text wrapping */
     margin-bottom: 1.5rem;
-    overflow: hidden;
+    overflow: visible;
   }
   
   .hero-subtitle-container {
-    height: 200px; /* Increased height for mobile subtitle */
+    min-height: 200px; /* Increased minimum height for mobile subtitle */
     margin-bottom: 1.5rem;
-    overflow: hidden;
+    overflow: visible;
   }
   
   .hero-stats {
@@ -545,14 +559,14 @@
 
 @media (max-width: 480px) {
   .hero-title-container {
-    height: 380px; /* Very generous height for small screens */
+    min-height: 380px; /* Very generous minimum height for small screens */
     margin-bottom: 1.5rem;
-    overflow: hidden;
+    overflow: visible;
   }
   
   .hero-subtitle-container {
-    height: 220px; /* Generous height for longer text wrapping */
+    min-height: 220px; /* Generous minimum height for longer text wrapping */
     margin-bottom: 1.5rem;
-    overflow: hidden;
+    overflow: visible;
   }
 }
