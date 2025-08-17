@@ -186,8 +186,10 @@
   font-family: var(--font-body, 'Open Sans', sans-serif);
   text-shadow: var(--text-glow, 0 0 10px rgba(255, 255, 255, 0.3));
   margin: 0;
-  word-wrap: break-word;
+  overflow-wrap: break-word;
+  word-break: normal;
   hyphens: auto;
+  text-align: justify;
 }
 
 .what-is-quasar .video-container {
