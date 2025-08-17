@@ -143,10 +143,10 @@ const Pricing = () => {
           id: 'collaborative-brand-refresh',
           name: 'Collaborative Brand Refresh',
           price: '$1,000',
-          description: 'Work together to refresh your brand, develop messaging, and build a basic marketing plan with two strategy sessions.',
+          description: 'Work together to refresh your brand, design an optimized custome website, and build a basic marketing plan with two strategy sessions.',
           includes: [
             'Brand refresh',
-            'Messaging strategy',
+            'Website Design',
             'Basic marketing plan',
             'Two consulting sessions'
           ]
