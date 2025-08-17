@@ -169,7 +169,16 @@ const Home = ({ disableAnimations = false }) => {
                   What is a Quasar?
                 </ReliableGlowText>
                 <p className="quasar-description">
-                  A Quasar is the brightest object in the universe, powered by a supermassive black hole at the center of a distant galaxy. Emitting extraordinary amounts of energy, quasars outshine entire galaxies and serve as cosmic beacons visible across billions of light-years. In the business world, the concept of a quasar symbolizes unmatched brilliance, energy, and transformative impact—qualities that Quasar Consultants brings to every client engagement. Just as a quasar illuminates the cosmos, our consulting services are designed to help Charlotte-area home service businesses shine brighter, stand out in competitive markets, and achieve stellar growth. By combining data-driven insights, strategic planning, and industry expertise, Quasar Consultants empowers your business to reach new heights and become a guiding light in your field.
+                  A Quasar is the brightest object in the universe, powered by a supermassive black hole at the center of a distant galaxy. Emitting extraordinary amounts of energy, quasars outshine entire galaxies and serve as cosmic beacons visible across billions of light-years.
+                </p>
+                <p className="quasar-description">
+                  In the business world, the concept of a quasar symbolizes unmatched brilliance, energy, and transformative impact—qualities that Quasar Consultants brings to every client engagement.
+                </p>
+                <p className="quasar-description">
+                  Just as a quasar illuminates the cosmos, our consulting services are designed to help Charlotte-area home service businesses shine brighter, stand out in competitive markets, and achieve stellar growth.
+                </p>
+                <p className="quasar-description">
+                  By combining data-driven insights, strategic planning, and industry expertise, Quasar Consultants empowers your business to reach new heights and become a guiding light in your field.
                 </p>
               </div>
               <div className="video-container">
